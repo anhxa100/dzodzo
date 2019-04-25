@@ -1,0 +1,49 @@
+PODS:
+  - Alamofire (4.7.3)
+  - Charts (3.2.2):
+    - Charts/Core (= 3.2.2)
+  - Charts/Core (3.2.2)
+  - CryptoSwift (1.0.0)
+  - IQKeyboardManagerSwift (6.2.1)
+  - Realm (3.14.1):
+    - Realm/Headers (= 3.14.1)
+  - Realm/Headers (3.14.1)
+  - RealmSwift (3.14.1):
+    - Realm (= 3.14.1)
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxSwift (4.5.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.7.0)
+  - Charts
+  - CryptoSwift
+  - IQKeyboardManagerSwift
+  - RealmSwift
+  - RxCocoa
+  - RxSwift
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Charts
+    - CryptoSwift
+    - IQKeyboardManagerSwift
+    - Realm
+    - RealmSwift
+    - RxCocoa
+    - RxSwift
+
+SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Charts: f69cf0518b6d1d62608ca504248f1bbe0b6ae77e
+  CryptoSwift: d81eeaa59dc5a8d03720fe919a6fd07b51f7439f
+  IQKeyboardManagerSwift: 0f0ae8935360b4003e6ea1ac7c19898f01e2f7c7
+  Realm: e12c9c2387d05c5bba3a9c394838f5870e85763b
+  RealmSwift: a82eab9b04c3e1616082c7e17aa300740847769c
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+
+PODFILE CHECKSUM: 93220cb3345b843f0be13f0aed5a69aa7c9e4837
+
+COCOAPODS: 1.6.1

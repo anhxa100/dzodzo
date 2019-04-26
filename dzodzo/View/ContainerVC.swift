@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ContainerVC: UIViewController, UIScrollViewDelegate {
     
@@ -15,9 +16,15 @@ class ContainerVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     
     var leftMenuWidth = 400
-    
+    var checkPos : [CheckPoscode] = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        PosCodeAPI.getPoscode(success: {[weak self] pos in
+//            self?.checkPos = pos
+        })
+        
+        print(checkPos)
         
         DispatchQueue.main.async() {
             self.closeMenu(animated: false)

@@ -15,5 +15,6 @@ pod 'Charts'
 pod 'RxSwift'
 pod 'RxCocoa'
 pod 'RealmSwift'
+pod 'Moya'
 
 end

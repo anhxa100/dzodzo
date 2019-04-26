@@ -60,6 +60,7 @@ class LoginVC: UIViewController {
         
         print("Pressed!")
         view.endEditing(true)
+        
     }
     @IBAction func fogetPass(_ sender: Any) {
         print("forget pass")

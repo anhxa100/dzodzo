@@ -15,6 +15,8 @@
 		5656C7F92268719600A97712 /* VCTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656C7F82268719600A97712 /* VCTemplate.swift */; };
 		5656F0082266DA1A00B3FEF3 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656F0072266DA1A00B3FEF3 /* Account.swift */; };
 		5665926F2267257700587021 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665926E2267257700587021 /* CustomView.swift */; };
+		56870CAA2272F6760023EC81 /* CheckPoscode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56870CA92272F6760023EC81 /* CheckPoscode.swift */; };
+		56870CAC2272F9DB0023EC81 /* PoscodeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56870CAB2272F9DB0023EC81 /* PoscodeAPI.swift */; };
 		569EA0B62265BB9000EA1427 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569EA0B52265BB9000EA1427 /* AppDelegate.swift */; };
 		569EA0B82265BB9000EA1427 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569EA0B72265BB9000EA1427 /* LoginVC.swift */; };
 		569EA0BB2265BB9000EA1427 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 569EA0B92265BB9000EA1427 /* Main.storyboard */; };
@@ -35,6 +37,8 @@
 		5656C7F82268719600A97712 /* VCTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCTemplate.swift; sourceTree = "<group>"; };
 		5656F0072266DA1A00B3FEF3 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		5665926E2267257700587021 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		56870CA92272F6760023EC81 /* CheckPoscode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckPoscode.swift; sourceTree = "<group>"; };
+		56870CAB2272F9DB0023EC81 /* PoscodeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoscodeAPI.swift; sourceTree = "<group>"; };
 		569EA0B22265BB9000EA1427 /* dzodzo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dzodzo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		569EA0B52265BB9000EA1427 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		569EA0B72265BB9000EA1427 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -64,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				5656F0072266DA1A00B3FEF3 /* Account.swift */,
+				56870CA92272F6760023EC81 /* CheckPoscode.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -121,6 +126,7 @@
 				56C73221226D6CDD00AC8271 /* AccountAPI.swift */,
 				56C73226226DA97C00AC8271 /* Constants.swift */,
 				56C73228226DAC3100AC8271 /* Switcher.swift */,
+				56870CAB2272F9DB0023EC81 /* PoscodeAPI.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -246,8 +252,10 @@
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
@@ -259,8 +267,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
@@ -278,10 +288,12 @@
 			files = (
 				5656C7F92268719600A97712 /* VCTemplate.swift in Sources */,
 				5656C7F52268368500A97712 /* MenuDashBoardVC.swift in Sources */,
+				56870CAC2272F9DB0023EC81 /* PoscodeAPI.swift in Sources */,
 				569EA0B82265BB9000EA1427 /* LoginVC.swift in Sources */,
 				56C73222226D6CDD00AC8271 /* AccountAPI.swift in Sources */,
 				562A71A222701F8A00A9929B /* PopupChosseVC.swift in Sources */,
 				5665926F2267257700587021 /* CustomView.swift in Sources */,
+				56870CAA2272F6760023EC81 /* CheckPoscode.swift in Sources */,
 				56C73227226DA97C00AC8271 /* Constants.swift in Sources */,
 				569EA0B62265BB9000EA1427 /* AppDelegate.swift in Sources */,
 				5656F0082266DA1A00B3FEF3 /* Account.swift in Sources */,

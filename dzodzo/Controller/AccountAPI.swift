@@ -33,6 +33,7 @@ class AccountAPI {
         }
         print("URL: \(url)")
         
+        
         // Request API
         Alamofire.request(url, method: .get).responseString{response in
             switch response.result{
@@ -46,7 +47,14 @@ class AccountAPI {
                 print("error \(error)")
             }
         }
+        
+        
+        
+//        Alamofire.request(urlRequest, method: .get)
     }
+    
+    
+
 }
 
 

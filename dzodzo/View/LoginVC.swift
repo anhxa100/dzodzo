@@ -49,6 +49,10 @@ class LoginVC: UIViewController {
                         
                         PosCodeAPI.getPoscode(success: {[weak self] code in
                             self?.poscode = code
+                            
+                            print(self?.poscode)
+                            
+                            
                             Switcher.updateRootVC()
                         })
                         
@@ -66,10 +70,12 @@ class LoginVC: UIViewController {
                 self?.errorAlert(message: $0)
         } )
         
-        print("Pressed!")
+//        print("Pressed!")
         view.endEditing(true)
         
     }
+    
+    
     @IBAction func fogetPass(_ sender: Any) {
         print("forget pass")
     }

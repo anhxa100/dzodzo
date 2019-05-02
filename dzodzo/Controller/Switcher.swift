@@ -10,11 +10,12 @@ import Foundation
 import  UIKit
 
 class Switcher {
+    var poscodeCheck: String?
     
     static func updateRootVC() {
         let rootVC: UIViewController?
         let loginStatus = UserDefaults.standard.bool(forKey: "isLogin")
-        print("Trang thau Login: \(loginStatus)")
+        print("Trang tha  Login: \(loginStatus)")
         
         
         if (loginStatus == true) {

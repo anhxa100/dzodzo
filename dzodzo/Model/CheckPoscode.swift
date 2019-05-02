@@ -8,19 +8,6 @@
 
 import Foundation
 
-typealias JSON = Dictionary<AnyHashable, Any>
-
-//class CheckPoscode {
-//    let poscode: String
-//    let posgroupcode: String
-//
-//    init( _poscode: String, _posgroupcode: String) {
-//        self.poscode = _poscode
-//        self.posgroupcode = _posgroupcode
-//    }
-//
-//
-//}
 
 class CheckPoscode {
         var poscode: String
@@ -30,4 +17,6 @@ class CheckPoscode {
         self.poscode = Dictionary["poscode"] as? String ?? ""
         self.posgroupcode = Dictionary["posgroupcode"] as? String ?? ""
     }
+    
 }
+

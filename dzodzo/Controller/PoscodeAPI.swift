@@ -49,10 +49,12 @@ class PosCodeAPI {
             for dic in getposAPI {
                 model.append(CheckPoscode(dic))
             }
-//            print("TEST POSCODE: \(model[0].poscode)")
-//            print("TEST POSCODEGROUP: \(model[0].posgroupcode)")
-            
             success(model)
+            
+            
+            print("TEST POSCODE: \(model[0].poscode)")
+            print("TEST POSCODEGROUP: \(model[0].posgroupcode)")
+            
             
             
             

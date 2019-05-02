@@ -80,7 +80,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3wd-8Y-Ieb">
-                                                <rect key="frame" x="59" y="28" width="320" height="216"/>
+                                                <rect key="frame" x="59" y="28.5" width="320" height="216"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="3q0-6G-ghq" id="k1F-2O-BwZ"/>
                                                     <outlet property="delegate" destination="3q0-6G-ghq" id="fhL-wT-c29"/>

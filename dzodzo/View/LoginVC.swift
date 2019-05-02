@@ -14,6 +14,8 @@ class LoginVC: UIViewController {
     @IBOutlet weak var useNameTF: UITextField!
     @IBOutlet weak var passTF: UITextField!
     
+    private var poscode: [CheckPoscode] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,11 +47,17 @@ class LoginVC: UIViewController {
                         UserDefaults.standard.set(outPut.username, forKey: UserDefaultKeys.usernameKey)
                         UserDefaults.standard.set(outPut.pass, forKey: UserDefaultKeys.passwordKey)
                         
-                        Switcher.updateRootVC()
+                        PosCodeAPI.getPoscode(success: {[weak self] code in
+                            self?.poscode = code
+                            Switcher.updateRootVC()
+                        })
+                        
+                        
                         
                     } else {
                         self?.errorAlert(message: "Sai tài khoản hoặc mật khẩu, Vui lòng thử lại!")
                     }
+                    
                 }
             })
             

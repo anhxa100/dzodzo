@@ -11,7 +11,9 @@ import  Alamofire
 import UIKit
 
 class PosCodeAPI {
-    static func getPoscode(success: @escaping ([CheckPoscode]) -> ()) {
+    
+    
+    static func getPoscode(success: @escaping ([CheckPoscode])-> ()) {
         
         guard let usename = UserDefaults.standard.string(forKey: UserDefaultKeys.usernameKey),
             let token = UserDefaults.standard.string(forKey: UserDefaultKeys.tokenKey) else {return}
@@ -43,17 +45,25 @@ class PosCodeAPI {
             
             guard let getposAPI = response.result.value as? [[String: Any]] else {return}
             
-            var arr : [CheckPoscode] = []
-            
-            guard let poscode = getposAPI[0]["poscode"] as? String else {return}
-            guard let posgroupcode = getposAPI[0]["posgroupcode"] as? String else {return}
-            print("TEST POS: \(poscode)")
-            print("TES POSGROUP: \(posgroupcode)")
-            print( "GETPOSTCODE/ GROUP API: \(getposAPI)")
-            // add phan tu trong mang getposAPI vao mang arr de su dung
-            
+            var model = [CheckPoscode]()
+            for dic in getposAPI {
+                model.append(CheckPoscode(dic))
             }
+//            print("TEST POSCODE: \(model[0].poscode)")
+//            print("TEST POSCODEGROUP: \(model[0].posgroupcode)")
+            
+            success(model)
+            
+            
+            
+            //            let rootVC: UIViewController?
+            //            if poscode == "", poscode == nil {
+            //            rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "cbPopUpId")
+            //            }
+            
+            
         }
     }
-    
+}
+
 

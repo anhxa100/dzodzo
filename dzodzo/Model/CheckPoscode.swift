@@ -10,20 +10,24 @@ import Foundation
 
 typealias JSON = Dictionary<AnyHashable, Any>
 
+//class CheckPoscode {
+//    let poscode: String
+//    let posgroupcode: String
+//
+//    init( _poscode: String, _posgroupcode: String) {
+//        self.poscode = _poscode
+//        self.posgroupcode = _posgroupcode
+//    }
+//
+//
+//}
+
 class CheckPoscode {
-    let poscode: String
-    let posgroupcode: String
+        var poscode: String
+        var posgroupcode: String
     
-    init?(json: JSON) {
-        guard let _poscode = json["poscode"] as? String else {return nil}
-        guard let _posgroupcode = json["posgroupcode"] as? String else {return nil}
-        
-        poscode = _poscode
-        posgroupcode = _posgroupcode
-        
-        print(json)
-    
+    init (_ Dictionary: [String: Any]) {
+        self.poscode = Dictionary["poscode"] as? String ?? ""
+        self.posgroupcode = Dictionary["posgroupcode"] as? String ?? ""
     }
-    
-    
 }

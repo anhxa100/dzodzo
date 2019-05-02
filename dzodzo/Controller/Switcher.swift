@@ -8,14 +8,19 @@
 
 import Foundation
 import  UIKit
+
 class Switcher {
+    
     static func updateRootVC() {
         let rootVC: UIViewController?
         let loginStatus = UserDefaults.standard.bool(forKey: "isLogin")
         print("Trang thau Login: \(loginStatus)")
         
+        
         if (loginStatus == true) {
+            
             rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "container")
+            
         } else {
             rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginController")
         }

@@ -50,7 +50,7 @@ class LoginVC: UIViewController {
                         PosCodeAPI.getPoscode(success: {[weak self] code in
                             self?.poscode = code
                             
-                            print(self?.poscode)
+//                            print(self?.poscode)
                             
                             
                             Switcher.updateRootVC()

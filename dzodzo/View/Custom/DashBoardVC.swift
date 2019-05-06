@@ -15,12 +15,7 @@ class DashBoardVC: VCTemplate {
         
         // Do any additional setup after loading the view.
     }
-       @IBAction func menuDashBoard(_ sender: Any) {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "toggleMenu"), object: nil)
-        }
-        
-        
-
+    
         
     }
 

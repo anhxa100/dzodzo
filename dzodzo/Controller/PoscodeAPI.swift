@@ -13,7 +13,7 @@ import UIKit
 class PosCodeAPI {
     
     
-    static func getPoscode(success: @escaping ([CheckPoscode])-> ()) {
+    static func getPoscode(success: @escaping ([CheckPoscode])-> Void) {
         
         guard let usename = UserDefaults.standard.string(forKey: UserDefaultKeys.usernameKey),
             let token = UserDefaults.standard.string(forKey: UserDefaultKeys.tokenKey) else {return}

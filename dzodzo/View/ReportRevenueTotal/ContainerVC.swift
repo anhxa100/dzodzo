@@ -8,17 +8,16 @@
 
 import UIKit
 
-class ContainerVC: UIViewController, UIScrollViewDelegate {
-    
-
+class ContainerVC: UIViewController, UIScrollViewDelegate{
+ 
 
     @IBOutlet weak var scrollView: UIScrollView!
     
     var leftMenuWidth = 400
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         DispatchQueue.main.async() {
             self.closeMenu(animated: false)
@@ -78,6 +77,7 @@ class ContainerVC: UIViewController, UIScrollViewDelegate {
         print("opening menu")
         scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
+    
     
     
 }

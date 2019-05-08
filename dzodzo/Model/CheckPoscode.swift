@@ -16,6 +16,8 @@ class CheckPoscode {
     init (_ Dictionary: [String: Any]) {
         self.poscode = Dictionary["poscode"] as? String ?? ""
         self.posgroupcode = Dictionary["posgroupcode"] as? String ?? ""
+//        print("testposcode: \(poscode)")
+//        print("testposgroupcode: \(posgroupcode)")
     }
     
 }

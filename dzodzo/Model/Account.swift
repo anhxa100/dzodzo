@@ -22,8 +22,8 @@ extension Account {
     typealias DataAfterValiDate = (username: String, pass: String)
     
     static func valiDateLogin(input: DataBeforeValiDate,
-                              success: ((DataAfterValiDate)-> ()),
-                              failure: ((String)-> ())   ){
+                              success: ((DataAfterValiDate)-> Void),
+                              failure: ((String)-> Void)){
         
         guard let userData = input.username, !userData.isEmpty else
         {

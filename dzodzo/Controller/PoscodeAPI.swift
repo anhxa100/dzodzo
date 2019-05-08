@@ -50,20 +50,6 @@ class PosCodeAPI {
                 model.append(CheckPoscode(dic))
             }
             success(model)
-            
-            
-            print("TEST POSCODE: \(model[0].poscode)")
-            print("TEST POSCODEGROUP: \(model[0].posgroupcode)")
-            
-            
-            
-            
-            //            let rootVC: UIViewController?
-            //            if poscode == "", poscode == nil {
-            //            rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "cbPopUpId")
-            //            }
-            
-            
         }
     }
 }

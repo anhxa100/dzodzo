@@ -561,22 +561,34 @@
                                                     <rect key="frame" x="20" y="103.5" width="728" height="569.5"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 </view>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="49" translatesAutoresizingMaskIntoConstraints="NO" id="rED-Ub-uDO">
-                                                    <rect key="frame" x="292" y="11" width="184" height="74.5"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="rED-Ub-uDO">
+                                                    <rect key="frame" x="236" y="11" width="296" height="74.5"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOh-cl-pX8">
-                                                            <rect key="frame" x="0.0" y="0.0" width="25" height="74.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="70" height="74.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="70" id="Qfk-Ht-Rpf"/>
+                                                            </constraints>
                                                             <state key="normal" image="icons8-circled_chevron_left-1"/>
+                                                            <connections>
+                                                                <action selector="preDay:" destination="117-PA-2Cb" eventType="touchUpInside" id="VW0-JV-ov5"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cef-Qg-qUT">
-                                                            <rect key="frame" x="74" y="0.0" width="36" height="74.5"/>
+                                                            <rect key="frame" x="130" y="0.0" width="36" height="74.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.32156862745098036" green="0.32549019607843138" blue="0.3529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t1B-OS-Cxy">
-                                                            <rect key="frame" x="159" y="0.0" width="25" height="74.5"/>
+                                                            <rect key="frame" x="226" y="0.0" width="70" height="74.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="70" id="bGW-Pp-4Mj"/>
+                                                            </constraints>
                                                             <state key="normal" image="icons8-circled_chevron_right-1"/>
+                                                            <connections>
+                                                                <action selector="nextDay:" destination="117-PA-2Cb" eventType="touchUpInside" id="sZd-e8-eiK"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -592,7 +604,7 @@
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="tintColor" red="0.97227032229999999" green="0.97920274169999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <state key="normal" title="Hôm nay"/>
+                                                            <state key="normal" title="Chọn ngày"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                     <real key="value" value="5"/>
@@ -606,6 +618,31 @@
                                                             </userDefinedRuntimeAttributes>
                                                             <connections>
                                                                 <action selector="toDayDropDownMenu:" destination="117-PA-2Cb" eventType="touchUpInside" id="JNE-C9-VDX"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a7N-Sm-FgK" userLabel="Hôm nay">
+                                                            <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="40" id="9sb-OS-sNx"/>
+                                                                <constraint firstAttribute="width" constant="120" id="Hf3-mG-Qvs"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="tintColor" red="0.40784313729999999" green="0.72156862749999995" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <state key="normal" title="Hôm nay"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                    <color key="value" red="0.98039215690000003" green="0.65098039220000004" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                    <real key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="topBorder" value="NO"/>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="5"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="dropdownMenu:" destination="117-PA-2Cb" eventType="touchUpInside" id="ICp-BD-1Mf"/>
                                                             </connections>
                                                         </button>
                                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QmF-PQ-bas">
@@ -792,15 +829,18 @@
                     <connections>
                         <outlet property="SlideDashboard" destination="Wib-CM-ixb" id="Ptp-1a-GbM"/>
                         <outlet property="barChartView" destination="Brh-ZZ-pF2" id="0bO-Wz-V01"/>
+                        <outlet property="chosseDay" destination="NCq-93-k7J" id="j4Q-hn-GSk"/>
+                        <outlet property="dateChart" destination="cef-Qg-qUT" id="hZA-uj-HcI"/>
                         <outletCollection property="opptionMenu" destination="QmF-PQ-bas" collectionClass="NSMutableArray" id="30d-xh-jvz"/>
                         <outletCollection property="opptionMenu" destination="xLF-7n-g0B" collectionClass="NSMutableArray" id="5Ub-qc-rRx"/>
                         <outletCollection property="opptionMenu" destination="q5T-bF-Eak" collectionClass="NSMutableArray" id="DhE-Zf-ucV"/>
                         <outletCollection property="opptionMenu" destination="dpW-9o-pW7" collectionClass="NSMutableArray" id="ZRd-4E-RSz"/>
+                        <outletCollection property="opptionMenu" destination="a7N-Sm-FgK" collectionClass="NSMutableArray" id="c6C-Jp-qWL"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bae-Vo-av3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3438.28125" y="635.7421875"/>
+            <point key="canvasLocation" x="3407.8125" y="635.7421875"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0RG-Ee-NOJ">

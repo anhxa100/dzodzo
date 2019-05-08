@@ -8,7 +8,9 @@
 
 import Foundation
 
-class ReportRevenueTotal {
+
+struct ReportRevenueTotal {
+
     var posgroupcode: String
     var poscode: String
     var totalamount: String
@@ -16,7 +18,8 @@ class ReportRevenueTotal {
     var paybackamount: String
     var taxamount: String
     var date: String
-    
+
+
     init (_ Dictionary: [String: Any]) {
         self.posgroupcode = Dictionary["posgroupcode"] as? String ?? ""
         self.poscode = Dictionary["poscode"] as? String ?? ""
@@ -25,5 +28,16 @@ class ReportRevenueTotal {
         self.paybackamount = Dictionary["paybackamount"] as? String ?? ""
         self.taxamount = Dictionary["taxamount"] as? String ?? ""
         self.date = Dictionary["date"] as? String ?? ""
+        
+        
+        
+
+//         Chuyển dữ liệu kiểu string sang kiểu số
+//        print("TOTAL date:\(taxamount)")
+//        let n = (taxamount as NSString).doubleValue
+//        print(n)
+//        print("Dictionary: \(Dictionary)")
     }
 }
+
+

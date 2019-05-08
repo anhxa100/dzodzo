@@ -10,7 +10,8 @@ import Foundation
 import Alamofire
 
 class ReportRevenueTotalAPI {
-    static func getRevenueTotal(success: @escaping ([ReportRevenueTotal])-> Void) {
+    
+    static func getRevenueTotal(pstartdate: String, penddate: String, success: @escaping ([ReportRevenueTotal])-> Void) {
         guard let token = UserDefaults.standard.string(forKey: UserDefaultKeys.tokenKey) else {return}
         
         let componentsGetPost = URLComponents(scheme: "https", host: "dzodzo.com.vn", path: "/a/api", queryItems: [
@@ -20,8 +21,8 @@ class ReportRevenueTotalAPI {
             URLQueryItem(name: "ParamSize", value: "4"),
             URLQueryItem(name: "P1", value: ""),
             URLQueryItem(name: "P2", value: ""),
-            URLQueryItem(name: "P3", value: ""),
-            URLQueryItem(name: "P4", value: ""),
+            URLQueryItem(name: "P3", value: pstartdate),
+            URLQueryItem(name: "P4", value: penddate),
             ])
         
         guard let urlGetPos = componentsGetPost.url else {
@@ -48,10 +49,8 @@ class ReportRevenueTotalAPI {
                 model.append(ReportRevenueTotal(dic))
             }
             success(model)
-            print("TEST DATE:  \(model[0].date) ")
-            print("TEST DATE:  \(model[1].date) ")
-            print("TEST DATE:  \(model[2].date) ")
-            print("TEST DATE:  \(model[3].date) ")
+            print("DATA: \(model)")
+            
         }
     }
 }

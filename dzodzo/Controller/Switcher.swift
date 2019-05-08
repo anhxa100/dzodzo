@@ -15,12 +15,12 @@ class Switcher {
     static func updateRootVC() {
         let rootVC: UIViewController?
         let loginStatus = UserDefaults.standard.bool(forKey: "isLogin")
-        print("Trang tha  Login: \(loginStatus)")
+        print("Trang thai Login: \(loginStatus)")
         
         
         if (loginStatus == true) {
             
-            rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "container")
+            rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "cbPopUpId")
             
         } else {
             rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginController")

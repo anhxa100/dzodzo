@@ -13,11 +13,17 @@ class PopupChosseVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     @IBOutlet weak var resPicker: UIPickerView!
     
     let fakeDataRes = ["QUÁN ĂN NGON", "QUÁN ĂN NGON CS1", "QUÁN ĂN NGON CS2"] // Fake data cho pickerView
+    var dataRes: [SearchPoscode] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        
+        SearchPoscodeAPI.searchPosCode(pUserId: "" , posgroupid: "155" , success: {[weak self] pos in
+            self?.dataRes = pos
+            print("POS: \(pos)")
+        })
         
         self.showAnimate()
 

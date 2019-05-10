@@ -22,6 +22,14 @@ class Switcher {
             rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "container")
             
         } else {
+            let defaults = UserDefaults.standard
+            defaults.removeObject(forKey: UserDefaultKeys.usernameKey)
+             defaults.removeObject(forKey: UserDefaultKeys.passwordKey)
+             defaults.removeObject(forKey: UserDefaultKeys.tokenKey)
+             defaults.removeObject(forKey: UserDefaultKeys.poscodeKey)
+             defaults.removeObject(forKey: UserDefaultKeys.poscodeKey)
+            
+            defaults.synchronize()
             rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginController")
         }
         

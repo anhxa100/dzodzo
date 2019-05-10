@@ -70,12 +70,11 @@ class PopupChosseVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     }
     @IBAction func oke(_ sender: Any) {
         
-        var row = resPicker.selectedRow(inComponent: 0);
+        let row = resPicker.selectedRow(inComponent: 0);
         NSLog("value L %d", row)
         pickerView(resPicker, didSelectRow: row, inComponent:0)
         
         UserDefaults.standard.set(valueSelected, forKey: UserDefaultKeys.poscodeKey)
-        print(valueSelected)
         UserDefaults.standard.set(true, forKey: "isLogin")
         Switcher.updateRootVC()
     }
@@ -104,7 +103,7 @@ class PopupChosseVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         return dataRes[row].name
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        valueSelected = dataRes[row].poscode
+        valueSelected = dataRes[row].id
         print(valueSelected)
     }
 }

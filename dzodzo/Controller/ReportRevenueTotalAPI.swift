@@ -12,15 +12,18 @@ import Alamofire
 class ReportRevenueTotalAPI {
     
     static func getRevenueTotal(pstartdate: String, penddate: String, success: @escaping ([ReportRevenueTotal])-> Void) {
-        guard let token = UserDefaults.standard.string(forKey: UserDefaultKeys.tokenKey) else {return}
+        guard let token = UserDefaults.standard.string(forKey: UserDefaultKeys.tokenKey),
+        let pposgroupcode = UserDefaults.standard.string(forKey: UserDefaultKeys.posgroupKey),
+        let pposcode = UserDefaults.standard.string(forKey: UserDefaultKeys.poscodeKey)
+        else {return}
         
         let componentsGetPost = URLComponents(scheme: "https", host: "dzodzo.com.vn", path: "/a/api", queryItems: [
             URLQueryItem(name: "ServiceType", value: "query"),
             URLQueryItem(name: "Service", value: "search_chart_report_revenue_total"),
             URLQueryItem(name: "Provider", value: "default"),
             URLQueryItem(name: "ParamSize", value: "4"),
-            URLQueryItem(name: "P1", value: ""),
-            URLQueryItem(name: "P2", value: ""),
+            URLQueryItem(name: "P1", value: pposgroupcode),
+            URLQueryItem(name: "P2", value: pposcode),
             URLQueryItem(name: "P3", value: pstartdate),
             URLQueryItem(name: "P4", value: penddate),
             ])

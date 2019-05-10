@@ -66,7 +66,8 @@ class ContainerVC: UIViewController, UIScrollViewDelegate{
     }
     
 //     Use scrollview content offset-x to slide the menu.
-    func closeMenu(animated:Bool = true){
+    //(animated:Bool = true)
+    func closeMenu(animated:Bool = true) {
         print("closing menu")
         scrollView.setContentOffset(CGPoint(x: leftMenuWidth, y: 0), animated: animated)
         

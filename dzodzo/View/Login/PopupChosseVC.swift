@@ -29,6 +29,12 @@ class PopupChosseVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         SearchPoscodeAPI.searchPosCode( success: {[weak self] pos in
             self?.dataRes = pos
             print("POS: \(pos)")
+            }, failure: {[weak self] mess in
+                DispatchQueue.main.async {
+                    /// End loading
+                    self?.errorAlert(message: mess)
+                    
+                }
         })
         
         self.showAnimate()
@@ -61,15 +67,18 @@ class PopupChosseVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         Switcher.updateRootVC()
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    private func errorAlert(message: String) {
+        
+        let alertVC = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let doneAcion = UIAlertAction(title: "OK", style: .default, handler: { _ in
+            if message.contains("Vui lòng đăng nhập") {
+                let loginvc = LoginVC.instance
+                self.present(loginvc, animated: true, completion: nil)
+            }
+        })
+        alertVC.addAction(doneAcion)
+        self.present(alertVC, animated: true, completion: nil)
+    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

@@ -18,13 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // Change color apps
-        var navigationBarAppearace = UINavigationBar.appearance()
+        let navigationBarAppearace = UINavigationBar.appearance()
         
         navigationBarAppearace.tintColor = UIColor.colorFormHex(hex: 0x52535A )
         navigationBarAppearace.barTintColor = UIColor.colorFormHex(hex: 0x68B8F6)
         navigationBarAppearace.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.colorFormHex(hex: 0x52535A)]
         
-        
+        //Key
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 8
@@ -35,7 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if UserDefaults.standard.object(forKey: UserDefaultKeys.tokenKey) != nil,
         UserDefaults.standard.object(forKey: UserDefaultKeys.passwordKey) != nil,
-            UserDefaults.standard.object(forKey: UserDefaultKeys.usernameKey) != nil {
+            UserDefaults.standard.object(forKey: UserDefaultKeys.usernameKey) != nil,
+            UserDefaults.standard.object(forKey: UserDefaultKeys.posgroupKey) != nil {
             // User đã login được và set lại entrypoint vào màn home
         }
         Switcher.updateRootVC()
@@ -67,12 +68,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
-extension UIColor {
-    static func colorFormHex(hex: UInt32) -> UIColor{
-        let div = CGFloat (255)
-        let red = CGFloat ((hex & 0xFF0000) >> 16) / div
-        let green = CGFloat((hex & 0x00FF00) >> 8) / div
-        let blue  = CGFloat(hex & 0x0000FF)  / div
-        return UIColor(red: red, green: green, blue: blue, alpha:  1)
-    }
-}
+//extension UIColor {
+//    static func colorFormHex(hex: UInt32) -> UIColor{
+//        let div = CGFloat (255)
+//        let red = CGFloat ((hex & 0xFF0000) >> 16) / div
+//        let green = CGFloat((hex & 0x00FF00) >> 8) / div
+//        let blue  = CGFloat(hex & 0x0000FF)  / div
+//        return UIColor(red: red, green: green, blue: blue, alpha:  1)
+//    }
+//}

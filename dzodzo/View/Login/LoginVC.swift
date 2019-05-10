@@ -46,17 +46,22 @@ class LoginVC: UIViewController {
                         UserDefaults.standard.set(token, forKey: UserDefaultKeys.tokenKey)
                         UserDefaults.standard.set(outPut.username, forKey: UserDefaultKeys.usernameKey)
                         UserDefaults.standard.set(outPut.pass, forKey: UserDefaultKeys.passwordKey)
-                        
+            
                         PosCodeAPI.getPoscode(success: {[weak self] code in
                             self?.poscode = code
-                            
-//                            print(self?.poscode)
-                            
-                            
-                            Switcher.updateRootVC()
+                            let poscodegroupData = self?.poscode[0].posgroupcode
+                            UserDefaults.standard.set(poscodegroupData, forKey: UserDefaultKeys.posgroupKey)// Save posgroupcode vao UserDefault
+                            //Switch sang man hinh popup
+                            if self?.poscode[0].poscode != "" {
+                                Switcher.updateRootVC()
+                            }else{
+                             let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "cbPopUpId") as! PopupChosseVC
+                                self?.addChild(popOverVC)
+                                popOverVC.view.frame = (self?.view.frame)!
+                                self?.view.addSubview(popOverVC.view)
+                                popOverVC.didMove(toParent: self)
+                            }
                         })
-                        
-                        
                         
                     } else {
                         self?.errorAlert(message: "Sai tài khoản hoặc mật khẩu, Vui lòng thử lại!")

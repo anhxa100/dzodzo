@@ -9,24 +9,30 @@
 import UIKit
 
 class PopupChosseVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-   
+    
     @IBOutlet weak var resPicker: UIPickerView!
     
-    let fakeDataRes = ["QUÁN ĂN NGON", "QUÁN ĂN NGON CS1", "QUÁN ĂN NGON CS2"] // Fake data cho pickerView
-    var dataRes: [SearchPoscode] = []
+    
+    private var dataRes: [SearchPoscode] = [] {
+        didSet {
+            resPicker.reloadAllComponents()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         
-        SearchPoscodeAPI.searchPosCode(pUserId: "" , posgroupid: "155" , success: {[weak self] pos in
+        
+        
+        SearchPoscodeAPI.searchPosCode( success: {[weak self] pos in
             self?.dataRes = pos
             print("POS: \(pos)")
         })
         
         self.showAnimate()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -49,26 +55,34 @@ class PopupChosseVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
                 }
         })
     }
-
+    
+    @IBAction func logOut(_ sender: Any) {
+        UserDefaults.standard.set(false, forKey: "isLogin")
+        Switcher.updateRootVC()
+    }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return fakeDataRes.count
+        return dataRes.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return fakeDataRes[row]
+        return dataRes[1].name
     }
+//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//
+//        return
+//    }
 }

@@ -68,56 +68,77 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IE2-W5-3lr">
-                                <rect key="frame" x="128" y="341.5" width="512" height="341"/>
+                                <rect key="frame" x="128" y="150" width="512" height="382.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="o9f-By-I6L">
-                                        <rect key="frame" x="37" y="29.5" width="438" height="282.5"/>
+                                        <rect key="frame" x="20" y="40" width="472" height="302.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHỌN GIAN HÀNG" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhv-Kp-Mf8">
-                                                <rect key="frame" x="0.0" y="0.0" width="438" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="CHỌN GIAN HÀNG" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhv-Kp-Mf8">
+                                                <rect key="frame" x="0.0" y="0.0" width="472" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3wd-8Y-Ieb">
-                                                <rect key="frame" x="59" y="28.5" width="320" height="216"/>
+                                                <rect key="frame" x="0.0" y="28.5" width="472" height="216"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="3q0-6G-ghq" id="k1F-2O-BwZ"/>
                                                     <outlet property="delegate" destination="3q0-6G-ghq" id="fhL-wT-c29"/>
                                                 </connections>
                                             </pickerView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="331" translatesAutoresizingMaskIntoConstraints="NO" id="lFc-LU-3CF">
-                                                <rect key="frame" x="0.0" y="252.5" width="438" height="30"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lFc-LU-3CF">
+                                                <rect key="frame" x="0.0" y="252.5" width="472" height="50"/>
                                                 <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgT-1e-fMn">
+                                                        <rect key="frame" x="0.0" y="0.0" width="232" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="ePj-EX-oWh"/>
+                                                        </constraints>
+                                                        <state key="normal" title="THOÁT"/>
+                                                        <connections>
+                                                            <action selector="logOut:" destination="3q0-6G-ghq" eventType="touchUpInside" id="Cqh-SI-Fiv"/>
+                                                        </connections>
+                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zez-N1-cSl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="58" height="30"/>
+                                                        <rect key="frame" x="240" y="0.0" width="232" height="50"/>
                                                         <state key="normal" title="ĐỒNG Ý"/>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgT-1e-fMn">
-                                                        <rect key="frame" x="389" y="0.0" width="49" height="30"/>
-                                                        <state key="normal" title="THOÁT"/>
-                                                    </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="zez-N1-cSl" firstAttribute="height" secondItem="xgT-1e-fMn" secondAttribute="height" id="L4v-Kd-Lpb"/>
+                                                    <constraint firstItem="zez-N1-cSl" firstAttribute="width" secondItem="xgT-1e-fMn" secondAttribute="width" id="kCe-ZS-A3H"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="bhv-Kp-Mf8" firstAttribute="leading" secondItem="o9f-By-I6L" secondAttribute="leading" id="99Y-ow-c57"/>
+                                            <constraint firstAttribute="trailing" secondItem="3wd-8Y-Ieb" secondAttribute="trailing" id="JhC-iM-4sG"/>
+                                            <constraint firstItem="3wd-8Y-Ieb" firstAttribute="leading" secondItem="o9f-By-I6L" secondAttribute="leading" id="KWD-sl-0Kl"/>
                                             <constraint firstAttribute="trailing" secondItem="bhv-Kp-Mf8" secondAttribute="trailing" id="ga2-Xr-s3C"/>
+                                            <constraint firstItem="lFc-LU-3CF" firstAttribute="width" secondItem="3wd-8Y-Ieb" secondAttribute="width" id="zt5-Bg-Wnd"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.97227032229999999" green="0.97920274169999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="o9f-By-I6L" firstAttribute="top" secondItem="IE2-W5-3lr" secondAttribute="top" constant="40" id="Hor-g6-lFa"/>
+                                    <constraint firstAttribute="trailing" secondItem="o9f-By-I6L" secondAttribute="trailing" constant="20" id="eB6-Ve-J3I"/>
                                     <constraint firstItem="o9f-By-I6L" firstAttribute="centerX" secondItem="IE2-W5-3lr" secondAttribute="centerX" id="nAK-u6-WHj"/>
                                     <constraint firstItem="o9f-By-I6L" firstAttribute="centerY" secondItem="IE2-W5-3lr" secondAttribute="centerY" id="uSS-so-0n8"/>
+                                    <constraint firstItem="o9f-By-I6L" firstAttribute="leading" secondItem="IE2-W5-3lr" secondAttribute="leading" constant="20" id="vTV-wf-0gO"/>
+                                    <constraint firstAttribute="bottom" secondItem="o9f-By-I6L" secondAttribute="bottom" constant="40" id="zNw-2W-GOO"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="IE2-W5-3lr" firstAttribute="centerY" secondItem="lan-QQ-JeD" secondAttribute="centerY" id="5ic-Y5-BxU"/>
+                            <constraint firstItem="IE2-W5-3lr" firstAttribute="centerY" secondItem="lan-QQ-JeD" secondAttribute="centerY" multiplier="2/3" id="5ic-Y5-BxU"/>
                             <constraint firstItem="IE2-W5-3lr" firstAttribute="width" secondItem="lan-QQ-JeD" secondAttribute="width" multiplier="2/3" id="Tvr-O4-rcp"/>
-                            <constraint firstItem="IE2-W5-3lr" firstAttribute="height" secondItem="lan-QQ-JeD" secondAttribute="height" multiplier="1/3" id="axz-Fe-Neo"/>
                             <constraint firstItem="IE2-W5-3lr" firstAttribute="centerX" secondItem="lan-QQ-JeD" secondAttribute="centerX" id="zWz-QJ-gVR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ejw-3Y-xLw"/>

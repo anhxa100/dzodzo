@@ -36,21 +36,23 @@ class ReportRevenueTotalAPI {
         
         urlRequest.allHTTPHeaderFields = ["Authorization": "\(token)"]
         
+        
+        
         Alamofire.request(urlRequest).responseJSON{ response in
             guard response.result.isSuccess else {
                 print("ERROR")
                 return
             }
-            
+
             guard let getposAPI = response.result.value as? [[String: Any]] else {return}
-            
+
             var model = [ReportRevenueTotal]()
             for dic in getposAPI {
                 model.append(ReportRevenueTotal(dic))
             }
             success(model)
             print("DATA: \(model)")
-            
+
         }
     }
 }

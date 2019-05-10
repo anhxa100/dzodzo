@@ -8,17 +8,22 @@
 
 import Foundation
 
+
 class SearchPoscode {
     var id: String
     var poscode: String
     var name : String
     var address: String
-    
+
     init(_ Dictionary: [String: Any]) {
         self.id = Dictionary["id"] as? String ?? ""
         self.poscode = Dictionary["poscode"] as? String ?? ""
         self.name = Dictionary["name"] as? String ?? ""
         self.address = Dictionary["address"] as? String ?? ""
+
+        print("ID \(id)")
     }
-    
 }
+
+
+

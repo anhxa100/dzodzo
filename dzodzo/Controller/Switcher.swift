@@ -17,10 +17,9 @@ class Switcher {
         let loginStatus = UserDefaults.standard.bool(forKey: "isLogin")
         print("Trang thai Login: \(loginStatus)")
         
-        
         if (loginStatus == true) {
             
-            rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "cbPopUpId")
+            rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "container")
             
         } else {
             rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginController")

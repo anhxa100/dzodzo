@@ -21,4 +21,7 @@ class UserDefaultKeys {
     class var isLoginKey: String{
         return "isLogin"
     }
+    class var posgroupKey: String {
+        return "posgroup"
+    }
 }

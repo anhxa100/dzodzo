@@ -24,4 +24,7 @@ class UserDefaultKeys {
     class var posgroupKey: String {
         return "posgroup"
     }
+    class var poscodeKey: String {
+        return "poscodeKey"
+    }
 }

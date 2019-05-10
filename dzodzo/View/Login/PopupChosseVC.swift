@@ -12,7 +12,7 @@ class PopupChosseVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     
     @IBOutlet weak var resPicker: UIPickerView!
     
-    
+    var valueSelected: String?
     private var dataRes: [SearchPoscode] = [] {
         didSet {
             resPicker.reloadAllComponents()
@@ -23,21 +23,23 @@ class PopupChosseVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        
+        resPicker.dataSource = self
+        resPicker.delegate = self
         
         
         SearchPoscodeAPI.searchPosCode( success: {[weak self] pos in
             self?.dataRes = pos
             print("POS: \(pos)")
+            
             }, failure: {[weak self] mess in
                 DispatchQueue.main.async {
                     /// End loading
                     self?.errorAlert(message: mess)
-                    
                 }
         })
         
         self.showAnimate()
+        
         
         // Do any additional setup after loading the view.
     }
@@ -66,6 +68,17 @@ class PopupChosseVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         UserDefaults.standard.set(false, forKey: "isLogin")
         Switcher.updateRootVC()
     }
+    @IBAction func oke(_ sender: Any) {
+        
+        var row = resPicker.selectedRow(inComponent: 0);
+        NSLog("value L %d", row)
+        pickerView(resPicker, didSelectRow: row, inComponent:0)
+        
+        UserDefaults.standard.set(valueSelected, forKey: UserDefaultKeys.poscodeKey)
+        print(valueSelected)
+        UserDefaults.standard.set(true, forKey: "isLogin")
+        Switcher.updateRootVC()
+    }
     
     private func errorAlert(message: String) {
         
@@ -88,10 +101,10 @@ class PopupChosseVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         return dataRes.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return dataRes[1].name
+        return dataRes[row].name
     }
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//
-//        return
-//    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        valueSelected = dataRes[row].poscode
+        print(valueSelected)
+    }
 }

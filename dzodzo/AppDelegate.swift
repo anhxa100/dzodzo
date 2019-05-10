@@ -36,7 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if UserDefaults.standard.object(forKey: UserDefaultKeys.tokenKey) != nil,
         UserDefaults.standard.object(forKey: UserDefaultKeys.passwordKey) != nil,
             UserDefaults.standard.object(forKey: UserDefaultKeys.usernameKey) != nil,
-            UserDefaults.standard.object(forKey: UserDefaultKeys.posgroupKey) != nil {
+            UserDefaults.standard.object(forKey: UserDefaultKeys.posgroupKey) != nil,
+            UserDefaults.standard.object(forKey: UserDefaultKeys.poscodeKey) != nil
+            {
             // User đã login được và set lại entrypoint vào màn home
         }
         Switcher.updateRootVC()

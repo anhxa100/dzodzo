@@ -38,49 +38,6 @@ class SearchPoscodeAPI {
         
         urlRequest.allHTTPHeaderFields = ["Authorization": "\(token)"]
         
-//        URLSession.shared.dataTask(with: urlRequest){(data, response, error) in
-//
-//            guard let dataResponse = data,
-//                error == nil else {
-//                    print(error?.localizedDescription ?? "Response Error")
-//                    return }
-        
-            
-            //            do{
-            //                //here dataResponse received from a network request
-            //                let jsonResponse = try JSONSerialization.jsonObject(with:
-            //                    dataResponse, options: [])
-            //                print("DATASEARCHjsonResponse: \(jsonResponse)") //Response result
-            //
-            //                guard let jsonArray = jsonResponse as? [[String: Any]] else {
-            //                    return
-            //                }
-            //                print(jsonArray)
-            //
-            //                for dic in jsonArray{
-            //                    guard let title = dic["name"] as? String else { return }
-            //                    print(title) //Output
-            //
-            //                }
-            //
-            //            } catch let parsingError {
-            //                print("Error", parsingError)
-            //            }
-            //            }.resume()
-            
-            
-            //MARK: Decodeable
-            //            do {
-            //                //here dataResponse received from a network request
-            //                let decoder = JSONDecoder()
-            //                let model = try decoder.decode([SearchPoscode].self, from:
-            //                    dataResponse) //Decode JSON Response Data
-            //                print(model.count) //Output - 1221
-            //                success(model)
-            //            } catch let parsingError {
-            //                print("Error", parsingError)
-            //            }
-            //            }.resume()
             
             Alamofire.request(urlRequest).responseJSON{ response in
                 guard response.result.isSuccess else {

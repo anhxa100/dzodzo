@@ -20,7 +20,7 @@ class ContainerVC: UIViewController, UIScrollViewDelegate{
         super.viewDidLoad()
         
         DispatchQueue.main.async() {
-            self.closeMenu(animated: false)
+            self.closeMenu(animated: true)
         }
         
 //         Tab bar controller's child pages have a top-left button toggles the menu

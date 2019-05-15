@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import RealmSwift
 
 class TotalDashboardTableViewController: UITableViewController, UICollectionViewDataSource {
     
@@ -15,7 +16,7 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
     var refresher : UIRefreshControl!
     let date = Date()
     let format = DateFormatter()
-
+    weak var axisFormatDelegate: IAxisValueFormatter?
     var revenueTotal: [ReportRevenueTotal] = [] {
         didSet {
             tableView.reloadData()
@@ -33,11 +34,19 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("REALMFILE: \(Realm.Configuration.defaultConfiguration.fileURL)")
         format.dateFormat = "dd/MM/yyyy"
         thisDate()
+        updateChartWithData()
+//        ReportRevenueTotalAPI.getRevenueTotal(pstartdate: dateChart.text!, penddate: dateChart.text!, success: {[weak self] dataTotal in
+//            self?.revenueTotal = dataTotal
+//        })
         
-        ReportRevenueTotalAPI.getRevenueTotal(pstartdate: dateChart.text!, penddate: dateChart.text!, success: {[weak self] dataTotal in
+        //MARK: Test data
+        ReportRevenueTotalAPI.getRevenueTotal(pstartdate: "27/02/2019", penddate: "27/02/2019", success: {[weak self] dataTotal in
             self?.revenueTotal = dataTotal
+            let dataRealmTotal = DataRealm()
+            dataRealmTotal.save()
         })
         
         //Date format
@@ -51,12 +60,38 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
         
         
         // Report when no have data or network error
-        barChartView.noDataText = "Không hiển thị dữ liệu, vui lòng kiểm tra lại"
+        barChartView.noDataText = "Không có dữ liệu hiển thị"
         
         //Đặt tên nút mặc định
         chosseDay.setTitle("Hôm nay", for: .normal)
     }
+    //MARK: Chart
+    func updateChartWithData() {
+        var dataEntries: [BarChartDataEntry] = []
+        let totalAmount = getVisitorCountsFromeDatabase()
+        for i in 0..<totalAmount.count {
+            let timeIntervalForDate: TimeInterval = totalAmount[i].date.timeIntervalSince1970
+            let dataEntry = BarChartDataEntry(x: Double(timeIntervalForDate), y: Double(totalAmount[i].totalamount))
+            dataEntries.append(dataEntry)
+        }
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Hoang Label")
+        let chartData = BarChartData(dataSet: chartDataSet)
+        
+        
+        barChartView.data = chartData
+        
+        let xaxis = barChartView.xAxis
+        xaxis.valueFormatter = axisFormatDelegate
+    }
     
+    func getVisitorCountsFromeDatabase() -> Results<DataRealm> {
+        do {
+            let realm = try Realm()
+            return realm.objects(DataRealm.self)
+        }catch let error as NSError {
+            fatalError(error.localizedDescription)
+        }
+    }
     
     @objc func addArr() {
         refresher.beginRefreshing()
@@ -153,6 +188,16 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
             .compactMap { calendar.date(byAdding: .day, value: $0 - dayOfWeek, to: today) }
             .filter { !calendar.isDateInWeekend($0) }
         print(days)
+    }
+    
+}
+
+extension TotalDashboardTableViewController: IAxisValueFormatter {
+    
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        return dateFormatter.string(from: Date(timeIntervalSince1970: value))
     }
     
 }

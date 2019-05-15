@@ -76,6 +76,7 @@ class PopupChosseVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         
         UserDefaults.standard.set(valueSelected, forKey: UserDefaultKeys.poscodeKey)
         UserDefaults.standard.set(true, forKey: "isLogin")
+        
         Switcher.updateRootVC()
     }
     

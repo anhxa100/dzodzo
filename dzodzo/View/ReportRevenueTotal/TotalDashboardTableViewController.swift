@@ -9,6 +9,7 @@
 import UIKit
 import Charts
 import RealmSwift
+import CalendarDateRangePickerViewController
 
 class TotalDashboardTableViewController: UITableViewController, UICollectionViewDataSource {
     
@@ -156,6 +157,7 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
             buttonHidden()
         case .option:
             print("Tuy chon")
+            optionDay()
             buttonHidden()
         }
         
@@ -210,7 +212,6 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
     //MARK: Lấy data theo tháng trong năm
     func thisMonth () {
         let month = calendar.component(.month, from: date)
-        print("THÁNG ĐƯỢC CHỌN: \(month)")
         
         let components = calendar.dateComponents([.year, .month], from: date)
         let startOfMonth = calendar.date(from: components)!
@@ -253,7 +254,17 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
         }
     }
     
-    
+    //MARK: Lấy data theo ngày tự chọn
+    func optionDay() {
+        let dateRangePickerViewController = CalendarDateRangePickerViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        dateRangePickerViewController.delegate = self as CalendarDateRangePickerViewControllerDelegate
+        dateRangePickerViewController.minimumDate = Calendar.current.date(byAdding: .year, value: -1, to: Date())
+        dateRangePickerViewController.maximumDate = Date()
+        dateRangePickerViewController.selectedStartDate = Date()
+        dateRangePickerViewController.selectedEndDate = Calendar.current.date(byAdding: .day, value: 10, to: Date())
+        let navigationController = UINavigationController(rootViewController: dateRangePickerViewController)
+        self.navigationController?.present(navigationController, animated: true, completion: nil)
+    }
 }
 
 extension TotalDashboardTableViewController: IAxisValueFormatter {
@@ -262,4 +273,27 @@ extension TotalDashboardTableViewController: IAxisValueFormatter {
         dateFormatter.dateFormat = "dd/MM/yyyy"
         return dateFormatter.string(from: Date(timeIntervalSince1970: value))
     }
+}
+
+extension TotalDashboardTableViewController : CalendarDateRangePickerViewControllerDelegate {
+
+    func didTapCancel() {
+        self.navigationController?.dismiss(animated: true, completion: nil)
+    }
+    
+    func didTapDoneWithDateRange(startDate: Date!, endDate: Date!) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        self.navigationController?.dismiss(animated: true, completion: nil)
+        let startDay = format.string(from: startDate)
+        let endDay = format.string(from: endDate)
+        
+        dateChart.text = "\(startDay) - \(endDay) "
+        
+        ReportRevenueTotalAPI.getRevenueTotal(pstartdate: startDay, penddate: endDay, success: {[weak self] chooseData in
+            self?.revenueTotal = chooseData
+        })
+        
+    }
+    
 }

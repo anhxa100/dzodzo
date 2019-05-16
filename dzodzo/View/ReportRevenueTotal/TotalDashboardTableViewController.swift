@@ -38,9 +38,9 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
         format.dateFormat = "dd/MM/yyyy"
         thisDate()
         updateChartWithData()
-//        ReportRevenueTotalAPI.getRevenueTotal(pstartdate: dateChart.text!, penddate: dateChart.text!, success: {[weak self] dataTotal in
-//            self?.revenueTotal = dataTotal
-//        })
+        //        ReportRevenueTotalAPI.getRevenueTotal(pstartdate: dateChart.text!, penddate: dateChart.text!, success: {[weak self] dataTotal in
+        //            self?.revenueTotal = dataTotal
+        //        })
         
         //MARK: Test data
         ReportRevenueTotalAPI.getRevenueTotal(pstartdate: "27/02/2019", penddate: "27/02/2019", success: {[weak self] dataTotal in
@@ -54,7 +54,7 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
         //Pull to Refesh
         refresher = UIRefreshControl()
         tableView.addSubview(refresher)
-//        refresher.attributedTitle = NSAttributedString(string : "Refesh data")// add Tittle for pull icon
+        //        refresher.attributedTitle = NSAttributedString(string : "Refesh data")// add Tittle for pull icon
         refresher.addTarget(self, action: #selector(addArr), for: .valueChanged)
         refresher.tintColor = UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)
         
@@ -120,7 +120,7 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
     }
     
     enum DropdownOption: String {
-      case today = "Hôm nay"
+        case today = "Hôm nay"
         case thisWeek = "Tuần này"
         case thisMonth = "Tháng này"
         case thisYear = "Năm nay"
@@ -176,26 +176,35 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
     
     //Lấy ngày hiện tại
     func thisDate() {
-            dateChart.text = format.string(from: date)
+        dateChart.text = format.string(from: date)
     }
     
     //Lấy ngày trong tuần
     func thisWeek() {
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: Date())
-        let dayOfWeek = calendar.component(.weekdayOrdinal, from: today)
+        let dayOfWeek = calendar.component(.weekday, from: today)
         let weekdays = calendar.range(of: .weekday, in: .weekOfYear, for: today)!
-        let days = (weekdays.lowerBound ..< (weekdays.upperBound-1)).compactMap { calendar.date(byAdding: .day, value: $0 - dayOfWeek, to: today) }.filter { !calendar.isDateInWeekend($0) }
-        guard let firstDay = days.first else {return}
-        guard let lastDay = days.last else {return}
+        let days = ((weekdays.lowerBound+1) ... weekdays.upperBound)
+            .compactMap { calendar.date(byAdding: .day, value: $0 - dayOfWeek, to: today) }
+        
+        guard let _firstDay = days.first else {return}
+        guard let _lastDay = days.last else {return}
         
         format.dateFormat = "dd/MM/yyyy"
         print("NGÀY TRONG TUẦN: \(days) ")
         print("SỐ NGÀY TRONG TUẦN: \(days.endIndex)")
+        let firstDay = format.string(from: _firstDay)
+        let lastDay = format.string(from: _lastDay)
         print(firstDay)
         print(lastDay)
-        print(format.string(from: firstDay))
-        print(format.string(from: lastDay))
+        
+        dateChart.text = "\(firstDay) - \(lastDay)"
+        
+        ReportRevenueTotalAPI.getRevenueTotal(pstartdate: firstDay, penddate: lastDay, success: {[weak self] thisweek in
+            self?.revenueTotal = thisweek
+        })
+        
     }
     
 }

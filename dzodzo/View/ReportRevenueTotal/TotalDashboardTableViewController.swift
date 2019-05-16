@@ -174,20 +174,28 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
         return cell
     }
     
-    //
+    //Lấy ngày hiện tại
     func thisDate() {
             dateChart.text = format.string(from: date)
     }
     
+    //Lấy ngày trong tuần
     func thisWeek() {
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: Date())
-        let dayOfWeek = calendar.component(.weekday, from: today)
+        let dayOfWeek = calendar.component(.weekdayOrdinal, from: today)
         let weekdays = calendar.range(of: .weekday, in: .weekOfYear, for: today)!
-        let days = (weekdays.lowerBound ..< weekdays.upperBound)
-            .compactMap { calendar.date(byAdding: .day, value: $0 - dayOfWeek, to: today) }
-            .filter { !calendar.isDateInWeekend($0) }
-        print(days)
+        let days = (weekdays.lowerBound ..< (weekdays.upperBound-1)).compactMap { calendar.date(byAdding: .day, value: $0 - dayOfWeek, to: today) }.filter { !calendar.isDateInWeekend($0) }
+        guard let firstDay = days.first else {return}
+        guard let lastDay = days.last else {return}
+        
+        format.dateFormat = "dd/MM/yyyy"
+        print("NGÀY TRONG TUẦN: \(days) ")
+        print("SỐ NGÀY TRONG TUẦN: \(days.endIndex)")
+        print(firstDay)
+        print(lastDay)
+        print(format.string(from: firstDay))
+        print(format.string(from: lastDay))
     }
     
 }

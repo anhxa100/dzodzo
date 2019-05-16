@@ -14,6 +14,7 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
     
     
     var refresher : UIRefreshControl!
+    let calendar = Calendar.current
     let date = Date()
     let format = DateFormatter()
     weak var axisFormatDelegate: IAxisValueFormatter?
@@ -38,18 +39,14 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
         format.dateFormat = "dd/MM/yyyy"
         thisDate()
         updateChartWithData()
-        //        ReportRevenueTotalAPI.getRevenueTotal(pstartdate: dateChart.text!, penddate: dateChart.text!, success: {[weak self] dataTotal in
-        //            self?.revenueTotal = dataTotal
-        //        })
         
         //MARK: Test data
-        ReportRevenueTotalAPI.getRevenueTotal(pstartdate: "27/02/2019", penddate: "27/02/2019", success: {[weak self] dataTotal in
-            self?.revenueTotal = dataTotal
-            let dataRealmTotal = DataRealm()
-            dataRealmTotal.save()
-        })
+        //        ReportRevenueTotalAPI.getRevenueTotal(pstartdate: "27/02/2019", penddate: "27/02/2019", success: {[weak self] dataTotal in
+        //            self?.revenueTotal = dataTotal
+        //            let dataRealmTotal = DataRealm()
+        //            dataRealmTotal.save()
+        //        })
         
-        //Date format
         print("dateChart \(dateChart.text!)")
         //Pull to Refesh
         refresher = UIRefreshControl()
@@ -151,9 +148,11 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
             buttonHidden()
         case .thisMonth:
             print("Thang nay")
+            thisMonth()
             buttonHidden()
         case .thisYear:
             print("Nam nay")
+            thisYear()
             buttonHidden()
         case .option:
             print("Tuy chon")
@@ -177,11 +176,13 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
     //Lấy ngày hiện tại
     func thisDate() {
         dateChart.text = format.string(from: date)
+        ReportRevenueTotalAPI.getRevenueTotal(pstartdate: dateChart.text ?? "", penddate: dateChart.text ?? "", success: {[weak self] dayData in
+            self?.revenueTotal = dayData
+        })
     }
     
-    //Lấy ngày trong tuần
+    //MARK: Lấy data   ngày trong tuần
     func thisWeek() {
-        let calendar = Calendar.current
         let today = calendar.startOfDay(for: Date())
         let dayOfWeek = calendar.component(.weekday, from: today)
         let weekdays = calendar.range(of: .weekday, in: .weekOfYear, for: today)!
@@ -201,20 +202,64 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
         
         dateChart.text = "\(firstDay) - \(lastDay)"
         
-        ReportRevenueTotalAPI.getRevenueTotal(pstartdate: firstDay, penddate: lastDay, success: {[weak self] thisweek in
-            self?.revenueTotal = thisweek
+        ReportRevenueTotalAPI.getRevenueTotal(pstartdate: firstDay, penddate: lastDay, success: {[weak self] weekData in
+            self?.revenueTotal = weekData
         })
-        
     }
+    
+    //MARK: Lấy data theo tháng trong năm
+    func thisMonth () {
+        let month = calendar.component(.month, from: date)
+        print("THÁNG ĐƯỢC CHỌN: \(month)")
+        
+        let components = calendar.dateComponents([.year, .month], from: date)
+        let startOfMonth = calendar.date(from: components)!
+        let startDateOfMonth = format.string(from: startOfMonth)
+        
+        var comps2 = DateComponents()
+        comps2.month = 1
+        comps2.day = -1
+        let endOfMonth = calendar.date(byAdding: comps2, to: startOfMonth)!
+        let endDateOfMonth = format.string(from: endOfMonth)
+        
+        dateChart.text = "Tháng \(month)"
+        
+        print(startDateOfMonth)
+        print(endDateOfMonth)
+        
+        ReportRevenueTotalAPI.getRevenueTotal(pstartdate: startDateOfMonth, penddate: endDateOfMonth, success: {[weak self] monthData in
+            self?.revenueTotal = monthData
+        })
+    }
+    
+    //MARK: Lấy data theo năm
+    func thisYear() {
+        var components = Calendar.current.dateComponents([.year], from: Date())
+        let year = calendar.component(.year, from: date)
+        if let startDate = Calendar.current.date(from: components) {
+            components.year = 1
+            components.day = -1
+            let lastDate = Calendar.current.date(byAdding: components, to: startDate)!
+            let startDateOfYear = format.string(from: startDate)
+            let lastDateOfYear = format.string(from: lastDate)
+            dateChart.text = "Năm \(year)"
+            
+            print(startDateOfYear)
+            print(lastDateOfYear)
+            
+            ReportRevenueTotalAPI.getRevenueTotal(pstartdate: startDateOfYear, penddate: lastDateOfYear, success: {[weak self] yearData in
+                self?.revenueTotal = yearData
+            })
+        }
+    }
+    
     
 }
 
 extension TotalDashboardTableViewController: IAxisValueFormatter {
-    
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
         return dateFormatter.string(from: Date(timeIntervalSince1970: value))
     }
-    
 }

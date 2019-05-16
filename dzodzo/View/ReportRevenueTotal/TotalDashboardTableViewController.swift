@@ -256,9 +256,10 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
     
     //MARK: Lấy data theo ngày tự chọn
     func optionDay() {
+       
         let dateRangePickerViewController = CalendarDateRangePickerViewController(collectionViewLayout: UICollectionViewFlowLayout())
         dateRangePickerViewController.delegate = self as CalendarDateRangePickerViewControllerDelegate
-        dateRangePickerViewController.minimumDate = Calendar.current.date(byAdding: .year, value: -1, to: Date())
+        dateRangePickerViewController.minimumDate = Calendar.current.date(byAdding: .year, value: -2, to: Date())
         dateRangePickerViewController.maximumDate = Date()
         dateRangePickerViewController.selectedStartDate = Date()
         dateRangePickerViewController.selectedEndDate = Calendar.current.date(byAdding: .day, value: 10, to: Date())

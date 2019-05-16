@@ -14,7 +14,7 @@ class LoginVC: UIViewController {
     @IBOutlet weak var useNameTF: UITextField!
     @IBOutlet weak var passTF: UITextField!
     
-    private var poscode: [CheckPoscode] = []
+    private var CodeKey: [CheckPoscode] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,11 +48,14 @@ class LoginVC: UIViewController {
                         UserDefaults.standard.set(outPut.pass, forKey: UserDefaultKeys.passwordKey)
             
                         PosCodeAPI.getPoscode(success: {[weak self] code in
-                            self?.poscode = code
-                            let poscodegroupData = self?.poscode[0].posgroupcode
-                            UserDefaults.standard.set(poscodegroupData, forKey: UserDefaultKeys.posgroupKey)// Save posgroupcode vao UserDefault
+                            self?.CodeKey = code
+                            let poscodegroupData = self?.CodeKey[0].posgroupcode
+                            let startdateData = self?.CodeKey[0].startdate
+                            // Save posgroupcode vao UserDefault
+                            UserDefaults.standard.set(poscodegroupData, forKey: UserDefaultKeys.posgroupKey)
+                            UserDefaults.standard.set(startdateData, forKey: UserDefaultKeys.dateCreatKey)
                             //Switch sang man hinh popup
-                            if self?.poscode[0].poscode != "" {
+                            if self?.CodeKey[0].poscode != "" {
                                 Switcher.updateRootVC()
                             }else{
                              let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "cbPopUpId") as! PopupChosseVC

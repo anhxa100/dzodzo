@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -29,7 +29,6 @@
 		56C73229226DAC3100AC8271 /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C73228226DAC3100AC8271 /* Switcher.swift */; };
 		56E23F1E2282DC6B002762AC /* SearchPoscodeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E23F1D2282DC6B002762AC /* SearchPoscodeAPI.swift */; };
 		56E23F202282DE49002762AC /* SearchPoscode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E23F1F2282DE49002762AC /* SearchPoscode.swift */; };
-		56F3B8E3228BCB3200EFE28B /* DataRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F3B8E2228BCB3200EFE28B /* DataRealm.swift */; };
 		E0987747441FF2C25A77FA7E /* Pods_dzodzo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99991F17740939644D4CA6E7 /* Pods_dzodzo.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,7 +58,6 @@
 		56C73228226DAC3100AC8271 /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
 		56E23F1D2282DC6B002762AC /* SearchPoscodeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPoscodeAPI.swift; sourceTree = "<group>"; };
 		56E23F1F2282DE49002762AC /* SearchPoscode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPoscode.swift; sourceTree = "<group>"; };
-		56F3B8E2228BCB3200EFE28B /* DataRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRealm.swift; sourceTree = "<group>"; };
 		6E17C08A612BD8DB8CC7CB11 /* Pods-dzodzo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dzodzo.debug.xcconfig"; path = "Target Support Files/Pods-dzodzo/Pods-dzodzo.debug.xcconfig"; sourceTree = "<group>"; };
 		99991F17740939644D4CA6E7 /* Pods_dzodzo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dzodzo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -116,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				5656F0072266DA1A00B3FEF3 /* Account.swift */,
-				56F3B8E2228BCB3200EFE28B /* DataRealm.swift */,
 				56E23F1F2282DE49002762AC /* SearchPoscode.swift */,
 				56870CA92272F6760023EC81 /* CheckPoscode.swift */,
 				5622CA9F22803207007B0531 /* ReportRevenueTotal.swift */,
@@ -330,7 +327,6 @@
 				569EA0B62265BB9000EA1427 /* AppDelegate.swift in Sources */,
 				5656F0082266DA1A00B3FEF3 /* Account.swift in Sources */,
 				5656C7F32268316F00A97712 /* ContainerVC.swift in Sources */,
-				56F3B8E3228BCB3200EFE28B /* DataRealm.swift in Sources */,
 				5622CA9C227FE04B007B0531 /* DashBoardVC.swift in Sources */,
 				56C73229226DAC3100AC8271 /* Switcher.swift in Sources */,
 			);

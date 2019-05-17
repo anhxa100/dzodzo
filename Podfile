@@ -14,7 +14,6 @@ pod 'CryptoSwift'
 pod 'Charts'
 pod 'RxSwift'
 pod 'RxCocoa'
-pod 'RealmSwift'
 pod 'Moya'
 pod 'CalendarDateRangePickerViewController'
 end

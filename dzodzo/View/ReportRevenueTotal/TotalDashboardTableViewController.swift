@@ -8,7 +8,6 @@
 
 import UIKit
 import Charts
-import RealmSwift
 import CalendarDateRangePickerViewController
 
 class TotalDashboardTableViewController: UITableViewController, UICollectionViewDataSource {
@@ -36,17 +35,9 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("REALMFILE: \(Realm.Configuration.defaultConfiguration.fileURL)")
         format.dateFormat = "dd/MM/yyyy"
         thisDate()
-        updateChartWithData()
-        
-        //MARK: Test data
-        //        ReportRevenueTotalAPI.getRevenueTotal(pstartdate: "27/02/2019", penddate: "27/02/2019", success: {[weak self] dataTotal in
-        //            self?.revenueTotal = dataTotal
-        //            let dataRealmTotal = DataRealm()
-        //            dataRealmTotal.save()
-        //        })
+
         
         print("dateChart \(dateChart.text!)")
         //Pull to Refesh
@@ -58,38 +49,38 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
         
         
         // Report when no have data or network error
-        barChartView.noDataText = "Không có dữ liệu hiển thị"
+        barChartView.noDataText = "Không có dữ liệu hiển thị trong thời gian  "
         
         //Đặt tên nút mặc định
         chosseDay.setTitle("Hôm nay", for: .normal)
     }
     //MARK: Chart
-    func updateChartWithData() {
-        var dataEntries: [BarChartDataEntry] = []
-        let totalAmount = getVisitorCountsFromeDatabase()
-        for i in 0..<totalAmount.count {
-            let timeIntervalForDate: TimeInterval = totalAmount[i].date.timeIntervalSince1970
-            let dataEntry = BarChartDataEntry(x: Double(timeIntervalForDate), y: Double(totalAmount[i].totalamount))
-            dataEntries.append(dataEntry)
-        }
-        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Hoang Label")
-        let chartData = BarChartData(dataSet: chartDataSet)
-        
-        
-        barChartView.data = chartData
-        
-        let xaxis = barChartView.xAxis
-        xaxis.valueFormatter = axisFormatDelegate
-    }
+//    func updateChartWithData() {
+//        var dataEntries: [BarChartDataEntry] = []
+//        let totalAmount = getVisitorCountsFromeDatabase()
+//        for i in 0..<totalAmount.count {
+//            let timeIntervalForDate: TimeInterval = totalAmount[i].date.timeIntervalSince1970
+//            let dataEntry = BarChartDataEntry(x: Double(timeIntervalForDate), y: Double(totalAmount[i].totalamount))
+//            dataEntries.append(dataEntry)
+//        }
+//        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Hoang Label")
+//        let chartData = BarChartData(dataSet: chartDataSet)
+//
+//
+//        barChartView.data = chartData
+//
+//        let xaxis = barChartView.xAxis
+//        xaxis.valueFormatter = axisFormatDelegate
+//    }
     
-    func getVisitorCountsFromeDatabase() -> Results<DataRealm> {
-        do {
-            let realm = try Realm()
-            return realm.objects(DataRealm.self)
-        }catch let error as NSError {
-            fatalError(error.localizedDescription)
-        }
-    }
+//    func getVisitorCountsFromeDatabase() -> Results<DataRealm> {
+//        do {
+//            let realm = try Realm()
+//            return realm.objects(DataRealm.self)
+//        }catch let error as NSError {
+//            fatalError(error.localizedDescription)
+//        }
+//    }
     
     @objc func addArr() {
         refresher.beginRefreshing()
@@ -251,6 +242,7 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
             ReportRevenueTotalAPI.getRevenueTotal(pstartdate: startDateOfYear, penddate: lastDateOfYear, success: {[weak self] yearData in
                 self?.revenueTotal = yearData
             })
+
         }
     }
     

@@ -24,6 +24,9 @@
 		569EA0B82265BB9000EA1427 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569EA0B72265BB9000EA1427 /* LoginVC.swift */; };
 		569EA0BB2265BB9000EA1427 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 569EA0B92265BB9000EA1427 /* Main.storyboard */; };
 		569EA0C02265BB9100EA1427 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 569EA0BE2265BB9100EA1427 /* LaunchScreen.storyboard */; };
+		56A7E06122925B8C00CB1BDF /* BalloonMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A7E06022925B8C00CB1BDF /* BalloonMaker.swift */; };
+		56A7E06422925CD100CB1BDF /* LargeValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A7E06322925CD100CB1BDF /* LargeValueFormatter.swift */; };
+		56A7E06622925D3C00CB1BDF /* IntAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A7E06522925D3C00CB1BDF /* IntAxisValueFormatter.swift */; };
 		56C73222226D6CDD00AC8271 /* AccountAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C73221226D6CDD00AC8271 /* AccountAPI.swift */; };
 		56C73227226DA97C00AC8271 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C73226226DA97C00AC8271 /* Constants.swift */; };
 		56C73229226DAC3100AC8271 /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C73228226DAC3100AC8271 /* Switcher.swift */; };
@@ -53,6 +56,9 @@
 		569EA0BA2265BB9000EA1427 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		569EA0BF2265BB9100EA1427 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		569EA0C12265BB9100EA1427 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56A7E06022925B8C00CB1BDF /* BalloonMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonMaker.swift; sourceTree = "<group>"; };
+		56A7E06322925CD100CB1BDF /* LargeValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeValueFormatter.swift; sourceTree = "<group>"; };
+		56A7E06522925D3C00CB1BDF /* IntAxisValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntAxisValueFormatter.swift; sourceTree = "<group>"; };
 		56C73221226D6CDD00AC8271 /* AccountAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountAPI.swift; sourceTree = "<group>"; };
 		56C73226226DA97C00AC8271 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		56C73228226DAC3100AC8271 /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
@@ -79,6 +85,7 @@
 			children = (
 				5656C7F22268316F00A97712 /* ContainerVC.swift */,
 				5622CA93227FDE57007B0531 /* TotalDashboardTableViewController.swift */,
+				56A7E06022925B8C00CB1BDF /* BalloonMaker.swift */,
 			);
 			path = ReportRevenueTotal;
 			sourceTree = "<group>";
@@ -128,6 +135,7 @@
 				5622CA99227FE009007B0531 /* Custom */,
 				5622CA98227FDFE1007B0531 /* Menu */,
 				5622CA97227FDFC3007B0531 /* ReportRevenueTotal */,
+				56A7E06222925C9100CB1BDF /* Formatters */,
 				562A719F2270159500A9929B /* Assets.xcassets */,
 			);
 			path = View;
@@ -163,6 +171,15 @@
 				569EA0C12265BB9100EA1427 /* Info.plist */,
 			);
 			path = dzodzo;
+			sourceTree = "<group>";
+		};
+		56A7E06222925C9100CB1BDF /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				56A7E06322925CD100CB1BDF /* LargeValueFormatter.swift */,
+				56A7E06522925D3C00CB1BDF /* IntAxisValueFormatter.swift */,
+			);
+			path = Formatters;
 			sourceTree = "<group>";
 		};
 		56C73223226D6CE900AC8271 /* Controller */ = {
@@ -318,10 +335,13 @@
 				56870CAC2272F9DB0023EC81 /* PoscodeAPI.swift in Sources */,
 				569EA0B82265BB9000EA1427 /* LoginVC.swift in Sources */,
 				56C73222226D6CDD00AC8271 /* AccountAPI.swift in Sources */,
+				56A7E06122925B8C00CB1BDF /* BalloonMaker.swift in Sources */,
 				562A71A222701F8A00A9929B /* PopupChosseVC.swift in Sources */,
 				5622CA94227FDE57007B0531 /* TotalDashboardTableViewController.swift in Sources */,
 				5665926F2267257700587021 /* CustomView.swift in Sources */,
 				5622CA9E22802FE9007B0531 /* ReportRevenueTotalAPI.swift in Sources */,
+				56A7E06622925D3C00CB1BDF /* IntAxisValueFormatter.swift in Sources */,
+				56A7E06422925CD100CB1BDF /* LargeValueFormatter.swift in Sources */,
 				56870CAA2272F6760023EC81 /* CheckPoscode.swift in Sources */,
 				56C73227226DA97C00AC8271 /* Constants.swift in Sources */,
 				569EA0B62265BB9000EA1427 /* AppDelegate.swift in Sources */,

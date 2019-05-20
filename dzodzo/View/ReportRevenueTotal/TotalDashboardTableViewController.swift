@@ -12,7 +12,7 @@ import CalendarDateRangePickerViewController
 
 class TotalDashboardTableViewController: UITableViewController, UICollectionViewDataSource {
     
-    
+    var shouldHideData: Bool = false
     var refresher : UIRefreshControl!
     let calendar = Calendar.current
     let date = Date()
@@ -24,7 +24,7 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
         }
     }
     
-    @IBOutlet weak var barChartView: BarChartView!
+    @IBOutlet weak var chartView: BarChartView!
     @IBOutlet weak var SlideDashboard: UICollectionView!
     @IBOutlet var opptionMenu: [UIButton]!
     @IBOutlet weak var dateChart: UILabel!
@@ -49,38 +49,74 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
         
         
         // Report when no have data or network error
-        barChartView.noDataText = "Không có dữ liệu hiển thị trong thời gian  "
+        chartView.noDataText = "Không có dữ liệu hiển thị trong thời gian  "
         
         //Đặt tên nút mặc định
         chosseDay.setTitle("Hôm nay", for: .normal)
+        
+        // Tuỳ chỉnh chữ hiện thị thi bấm vào
+        let marker = BalloonMarker(color: UIColor(white: 180/255, alpha: 1), font: .systemFont(ofSize: 12), textColor: .white, insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8))
+        marker.chartView = chartView
+        marker.minimumSize = CGSize(width: 80, height: 40)
+        chartView.marker = marker
+        
+        //Tuỳ chỉnh hiện thị bảng
+        let xAxis = chartView.xAxis
+        xAxis.labelFont = .systemFont(ofSize: 10, weight: .light)
+        xAxis.granularity = 1
+        xAxis.centerAxisLabelsEnabled = true
+        xAxis.valueFormatter = IntAxisValueFormatter()
+        
+        let leftAxisFormatter = NumberFormatter()
+        leftAxisFormatter.maximumFractionDigits = 1
+        
+        let leftAxis = chartView.leftAxis
+        leftAxis.labelFont = .systemFont(ofSize: 10, weight: .light)
+        leftAxis.valueFormatter = LargeValueFormatter()
+        leftAxis.spaceTop = 0.35
+        leftAxis.axisMinimum = 0
+        
+        chartView.rightAxis.enabled = false
+        
     }
-    //MARK: Chart
-//    func updateChartWithData() {
-//        var dataEntries: [BarChartDataEntry] = []
-//        let totalAmount = getVisitorCountsFromeDatabase()
-//        for i in 0..<totalAmount.count {
-//            let timeIntervalForDate: TimeInterval = totalAmount[i].date.timeIntervalSince1970
-//            let dataEntry = BarChartDataEntry(x: Double(timeIntervalForDate), y: Double(totalAmount[i].totalamount))
-//            dataEntries.append(dataEntry)
-//        }
-//        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Hoang Label")
-//        let chartData = BarChartData(dataSet: chartDataSet)
-//
-//
-//        barChartView.data = chartData
-//
-//        let xaxis = barChartView.xAxis
-//        xaxis.valueFormatter = axisFormatDelegate
-//    }
     
-//    func getVisitorCountsFromeDatabase() -> Results<DataRealm> {
-//        do {
-//            let realm = try Realm()
-//            return realm.objects(DataRealm.self)
-//        }catch let error as NSError {
-//            fatalError(error.localizedDescription)
-//        }
-//    }
+    func updateChartData() {
+        if self.shouldHideData {
+            chartView.data = nil
+            return
+        }
+    }
+    
+    func viewData() {
+//        let groupSpace = 0.08
+//        let barSpace = 0.03
+//        let barWidth = 0.2
+        // (0.2 + 0.03) * 4 + 0.08 = 1.00 -> interval per "group"
+        
+        let yVals1: [BarChartDataEntry] = []
+        let yVals2: [BarChartDataEntry] = []
+        let yVals3: [BarChartDataEntry] = []
+        let yVals4: [BarChartDataEntry] = []
+        
+        
+        print("yVals1: \(yVals1)")
+        
+        let set1 = BarChartDataSet(entries: yVals1, label: "totalamount")
+        set1.setColor(UIColor(red: 104/255, green: 241/255, blue: 175/255, alpha: 1))
+        
+        let set2 = BarChartDataSet(entries: yVals2, label: "totaldiscount")
+        set2.setColor(UIColor(red: 164/255, green: 228/255, blue: 251/255, alpha: 1))
+        
+        let set3 = BarChartDataSet(entries: yVals3, label: "paybackamount")
+        set3.setColor(UIColor(red: 242/255, green: 247/255, blue: 158/255, alpha: 1))
+        
+        let set4 = BarChartDataSet(entries: yVals4, label: "taxamount")
+        set4.setColor(UIColor(red: 255/255, green: 102/255, blue: 0/255, alpha: 1))
+        
+        let data = BarChartData(dataSets: [set1, set2, set3, set4])
+        data.setValueFont(.systemFont(ofSize: 10, weight: .light))
+        data.setValueFormatter(LargeValueFormatter())
+    }
     
     @objc func addArr() {
         refresher.beginRefreshing()
@@ -241,8 +277,10 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
             
             ReportRevenueTotalAPI.getRevenueTotal(pstartdate: startDateOfYear, penddate: lastDateOfYear, success: {[weak self] yearData in
                 self?.revenueTotal = yearData
+                
             })
-
+            
+            
         }
     }
     

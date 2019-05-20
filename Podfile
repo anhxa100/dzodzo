@@ -16,4 +16,5 @@ pod 'RxSwift'
 pod 'RxCocoa'
 pod 'Moya'
 pod 'CalendarDateRangePickerViewController'
+pod 'RealmSwift'
 end

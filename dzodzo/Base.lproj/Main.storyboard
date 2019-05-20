@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="ipad9_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -16,20 +12,20 @@
             <objects>
                 <viewController storyboardIdentifier="LoginController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginVC" customModule="dzodzo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9oQ-3Y-PiS">
-                                <rect key="frame" x="0.0" y="276" width="768" height="748"/>
+                                <rect key="frame" x="0.0" y="170" width="600" height="430"/>
                                 <connections>
                                     <segue destination="DC4-t7-jwJ" kind="embed" id="Wbj-3W-doK"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhx-4q-76a">
-                                <rect key="frame" x="0.0" y="20" width="768" height="256"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="150"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_app_dzozo" translatesAutoresizingMaskIntoConstraints="NO" id="sVQ-B9-Jtq">
-                                        <rect key="frame" x="192" y="96" width="384" height="64"/>
+                                        <rect key="frame" x="150" y="56.5" width="300" height="37.5"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -64,33 +60,33 @@
             <objects>
                 <viewController storyboardIdentifier="cbPopUpId" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3q0-6G-ghq" customClass="PopupChosseVC" customModule="dzodzo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lan-QQ-JeD">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IE2-W5-3lr">
-                                <rect key="frame" x="128" y="150" width="512" height="382.5"/>
+                                <rect key="frame" x="100" y="9" width="400" height="382.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="o9f-By-I6L">
-                                        <rect key="frame" x="20" y="40" width="472" height="302.5"/>
+                                        <rect key="frame" x="20" y="40" width="360" height="302.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="CHỌN GIAN HÀNG" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhv-Kp-Mf8">
-                                                <rect key="frame" x="0.0" y="0.0" width="472" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="360" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3wd-8Y-Ieb">
-                                                <rect key="frame" x="0.0" y="28.5" width="472" height="216"/>
+                                                <rect key="frame" x="0.0" y="28.5" width="360" height="216"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="3q0-6G-ghq" id="k1F-2O-BwZ"/>
                                                     <outlet property="delegate" destination="3q0-6G-ghq" id="fhL-wT-c29"/>
                                                 </connections>
                                             </pickerView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lFc-LU-3CF">
-                                                <rect key="frame" x="0.0" y="252.5" width="472" height="50"/>
+                                                <rect key="frame" x="0.0" y="252.5" width="360" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgT-1e-fMn">
-                                                        <rect key="frame" x="0.0" y="0.0" width="232" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="176" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="ePj-EX-oWh"/>
                                                         </constraints>
@@ -100,7 +96,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zez-N1-cSl">
-                                                        <rect key="frame" x="240" y="0.0" width="232" height="50"/>
+                                                        <rect key="frame" x="184" y="0.0" width="176" height="50"/>
                                                         <state key="normal" title="ĐỒNG Ý"/>
                                                         <connections>
                                                             <action selector="oke:" destination="3q0-6G-ghq" eventType="touchUpInside" id="FBF-od-K9c"/>
@@ -159,14 +155,14 @@
             <objects>
                 <viewController storyboardIdentifier="container" useStoryboardIdentifierAsRestorationIdentifier="YES" id="usI-oU-kZq" customClass="ContainerVC" customModule="dzodzo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IBD-tB-vKJ">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQw-0j-kn2">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RD7-pt-HZ0">
-                                        <rect key="frame" x="0.0" y="0.0" width="400" height="1024"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="400" id="3vM-5x-VKv"/>
                                         </constraints>
@@ -175,7 +171,7 @@
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RLE-Zz-1Wp">
-                                        <rect key="frame" x="400" y="0.0" width="768" height="1024"/>
+                                        <rect key="frame" x="400" y="0.0" width="600" height="600"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
                                                 <real key="value" value="0.80000000000000004"/>
@@ -376,72 +372,72 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cGb-3t-QKd">
-                                <rect key="frame" x="0.0" y="216.5" width="400" height="807.5"/>
+                                <rect key="frame" x="0.0" y="210.5" width="400" height="813.5"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="oHu-cq-NTA">
-                                        <rect key="frame" x="20" y="20" width="360" height="686.5"/>
+                                        <rect key="frame" x="20" y="20" width="360" height="692"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="SHn-if-AGX">
-                                                <rect key="frame" x="0.0" y="0.0" width="360" height="686.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="360" height="692"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OpS-Ux-c6A">
-                                                        <rect key="frame" x="0.0" y="0.0" width="360" height="69"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="360" height="69.5"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                         <state key="normal" title="Tổng hợp doanh thu">
                                                             <color key="titleColor" red="0.32156862745098036" green="0.32549019607843138" blue="0.3529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCo-H2-98C">
-                                                        <rect key="frame" x="0.0" y="77" width="360" height="69"/>
+                                                        <rect key="frame" x="0.0" y="77.5" width="360" height="70"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                         <state key="normal" title="Doanh thu theo sản phẩm">
                                                             <color key="titleColor" red="0.32156862745098036" green="0.32549019607843138" blue="0.3529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89f-L5-rgj">
-                                                        <rect key="frame" x="0.0" y="154" width="360" height="69.5"/>
+                                                        <rect key="frame" x="0.0" y="155.5" width="360" height="69.5"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                         <state key="normal" title="Doanh thu theo danh mục">
                                                             <color key="titleColor" red="0.32156862745098036" green="0.32549019607843138" blue="0.3529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcH-aE-o0X">
-                                                        <rect key="frame" x="0.0" y="231.5" width="360" height="69"/>
+                                                        <rect key="frame" x="0.0" y="233" width="360" height="70"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                         <state key="normal" title="Doanh thu theo loại thanh toán">
                                                             <color key="titleColor" red="0.32156862745098036" green="0.32549019607843138" blue="0.3529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CPV-dH-Ras">
-                                                        <rect key="frame" x="0.0" y="308.5" width="360" height="69.5"/>
+                                                        <rect key="frame" x="0.0" y="311" width="360" height="70"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                         <state key="normal" title="Doanh thu theo khuyến mại">
                                                             <color key="titleColor" red="0.32156862745098036" green="0.32549019607843138" blue="0.3529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6M-Rd-rAP">
-                                                        <rect key="frame" x="0.0" y="386" width="360" height="69"/>
+                                                        <rect key="frame" x="0.0" y="389" width="360" height="69.5"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                         <state key="normal" title="Thống kê thuế">
                                                             <color key="titleColor" red="0.32156862745098036" green="0.32549019607843138" blue="0.3529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EBk-JK-Ro4">
-                                                        <rect key="frame" x="0.0" y="463" width="360" height="69.5"/>
+                                                        <rect key="frame" x="0.0" y="466.5" width="360" height="70"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                         <state key="normal" title="Thống kê nợ">
                                                             <color key="titleColor" red="0.32156862745098036" green="0.32549019607843138" blue="0.3529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4kY-A5-EgJ">
-                                                        <rect key="frame" x="0.0" y="540.5" width="360" height="69"/>
+                                                        <rect key="frame" x="0.0" y="544.5" width="360" height="70"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                         <state key="normal" title="Nguyên liệu theo mặt hàng">
                                                             <color key="titleColor" red="0.32156862745098036" green="0.32549019607843138" blue="0.3529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1k-zd-RMm">
-                                                        <rect key="frame" x="0.0" y="617.5" width="360" height="69"/>
+                                                        <rect key="frame" x="0.0" y="622.5" width="360" height="69.5"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                         <state key="normal" title="Đánh giá của khách hàng">
                                                             <color key="titleColor" red="0.32156862745098036" green="0.32549019607843138" blue="0.3529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -471,10 +467,10 @@
                                         </constraints>
                                     </scrollView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gh2-ru-26f">
-                                        <rect key="frame" x="0.0" y="726.5" width="400" height="81"/>
+                                        <rect key="frame" x="0.0" y="732" width="400" height="81.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QVR-q5-3Xs">
-                                                <rect key="frame" x="20" y="22.5" width="96" height="36"/>
+                                                <rect key="frame" x="20" y="23" width="96" height="36"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <state key="normal" title="Đăng xuất">
                                                     <color key="titleColor" red="0.94915872812271118" green="0.34802120923995972" blue="0.10197501629590988" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -505,7 +501,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bmx-Po-dqe">
-                                <rect key="frame" x="0.0" y="70" width="400" height="146.5"/>
+                                <rect key="frame" x="0.0" y="64" width="400" height="146.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4IV-xa-q1K">
                                         <rect key="frame" x="20" y="24.5" width="97.5" height="97.5"/>
@@ -851,7 +847,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="SlideDashboard" destination="Wib-CM-ixb" id="Ptp-1a-GbM"/>
-                        <outlet property="barChartView" destination="Brh-ZZ-pF2" id="0bO-Wz-V01"/>
+                        <outlet property="chartView" destination="Brh-ZZ-pF2" id="0bO-Wz-V01"/>
                         <outlet property="chosseDay" destination="NCq-93-k7J" id="j4Q-hn-GSk"/>
                         <outlet property="dateChart" destination="cef-Qg-qUT" id="hZA-uj-HcI"/>
                         <outletCollection property="opptionMenu" destination="QmF-PQ-bas" collectionClass="NSMutableArray" id="30d-xh-jvz"/>

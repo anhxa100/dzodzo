@@ -85,7 +85,6 @@
 			children = (
 				5656C7F22268316F00A97712 /* ContainerVC.swift */,
 				5622CA93227FDE57007B0531 /* TotalDashboardTableViewController.swift */,
-				56A7E06022925B8C00CB1BDF /* BalloonMaker.swift */,
 			);
 			path = ReportRevenueTotal;
 			sourceTree = "<group>";
@@ -176,6 +175,7 @@
 		56A7E06222925C9100CB1BDF /* Formatters */ = {
 			isa = PBXGroup;
 			children = (
+				56A7E06022925B8C00CB1BDF /* BalloonMaker.swift */,
 				56A7E06322925CD100CB1BDF /* LargeValueFormatter.swift */,
 				56A7E06522925D3C00CB1BDF /* IntAxisValueFormatter.swift */,
 			);

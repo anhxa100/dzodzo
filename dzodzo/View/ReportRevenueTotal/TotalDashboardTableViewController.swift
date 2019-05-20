@@ -17,6 +17,7 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
     let calendar = Calendar.current
     let date = Date()
     let format = DateFormatter()
+    
     weak var axisFormatDelegate: IAxisValueFormatter?
     var revenueTotal: [ReportRevenueTotal] = [] {
         didSet {
@@ -88,10 +89,15 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
     }
     
     func viewData() {
-//        let groupSpace = 0.08
-//        let barSpace = 0.03
-//        let barWidth = 0.2
+        let groupSpace = 0.08
+        let barSpace = 0.03
+        let barWidth = 0.2
         // (0.2 + 0.03) * 4 + 0.08 = 1.00 -> interval per "group"
+        
+//        let dateString = revenueTotal[0].date
+//        let dateFromString = format.date(from: dateString)
+        
+//        print("dateFromString: \(dateFromString)")
         
         let yVals1: [BarChartDataEntry] = []
         let yVals2: [BarChartDataEntry] = []
@@ -116,6 +122,11 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
         let data = BarChartData(dataSets: [set1, set2, set3, set4])
         data.setValueFont(.systemFont(ofSize: 10, weight: .light))
         data.setValueFormatter(LargeValueFormatter())
+        
+//        data.groupBars(fromX: Double(startYear), groupSpace: groupSpace, barSpace: barSpace)
+        
+        chartView.data = data
+
     }
     
     @objc func addArr() {
@@ -207,6 +218,7 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
         dateChart.text = format.string(from: date)
         ReportRevenueTotalAPI.getRevenueTotal(pstartdate: dateChart.text ?? "", penddate: dateChart.text ?? "", success: {[weak self] dayData in
             self?.revenueTotal = dayData
+            self?.viewData()
         })
     }
     
@@ -233,6 +245,7 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
         
         ReportRevenueTotalAPI.getRevenueTotal(pstartdate: firstDay, penddate: lastDay, success: {[weak self] weekData in
             self?.revenueTotal = weekData
+            self?.viewData()
         })
     }
     
@@ -257,6 +270,7 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
         
         ReportRevenueTotalAPI.getRevenueTotal(pstartdate: startDateOfMonth, penddate: endDateOfMonth, success: {[weak self] monthData in
             self?.revenueTotal = monthData
+            self?.viewData()
         })
     }
     
@@ -277,7 +291,7 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
             
             ReportRevenueTotalAPI.getRevenueTotal(pstartdate: startDateOfYear, penddate: lastDateOfYear, success: {[weak self] yearData in
                 self?.revenueTotal = yearData
-                
+                self?.viewData()
             })
             
             
@@ -300,9 +314,7 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
 
 extension TotalDashboardTableViewController: IAxisValueFormatter {
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        return dateFormatter.string(from: Date(timeIntervalSince1970: value))
+        return format.string(from: Date(timeIntervalSince1970: value))
     }
 }
 
@@ -313,8 +325,6 @@ extension TotalDashboardTableViewController : CalendarDateRangePickerViewControl
     }
     
     func didTapDoneWithDateRange(startDate: Date!, endDate: Date!) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
         self.navigationController?.dismiss(animated: true, completion: nil)
         let startDay = format.string(from: startDate)
         let endDay = format.string(from: endDate)
@@ -323,6 +333,7 @@ extension TotalDashboardTableViewController : CalendarDateRangePickerViewControl
         
         ReportRevenueTotalAPI.getRevenueTotal(pstartdate: startDay, penddate: endDay, success: {[weak self] chooseData in
             self?.revenueTotal = chooseData
+            self?.viewData()
         })
         
     }

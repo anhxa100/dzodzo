@@ -1,14 +1,14 @@
 //
-//  VCTemplate.swift
+//  SecondViewController.swift
 //  dzodzo
 //
-//  Created by anhxa100 on 4/18/19.
+//  Created by anhxa100 on 5/21/19.
 //  Copyright © 2019 anhxa100. All rights reserved.
 //
 
 import UIKit
 
-class VCTemplate: UIViewController {
+class SecondViewController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,10 +16,6 @@ class VCTemplate: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "closeMenuViaNotification"), object: nil)
-        view.endEditing(true)
-    }
 
     /*
     // MARK: - Navigation

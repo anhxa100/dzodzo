@@ -18,6 +18,7 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
     let date = Date()
     let format = DateFormatter()
     
+    
     weak var axisFormatDelegate: IAxisValueFormatter?
     var revenueTotal: [ReportRevenueTotal] = [] {
         didSet {
@@ -35,6 +36,10 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
     //MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+       
         
         format.dateFormat = "dd/MM/yyyy"
         thisDate()
@@ -88,24 +93,35 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
         }
     }
     
+    // Lấy data để hiển th 
     func viewData() {
         let groupSpace = 0.08
         let barSpace = 0.03
         let barWidth = 0.2
         // (0.2 + 0.03) * 4 + 0.08 = 1.00 -> interval per "group"
         
-//        let dateString = revenueTotal[0].date
-//        let dateFromString = format.date(from: dateString)
+        let block1: (Int) -> BarChartDataEntry = { (i) -> BarChartDataEntry in
+            return BarChartDataEntry(x: Double(i), y: Double(self.revenueTotal[i].totalamount) ?? 0.0 )
+        }
+        let block2: (Int) -> BarChartDataEntry = { (i) -> BarChartDataEntry in
+            return BarChartDataEntry(x: Double(i), y: Double(self.revenueTotal[i].totaldiscount) ?? 0.0)
+        }
+        let block3: (Int) -> BarChartDataEntry = { (i) -> BarChartDataEntry in
+            return BarChartDataEntry(x: Double(i), y: Double(self.revenueTotal[i].paybackamount) ?? 0.0)
+        }
+        let block4: (Int) -> BarChartDataEntry = { (i) -> BarChartDataEntry in
+            return BarChartDataEntry(x: Double(i), y: Double(self.revenueTotal[i].taxamount) ?? 0.0)
+        }
         
-//        print("dateFromString: \(dateFromString)")
-        
-        let yVals1: [BarChartDataEntry] = []
-        let yVals2: [BarChartDataEntry] = []
-        let yVals3: [BarChartDataEntry] = []
-        let yVals4: [BarChartDataEntry] = []
+        let yVals1: [BarChartDataEntry] = (0..<revenueTotal.count).map(block1)
+        let yVals2: [BarChartDataEntry] = (0..<revenueTotal.count).map(block2)
+        let yVals3: [BarChartDataEntry] = (0..<revenueTotal.count).map(block3)
+        let yVals4: [BarChartDataEntry] = (0..<revenueTotal.count).map(block4)
         
         
         print("yVals1: \(yVals1)")
+        print("yVals2: \(yVals2)")
+
         
         let set1 = BarChartDataSet(entries: yVals1, label: "totalamount")
         set1.setColor(UIColor(red: 104/255, green: 241/255, blue: 175/255, alpha: 1))
@@ -123,10 +139,22 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
         data.setValueFont(.systemFont(ofSize: 10, weight: .light))
         data.setValueFormatter(LargeValueFormatter())
         
-//        data.groupBars(fromX: Double(startYear), groupSpace: groupSpace, barSpace: barSpace)
+        
+        // specify the width each bar should have
+        data.barWidth = barWidth
+        
+        // restrict the x-axis range
+        chartView.xAxis.axisMinimum = Double(0)
+        
+        /// groupWidthWithGroupSpace(...) is a helper that calculates the width each group needs based on the provided parameters
+        chartView.xAxis.axisMaximum = Double(0) + data.groupWidth(groupSpace: groupSpace, barSpace: barSpace) * Double(revenueTotal.count)
+        
+        data.groupBars(fromX: Double(0), groupSpace: groupSpace, barSpace: barSpace)
         
         chartView.data = data
-
+        chartView.animate(xAxisDuration: 0.8, yAxisDuration: 0.8)
+        
+        chartView.setNeedsDisplay()
     }
     
     @objc func addArr() {
@@ -145,9 +173,8 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
     }
     
     // MARK: - Table view data source
-    @IBAction func menuDashBoard(_ sender: Any) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "toggleMenu"), object: nil)
-    }
+   
+    
     
     
     // Menu tuỳ chọn trên màn hình Chart
@@ -339,3 +366,4 @@ extension TotalDashboardTableViewController : CalendarDateRangePickerViewControl
     }
     
 }
+

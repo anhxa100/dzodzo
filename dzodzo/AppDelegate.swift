@@ -20,9 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Change color apps
         let navigationBarAppearace = UINavigationBar.appearance()
         
-        navigationBarAppearace.tintColor = UIColor.colorFormHex(hex: 0x52535A )
-        navigationBarAppearace.barTintColor = UIColor.colorFormHex(hex: 0x68B8F6)
-        navigationBarAppearace.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.colorFormHex(hex: 0x52535A)]
+        navigationBarAppearace.tintColor = UIColor.colorFormHex(hex: 0x555555 )
+        navigationBarAppearace.barTintColor = UIColor.colorFormHex(hex: 0xF3F3F3)
+        navigationBarAppearace.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.colorFormHex(hex: 0x555555)]
         
         //Key
         IQKeyboardManager.shared.enable = true

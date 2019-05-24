@@ -57,7 +57,7 @@ class MenuDashBoardVC: UIViewController {
     
     @IBAction func signOut(_ sender: Any) {
         // Create the alert controller
-        let alertController = UIAlertController(title: "Bạn muốn đăng xuất?", message: "Điều này sẽ giúp bạn dễ dàng hơn trong việc chuyển đổi tài khoản hoặc chuyển tới chuỗi cửa hàng khác", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Bạn muốn đăng xuất?", message: "Điều này sẽ giúp bạn dễ dàng hơn trong việc chuyển đổi tài khoản hoặc chuyển tới các chuỗi cửa hàng khác", preferredStyle: .alert)
         
         // Create the actions
         let okAction = UIAlertAction(title: "OK", style: .default) {

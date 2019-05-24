@@ -25,6 +25,11 @@ class TotalDashboardTableViewController: UITableViewController {
             tableView.reloadData()
         }
     }
+    var revenueTotalWithoutchart: [ReportRevenueTotal] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     @IBOutlet weak var chartView: BarChartView!
     @IBOutlet weak var totalamoutChart: BarChartView!
@@ -38,34 +43,53 @@ class TotalDashboardTableViewController: UITableViewController {
     @IBOutlet weak var dateChart: UILabel!
     @IBOutlet weak var chosseDay: UIButton!
     
+    //Label hiển thị data không qua chart
+    @IBOutlet weak var totalamountLB: UILabel!
+    @IBOutlet weak var paybackamountLB: UILabel!
+    @IBOutlet weak var totaldiscountLB: UILabel!
+    @IBOutlet weak var taxamountLB: UILabel!
+    
+    
     
     //MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        // Xoá đường line tableview
         self.tableView.separatorStyle = .none
        
-        
+        //Định dạng ngày giờ hiển thị
         format.dateFormat = "dd/MM/yyyy"
-        thisDate()
-
         
+        thisDate()
         print("dateChart \(dateChart.text!)")
+        
+        
         //Pull to Refesh
         refresher = UIRefreshControl()
         tableView.addSubview(refresher)
         //        refresher.attributedTitle = NSAttributedString(string : "Refesh data")// add Tittle for pull icon
-        refresher.addTarget(self, action: #selector(addArr), for: .valueChanged)
+        refresher.addTarget(self, action: #selector(refesh), for: .valueChanged)
         refresher.tintColor = UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)
         
         
-        // Report when no have data or network error
+        // Report when network error
         chartView.noDataText = "Không có dữ liệu hiển thị, vui lòng kết nối mạng"
         
         //Đặt tên nút mặc định
         chosseDay.setTitle("Hôm nay", for: .normal)
         
+        viewChartData()
+        
+    }
+    // Hiển thị thanh cuộn khi scroll tableView
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tableView.flashScrollIndicators()
+    }
+    
+    //Hiển thị biểu
+    func viewChartData() {
         // Tuỳ chỉnh chữ hiện thị thi bấm vào
         let marker = BalloonMarker(color: UIColor(white: 180/255, alpha: 1), font: .systemFont(ofSize: 12), textColor: .white, insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8))
         marker.chartView = chartView
@@ -89,12 +113,6 @@ class TotalDashboardTableViewController: UITableViewController {
         leftAxis.axisMinimum = 0
         
         chartView.rightAxis.enabled = false
-        
-    }
-    // Hiển thị thanh cuộn khi scroll tableView
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.tableView.flashScrollIndicators()
     }
     
     func updateChartData() {
@@ -111,6 +129,7 @@ class TotalDashboardTableViewController: UITableViewController {
         let barWidth = 0.2
         // (0.2 + 0.03) * 4 + 0.08 = 1.00 -> interval per "group"
         
+        //lọc dữ liệu hiển thị, lấy x,y
         let block1: (Int) -> BarChartDataEntry = { (i) -> BarChartDataEntry in
             return BarChartDataEntry(x: Double(i), y: Double(self.revenueTotal[i].totalamount) ?? 0.0 )
         }
@@ -124,6 +143,7 @@ class TotalDashboardTableViewController: UITableViewController {
             return BarChartDataEntry(x: Double(i), y: Double(self.revenueTotal[i].taxamount) ?? 0.0)
         }
         
+        
         let yVals1: [BarChartDataEntry] = (0..<revenueTotal.count).map(block1)
         let yVals2: [BarChartDataEntry] = (0..<revenueTotal.count).map(block2)
         let yVals3: [BarChartDataEntry] = (0..<revenueTotal.count).map(block3)
@@ -133,19 +153,7 @@ class TotalDashboardTableViewController: UITableViewController {
         print("yVals1: \(yVals1)")
         print("yVals2: \(yVals2)")
 
-        
-//        let set1 = BarChartDataSet(entries: yVals1, label: "totalamount")
-//        set1.setColor(UIColor(red: 104/255, green: 241/255, blue: 175/255, alpha: 1))
-//
-//        let set2 = BarChartDataSet(entries: yVals2, label: "totaldiscount")
-//        set2.setColor(UIColor(red: 164/255, green: 228/255, blue: 251/255, alpha: 1))
-//
-//        let set3 = BarChartDataSet(entries: yVals3, label: "paybackamount")
-//        set3.setColor(UIColor(red: 242/255, green: 247/255, blue: 158/255, alpha: 1))
-//
-//        let set4 = BarChartDataSet(entries: yVals4, label: "taxamount")
-//        set4.setColor(UIColor(red: 255/255, green: 102/255, blue: 0/255, alpha: 1))
-        
+        //Thiết lập tên, đặt màu cho cột
         let set1 = BarChartDataSet(entries: yVals1, label: "Tổng doanh thu")
         set1.setColor(UIColor(red: 104/255, green: 241/255, blue: 175/255, alpha: 1))
         
@@ -180,30 +188,77 @@ class TotalDashboardTableViewController: UITableViewController {
         chartView.setNeedsDisplay()
     }
     
-    @objc func addArr() {
+    //func refresh
+    @objc func refesh() {
         refresher.beginRefreshing()
+    
+        
+     
         tableView.reloadData()
         refresher.endRefreshing() //End of refesh
     }
     
     //Ngày kế tiếp
+    func convertNextDate(){
+        let myDate = format.date(from: dateChart.text!)!
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: myDate)
+        let somedateString = format.string(from: tomorrow!)
+        dateChart.text = somedateString
+        print(" \(somedateString)")
+    }
+    
+    //Ngày hôm trước
+    func convertPreDate(){
+        let myDate = format.date(from: dateChart.text!)!
+        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: myDate)
+        let somedateString = format.string(from: yesterday!)
+        dateChart.text = somedateString
+        print(" \(somedateString)")
+    }
+    
+    //Tuần kế tiếp
+    func convertNextWeek(){
+        
+        let today = calendar.startOfDay(for: Date())
+        let dayOfWeek = calendar.component(.weekday, from: today)
+        let weekdays = calendar.range(of: .weekday, in: .weekOfYear, for: today)!
+        let days = ((weekdays.lowerBound+1) ... weekdays.upperBound)
+            .compactMap { calendar.date(byAdding: .day, value: $0 - dayOfWeek, to: today) }
+        
+        guard let _firstDay = days.first else {return}
+        guard let _lastDay = days.last else {return}
+        
+        let nextWeekFirstDay = Calendar.current.date(byAdding: .day, value: 7, to: _firstDay)!
+        let nextWeekLastDay = Calendar.current.date(byAdding: .day, value: 7, to: _lastDay)!
+        let firstDay = format.string(from: nextWeekFirstDay)
+        let lastDay = format.string(from: nextWeekLastDay)
+        
+        dateChart.text = "\(firstDay) - \(lastDay)"
+        
+        
+    }
+    
+    
+    //Ngày kế tiếp
     @IBAction func nextDay(_ sender: Any) {
+        
+        convertNextDate()
+//        convertNextWeek()
+        tableView.reloadData()
         print("Next day")
     }
     //Ngày trước
     @IBAction func preDay(_ sender: Any) {
+        convertPreDate()
+        tableView.reloadData()
         print("Pre day")
     }
-    
-    // MARK: - Table view data source
-   
-    
-    
     
     // Menu tuỳ chọn trên màn hình Chart
     @IBAction func toDayDropDownMenu(_ sender: Any) {
         buttonHidden()
     }
+    
     
     enum DropdownOption: String {
         case today = "Hôm nay"
@@ -213,6 +268,7 @@ class TotalDashboardTableViewController: UITableViewController {
         case option = "Tuỳ chọn"
     }
     
+    // Ẩn - hiện menu chọn thời gian
     func buttonHidden() {
         opptionMenu.forEach{(button) in
             UIView.animate(withDuration: 0.2, animations: {
@@ -252,27 +308,20 @@ class TotalDashboardTableViewController: UITableViewController {
         print("TITLE: \(title)")
     }
     
-//    //MARK: CollectionView
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 1
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collection", for: indexPath)
-//        cell.backgroundColor = .red
-//        return cell
-//    }
-    
     //Lấy ngày hiện tại
     func thisDate() {
         dateChart.text = format.string(from: date)
-        ReportRevenueTotalAPI.getRevenueTotal(pstartdate: dateChart.text ?? "", penddate: dateChart.text ?? "", success: {[weak self] dayData in
+        ReportRevenueTotalAPI.getRevenueTotalWithChart(pstartdate: dateChart.text ?? "", penddate: dateChart.text ?? "", success: {[weak self] dayData in
             self?.revenueTotal = dayData
             self?.viewData()
         })
+        ReportRevenueTotalAPI.getRevenueTotal(pstartdate: dateChart.text ?? "", penddate: dateChart.text ?? "", success: {[weak self] dayData in
+            self?.revenueTotalWithoutchart = dayData
+            self?.getDataWithoutChart()
+        })
     }
     
-    //MARK: Lấy data   ngày trong tuần
+    //MARK: Lấy data ngày trong tuần
     func thisWeek() {
         let today = calendar.startOfDay(for: Date())
         let dayOfWeek = calendar.component(.weekday, from: today)
@@ -283,8 +332,7 @@ class TotalDashboardTableViewController: UITableViewController {
         guard let _firstDay = days.first else {return}
         guard let _lastDay = days.last else {return}
         
-        format.dateFormat = "dd/MM/yyyy"
-        print("NGÀY TRONG TUẦN: \(days) ")
+        print("NGÀY TRONG TUẦN: \(days)")
         print("SỐ NGÀY TRONG TUẦN: \(days.endIndex)")
         let firstDay = format.string(from: _firstDay)
         let lastDay = format.string(from: _lastDay)
@@ -293,10 +341,15 @@ class TotalDashboardTableViewController: UITableViewController {
         
         dateChart.text = "\(firstDay) - \(lastDay)"
         
-        ReportRevenueTotalAPI.getRevenueTotal(pstartdate: firstDay, penddate: lastDay, success: {[weak self] weekData in
+        ReportRevenueTotalAPI.getRevenueTotalWithChart(pstartdate: firstDay, penddate: lastDay, success: {[weak self] weekData in
             self?.revenueTotal = weekData
             self?.viewData()
         })
+        ReportRevenueTotalAPI.getRevenueTotal(pstartdate: firstDay, penddate: lastDay, success: {[weak self] weekData in
+            self?.revenueTotalWithoutchart = weekData
+            self?.getDataWithoutChart()
+        })
+        
     }
     
     //MARK: Lấy data theo tháng trong năm
@@ -316,12 +369,13 @@ class TotalDashboardTableViewController: UITableViewController {
         
         dateChart.text = "Tháng \(month) năm \(year)"
         
-        print(startDateOfMonth)
-        print(endDateOfMonth)
-        
-        ReportRevenueTotalAPI.getRevenueTotal(pstartdate: startDateOfMonth, penddate: endDateOfMonth, success: {[weak self] monthData in
+        ReportRevenueTotalAPI.getRevenueTotalWithChart(pstartdate: startDateOfMonth, penddate: endDateOfMonth, success: {[weak self] monthData in
             self?.revenueTotal = monthData
             self?.viewData()
+        })
+        ReportRevenueTotalAPI.getRevenueTotal(pstartdate: startDateOfMonth, penddate: endDateOfMonth, success: {[weak self] monthData in
+            self?.revenueTotalWithoutchart = monthData
+            self?.getDataWithoutChart()
         })
     }
     
@@ -340,11 +394,15 @@ class TotalDashboardTableViewController: UITableViewController {
             print(startDateOfYear)
             print(lastDateOfYear)
             
-            ReportRevenueTotalAPI.getRevenueTotal(pstartdate: startDateOfYear, penddate: lastDateOfYear, success: {[weak self] yearData in
+            ReportRevenueTotalAPI.getRevenueTotalWithChart(pstartdate: startDateOfYear, penddate: lastDateOfYear, success: {[weak self] yearData in
                 self?.revenueTotal = yearData
                 self?.viewData()
             })
             
+            ReportRevenueTotalAPI.getRevenueTotal(pstartdate: startDateOfYear, penddate: lastDateOfYear, success: {[weak self] yearData in
+                self?.revenueTotalWithoutchart = yearData
+                self?.getDataWithoutChart()
+            })
             
         }
     }
@@ -361,6 +419,22 @@ class TotalDashboardTableViewController: UITableViewController {
         let navigationController = UINavigationController(rootViewController: dateRangePickerViewController)
         self.navigationController?.present(navigationController, animated: true, completion: nil)
     }
+    
+    //Hiển thị theo label
+    func getDataWithoutChart() {
+        if self.revenueTotalWithoutchart.count == 0 {
+            self.totalamountLB.text = "0đ"
+            self.paybackamountLB.text = "0đ"
+            self.totaldiscountLB.text = "0đ"
+            self.taxamountLB.text = "0đ"
+            
+        }else {
+            self.totalamountLB.text = "\(self.revenueTotalWithoutchart[0].totalamount)đ"
+            self.paybackamountLB.text = "\(self.revenueTotalWithoutchart[0].paybackamount)đ"
+            self.totaldiscountLB.text = "\(self.revenueTotalWithoutchart[0].totaldiscount)đ"
+            self.taxamountLB.text = "\(self.revenueTotalWithoutchart[0].taxamount)đ"
+        }
+    }
 }
 
 extension TotalDashboardTableViewController: IAxisValueFormatter {
@@ -374,7 +448,7 @@ extension TotalDashboardTableViewController : CalendarDateRangePickerViewControl
     func didTapCancel() {
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
-    
+    // Chọn ngày theo range
     func didTapDoneWithDateRange(startDate: Date!, endDate: Date!) {
         self.navigationController?.dismiss(animated: true, completion: nil)
         let startDay = format.string(from: startDate)
@@ -382,11 +456,14 @@ extension TotalDashboardTableViewController : CalendarDateRangePickerViewControl
         
         dateChart.text = "\(startDay) - \(endDay) "
         
-        ReportRevenueTotalAPI.getRevenueTotal(pstartdate: startDay, penddate: endDay, success: {[weak self] chooseData in
+        ReportRevenueTotalAPI.getRevenueTotalWithChart(pstartdate: startDay, penddate: endDay, success: {[weak self] chooseData in
             self?.revenueTotal = chooseData
             self?.viewData()
         })
-        
+        ReportRevenueTotalAPI.getRevenueTotal(pstartdate: startDay, penddate: endDay, success: {[weak self] chooseData in
+            self?.revenueTotalWithoutchart = chooseData
+            self?.getDataWithoutChart()
+        })
     }
     
 }

@@ -12,6 +12,8 @@
 		5622CAA022803207007B0531 /* ReportRevenueTotal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622CA9F22803207007B0531 /* ReportRevenueTotal.swift */; };
 		562A71A02270159500A9929B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 562A719F2270159500A9929B /* Assets.xcassets */; };
 		562A71A222701F8A00A9929B /* PopupChosseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562A71A122701F8A00A9929B /* PopupChosseVC.swift */; };
+		5637B8AC22978DA800146D23 /* ReportRevenueProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637B8AB22978DA800146D23 /* ReportRevenueProduct.swift */; };
+		5637B8AE22978DE200146D23 /* ReportRevenueProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637B8AD22978DE200146D23 /* ReportRevenueProductTableViewController.swift */; };
 		5656C7F52268368500A97712 /* MenuDashBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656C7F42268368500A97712 /* MenuDashBoardVC.swift */; };
 		5656F0082266DA1A00B3FEF3 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656F0072266DA1A00B3FEF3 /* Account.swift */; };
 		5665926F2267257700587021 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665926E2267257700587021 /* CustomView.swift */; };
@@ -40,6 +42,8 @@
 		5622CA9F22803207007B0531 /* ReportRevenueTotal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueTotal.swift; sourceTree = "<group>"; };
 		562A719F2270159500A9929B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		562A71A122701F8A00A9929B /* PopupChosseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupChosseVC.swift; sourceTree = "<group>"; };
+		5637B8AB22978DA800146D23 /* ReportRevenueProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueProduct.swift; sourceTree = "<group>"; };
+		5637B8AD22978DE200146D23 /* ReportRevenueProductTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueProductTableViewController.swift; sourceTree = "<group>"; };
 		5656C7F42268368500A97712 /* MenuDashBoardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDashBoardVC.swift; sourceTree = "<group>"; };
 		5656F0072266DA1A00B3FEF3 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		5665926E2267257700587021 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
@@ -109,6 +113,14 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		5637B8AF22978DEA00146D23 /* ReportRevenueProduct */ = {
+			isa = PBXGroup;
+			children = (
+				5637B8AD22978DE200146D23 /* ReportRevenueProductTableViewController.swift */,
+			);
+			path = ReportRevenueProduct;
+			sourceTree = "<group>";
+		};
 		56779E2F22940499002B3F42 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +136,7 @@
 				56E23F1F2282DE49002762AC /* SearchPoscode.swift */,
 				56870CA92272F6760023EC81 /* CheckPoscode.swift */,
 				5622CA9F22803207007B0531 /* ReportRevenueTotal.swift */,
+				5637B8AB22978DA800146D23 /* ReportRevenueProduct.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -136,6 +149,7 @@
 				5622CA99227FE009007B0531 /* Custom */,
 				5622CA98227FDFE1007B0531 /* Menu */,
 				5622CA97227FDFC3007B0531 /* ReportRevenueTotal */,
+				5637B8AF22978DEA00146D23 /* ReportRevenueProduct */,
 				56A7E06222925C9100CB1BDF /* Formatters */,
 				562A719F2270159500A9929B /* Assets.xcassets */,
 			);
@@ -329,10 +343,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5637B8AE22978DE200146D23 /* ReportRevenueProductTableViewController.swift in Sources */,
 				56E23F202282DE49002762AC /* SearchPoscode.swift in Sources */,
 				5622CAA022803207007B0531 /* ReportRevenueTotal.swift in Sources */,
 				56779E31229404BD002B3F42 /* ContainerViewController.swift in Sources */,
 				56E23F1E2282DC6B002762AC /* SearchPoscodeAPI.swift in Sources */,
+				5637B8AC22978DA800146D23 /* ReportRevenueProduct.swift in Sources */,
 				5656C7F52268368500A97712 /* MenuDashBoardVC.swift in Sources */,
 				56870CAC2272F9DB0023EC81 /* PoscodeAPI.swift in Sources */,
 				569EA0B82265BB9000EA1427 /* LoginVC.swift in Sources */,

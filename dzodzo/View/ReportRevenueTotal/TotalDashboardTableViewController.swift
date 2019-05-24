@@ -10,7 +10,7 @@ import UIKit
 import Charts
 import CalendarDateRangePickerViewController
 
-class TotalDashboardTableViewController: UITableViewController, UICollectionViewDataSource {
+class TotalDashboardTableViewController: UITableViewController {
     
     var shouldHideData: Bool = false
     var refresher : UIRefreshControl!
@@ -27,7 +27,13 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
     }
     
     @IBOutlet weak var chartView: BarChartView!
-    @IBOutlet weak var SlideDashboard: UICollectionView!
+    @IBOutlet weak var totalamoutChart: BarChartView!
+    @IBOutlet weak var totaldiscountChart: BarChartView!
+    @IBOutlet weak var paybackamountChart: BarChartView!
+    @IBOutlet weak var taxamountChart: BarChartView!
+    
+    
+    
     @IBOutlet var opptionMenu: [UIButton]!
     @IBOutlet weak var dateChart: UILabel!
     @IBOutlet weak var chosseDay: UIButton!
@@ -38,7 +44,7 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
         super.viewDidLoad()
         
         
-        
+        self.tableView.separatorStyle = .none
        
         
         format.dateFormat = "dd/MM/yyyy"
@@ -55,7 +61,7 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
         
         
         // Report when no have data or network error
-        chartView.noDataText = "Không có dữ liệu hiển thị trong thời gian  "
+        chartView.noDataText = "Không có dữ liệu hiển thị, vui lòng kết nối mạng"
         
         //Đặt tên nút mặc định
         chosseDay.setTitle("Hôm nay", for: .normal)
@@ -84,6 +90,11 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
         
         chartView.rightAxis.enabled = false
         
+    }
+    // Hiển thị thanh cuộn khi scroll tableView
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tableView.flashScrollIndicators()
     }
     
     func updateChartData() {
@@ -123,16 +134,28 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
         print("yVals2: \(yVals2)")
 
         
-        let set1 = BarChartDataSet(entries: yVals1, label: "totalamount")
+//        let set1 = BarChartDataSet(entries: yVals1, label: "totalamount")
+//        set1.setColor(UIColor(red: 104/255, green: 241/255, blue: 175/255, alpha: 1))
+//
+//        let set2 = BarChartDataSet(entries: yVals2, label: "totaldiscount")
+//        set2.setColor(UIColor(red: 164/255, green: 228/255, blue: 251/255, alpha: 1))
+//
+//        let set3 = BarChartDataSet(entries: yVals3, label: "paybackamount")
+//        set3.setColor(UIColor(red: 242/255, green: 247/255, blue: 158/255, alpha: 1))
+//
+//        let set4 = BarChartDataSet(entries: yVals4, label: "taxamount")
+//        set4.setColor(UIColor(red: 255/255, green: 102/255, blue: 0/255, alpha: 1))
+        
+        let set1 = BarChartDataSet(entries: yVals1, label: "Tổng doanh thu")
         set1.setColor(UIColor(red: 104/255, green: 241/255, blue: 175/255, alpha: 1))
         
-        let set2 = BarChartDataSet(entries: yVals2, label: "totaldiscount")
+        let set2 = BarChartDataSet(entries: yVals2, label: "Tổng giamr giá")
         set2.setColor(UIColor(red: 164/255, green: 228/255, blue: 251/255, alpha: 1))
         
-        let set3 = BarChartDataSet(entries: yVals3, label: "paybackamount")
+        let set3 = BarChartDataSet(entries: yVals3, label: "Tổng hoàn tiền")
         set3.setColor(UIColor(red: 242/255, green: 247/255, blue: 158/255, alpha: 1))
         
-        let set4 = BarChartDataSet(entries: yVals4, label: "taxamount")
+        let set4 = BarChartDataSet(entries: yVals4, label: "Tổng thuế")
         set4.setColor(UIColor(red: 255/255, green: 102/255, blue: 0/255, alpha: 1))
         
         let data = BarChartData(dataSets: [set1, set2, set3, set4])
@@ -229,16 +252,16 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
         print("TITLE: \(title)")
     }
     
-    //MARK: CollectionView
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collection", for: indexPath)
-        cell.backgroundColor = .red
-        return cell
-    }
+//    //MARK: CollectionView
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return 1
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collection", for: indexPath)
+//        cell.backgroundColor = .red
+//        return cell
+//    }
     
     //Lấy ngày hiện tại
     func thisDate() {
@@ -279,6 +302,7 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
     //MARK: Lấy data theo tháng trong năm
     func thisMonth () {
         let month = calendar.component(.month, from: date)
+        let year = calendar.component(.year, from: date)
         
         let components = calendar.dateComponents([.year, .month], from: date)
         let startOfMonth = calendar.date(from: components)!
@@ -290,7 +314,7 @@ class TotalDashboardTableViewController: UITableViewController, UICollectionView
         let endOfMonth = calendar.date(byAdding: comps2, to: startOfMonth)!
         let endDateOfMonth = format.string(from: endOfMonth)
         
-        dateChart.text = "Tháng \(month)"
+        dateChart.text = "Tháng \(month) năm \(year)"
         
         print(startDateOfMonth)
         print(endDateOfMonth)

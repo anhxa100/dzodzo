@@ -27,7 +27,4 @@ class UserDefaultKeys {
     class var poscodeKey: String {
         return "poscodeKey"
     }
-    class var dateCreatKey: String {
-        return "date_create"
-    }
 }

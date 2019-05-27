@@ -20,7 +20,7 @@ class TotalDashboardTableViewController: UITableViewController {
     
     
     weak var axisFormatDelegate: IAxisValueFormatter?
-    var revenueTotal: [ReportRevenueTotal] = [] {
+    var revenueTotalArray: [ReportRevenueTotal] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -131,23 +131,23 @@ class TotalDashboardTableViewController: UITableViewController {
         
         //lọc dữ liệu hiển thị, lấy x,y
         let block1: (Int) -> BarChartDataEntry = { (i) -> BarChartDataEntry in
-            return BarChartDataEntry(x: Double(i), y: Double(self.revenueTotal[i].totalamount) ?? 0.0 )
+            return BarChartDataEntry(x: Double(i), y: Double(self.revenueTotalArray[i].totalamount) ?? 0.0 )
         }
         let block2: (Int) -> BarChartDataEntry = { (i) -> BarChartDataEntry in
-            return BarChartDataEntry(x: Double(i), y: Double(self.revenueTotal[i].totaldiscount) ?? 0.0)
+            return BarChartDataEntry(x: Double(i), y: Double(self.revenueTotalArray[i].totaldiscount) ?? 0.0)
         }
         let block3: (Int) -> BarChartDataEntry = { (i) -> BarChartDataEntry in
-            return BarChartDataEntry(x: Double(i), y: Double(self.revenueTotal[i].paybackamount) ?? 0.0)
+            return BarChartDataEntry(x: Double(i), y: Double(self.revenueTotalArray[i].paybackamount) ?? 0.0)
         }
         let block4: (Int) -> BarChartDataEntry = { (i) -> BarChartDataEntry in
-            return BarChartDataEntry(x: Double(i), y: Double(self.revenueTotal[i].taxamount) ?? 0.0)
+            return BarChartDataEntry(x: Double(i), y: Double(self.revenueTotalArray[i].taxamount) ?? 0.0)
         }
         
         
-        let yVals1: [BarChartDataEntry] = (0..<revenueTotal.count).map(block1)
-        let yVals2: [BarChartDataEntry] = (0..<revenueTotal.count).map(block2)
-        let yVals3: [BarChartDataEntry] = (0..<revenueTotal.count).map(block3)
-        let yVals4: [BarChartDataEntry] = (0..<revenueTotal.count).map(block4)
+        let yVals1: [BarChartDataEntry] = (0..<revenueTotalArray.count).map(block1)
+        let yVals2: [BarChartDataEntry] = (0..<revenueTotalArray.count).map(block2)
+        let yVals3: [BarChartDataEntry] = (0..<revenueTotalArray.count).map(block3)
+        let yVals4: [BarChartDataEntry] = (0..<revenueTotalArray.count).map(block4)
         
         
         print("yVals1: \(yVals1)")
@@ -178,7 +178,7 @@ class TotalDashboardTableViewController: UITableViewController {
         chartView.xAxis.axisMinimum = Double(0)
         
         /// groupWidthWithGroupSpace(...) is a helper that calculates the width each group needs based on the provided parameters
-        chartView.xAxis.axisMaximum = Double(0) + data.groupWidth(groupSpace: groupSpace, barSpace: barSpace) * Double(revenueTotal.count)
+        chartView.xAxis.axisMaximum = Double(0) + data.groupWidth(groupSpace: groupSpace, barSpace: barSpace) * Double(revenueTotalArray.count)
         
         data.groupBars(fromX: Double(0), groupSpace: groupSpace, barSpace: barSpace)
         
@@ -312,7 +312,7 @@ class TotalDashboardTableViewController: UITableViewController {
     func thisDate() {
         dateChart.text = format.string(from: date)
         ReportRevenueTotalAPI.getRevenueTotalWithChart(pstartdate: dateChart.text ?? "", penddate: dateChart.text ?? "", success: {[weak self] dayData in
-            self?.revenueTotal = dayData
+            self?.revenueTotalArray = dayData
             self?.viewData()
         })
         ReportRevenueTotalAPI.getRevenueTotal(pstartdate: dateChart.text ?? "", penddate: dateChart.text ?? "", success: {[weak self] dayData in
@@ -342,7 +342,7 @@ class TotalDashboardTableViewController: UITableViewController {
         dateChart.text = "\(firstDay) - \(lastDay)"
         
         ReportRevenueTotalAPI.getRevenueTotalWithChart(pstartdate: firstDay, penddate: lastDay, success: {[weak self] weekData in
-            self?.revenueTotal = weekData
+            self?.revenueTotalArray = weekData
             self?.viewData()
         })
         ReportRevenueTotalAPI.getRevenueTotal(pstartdate: firstDay, penddate: lastDay, success: {[weak self] weekData in
@@ -370,7 +370,7 @@ class TotalDashboardTableViewController: UITableViewController {
         dateChart.text = "Tháng \(month) năm \(year)"
         
         ReportRevenueTotalAPI.getRevenueTotalWithChart(pstartdate: startDateOfMonth, penddate: endDateOfMonth, success: {[weak self] monthData in
-            self?.revenueTotal = monthData
+            self?.revenueTotalArray = monthData
             self?.viewData()
         })
         ReportRevenueTotalAPI.getRevenueTotal(pstartdate: startDateOfMonth, penddate: endDateOfMonth, success: {[weak self] monthData in
@@ -395,7 +395,7 @@ class TotalDashboardTableViewController: UITableViewController {
             print(lastDateOfYear)
             
             ReportRevenueTotalAPI.getRevenueTotalWithChart(pstartdate: startDateOfYear, penddate: lastDateOfYear, success: {[weak self] yearData in
-                self?.revenueTotal = yearData
+                self?.revenueTotalArray = yearData
                 self?.viewData()
             })
             
@@ -457,7 +457,7 @@ extension TotalDashboardTableViewController : CalendarDateRangePickerViewControl
         dateChart.text = "\(startDay) - \(endDay) "
         
         ReportRevenueTotalAPI.getRevenueTotalWithChart(pstartdate: startDay, penddate: endDay, success: {[weak self] chooseData in
-            self?.revenueTotal = chooseData
+            self?.revenueTotalArray = chooseData
             self?.viewData()
         })
         ReportRevenueTotalAPI.getRevenueTotal(pstartdate: startDay, penddate: endDay, success: {[weak self] chooseData in

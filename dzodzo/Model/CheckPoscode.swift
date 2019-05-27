@@ -18,8 +18,8 @@ class CheckPoscode {
         self.poscode = Dictionary["poscode"] as? String ?? ""
         self.posgroupcode = Dictionary["posgroupcode"] as? String ?? ""
         self.startdate = Dictionary["date_create"] as? String ?? ""
-//        print("testposcode: \(poscode)")
-//        print("testposgroupcode: \(posgroupcode)")
+        print("testposcode: \(poscode)")
+        print("testposgroupcode: \(posgroupcode)")
     }
     
 }

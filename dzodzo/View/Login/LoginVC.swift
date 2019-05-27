@@ -50,10 +50,11 @@ class LoginVC: UIViewController {
                         PosCodeAPI.getPoscode(success: {[weak self] code in
                             self?.CodeKey = code
                             let poscodegroupData = self?.CodeKey[0].posgroupcode
-                            let startdateData = self?.CodeKey[0].startdate
+                            let poscodeData = self?.CodeKey[0].poscode
                             // Save posgroupcode vao UserDefault
+                            
                             UserDefaults.standard.set(poscodegroupData, forKey: UserDefaultKeys.posgroupKey)
-                            UserDefaults.standard.set(startdateData, forKey: UserDefaultKeys.dateCreatKey)
+                            UserDefaults.standard.set(poscodeData, forKey: UserDefaultKeys.poscodeKey)
                             //Switch sang man hinh popup
                             if self?.CodeKey[0].poscode != "" {
                                 Switcher.updateRootVC()

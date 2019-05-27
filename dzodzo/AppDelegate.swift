@@ -37,8 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDefaults.standard.object(forKey: UserDefaultKeys.passwordKey) != nil,
             UserDefaults.standard.object(forKey: UserDefaultKeys.usernameKey) != nil,
             UserDefaults.standard.object(forKey: UserDefaultKeys.posgroupKey) != nil,
-            UserDefaults.standard.object(forKey: UserDefaultKeys.poscodeKey) != nil,
-            UserDefaults.standard.object(forKey: UserDefaultKeys.dateCreatKey) != nil
+            UserDefaults.standard.object(forKey: UserDefaultKeys.poscodeKey) != nil
             {
             // User đã login được và set lại entrypoint vào màn home
         }

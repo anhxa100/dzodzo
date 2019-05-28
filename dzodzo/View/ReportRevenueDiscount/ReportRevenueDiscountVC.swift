@@ -1,24 +1,22 @@
 //
-//  ReportRevenueProductViewController.swift
+//  ReportRevenueDiscountVC.swift
 //  dzodzo
 //
-//  Created by anhxa100 on 5/27/19.
+//  Created by anhxa100 on 5/28/19.
 //  Copyright © 2019 anhxa100. All rights reserved.
 //
 
 import UIKit
-import Charts
 import CalendarDateRangePickerViewController
 
-class ReportRevenueProductViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+class ReportRevenueDiscountVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let calendar = Calendar.current
     let date = Date()
     let format = DateFormatter()
     @IBOutlet weak var tableView: UITableView!
     
-    var revenueProductArray: [ReportRevenueProduct] = [] {
+    var discountArray: [ReportRevenueDiscount] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -27,28 +25,24 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
     @IBOutlet var opptionMenu: [UIButton]!
     @IBOutlet weak var dateChart: UILabel!
     @IBOutlet weak var chosseDay: UIButton!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
         
-        
         //Đặt tên nút mặc định
         chosseDay.setTitle("Hôm nay", for: .normal)
-        
-        thisDate()
-        
-        print("dateChart \(dateChart.text!)")
-        
-        //Định dạng ngày giờ hiển thị
-        format.dateFormat = "dd/MM/yyyy"
-        
         
         // Xoá đường line tableview
         self.tableView.separatorStyle = .none
         
+        //Đặt tên nút mặc định
+        //Định dạng ngày giờ hiển thị
+        format.dateFormat = "dd/MM/yyyy"
+        thisDate()
+        chosseDay.setTitle("Hôm nay", for: .normal)
     }
     
     enum DropdownOption: String {
@@ -58,7 +52,7 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
         case thisYear = "Năm nay"
         case option = "Tuỳ chọn"
     }
-
+    
     @IBAction func toDayDropDownMenu(_ sender: Any) {
         buttonHidden()
     }
@@ -102,19 +96,15 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
         }
     }
     
-    
     //Lấy ngày hiện tại
     func thisDate() {
         dateChart.text = format.string(from: date)
-        ReportRevenueProductAPI.getDataWithChart(pstartdate: dateChart.text ?? "", penddate: dateChart.text ?? "", success: {[weak self] dayData in
-            self?.revenueProductArray = dayData
-//            self?.viewData()
+        ReportRevenueDiscountAPI.getData(pstartdate: dateChart.text ?? "", penddate: dateChart.text ?? "", success: {[weak self] dayData in
+            self?.discountArray = dayData
+            //            self?.viewData()
         })
-        ReportRevenueProductAPI.getDataWithChart(pstartdate: dateChart.text ?? "", penddate: dateChart.text ?? "", success: {[weak self] dayData in
-            self?.revenueProductArray = dayData
-        })
+        
     }
-    
     //MARK: Lấy data ngày trong tuần
     func thisWeek() {
         let today = calendar.startOfDay(for: Date())
@@ -135,14 +125,12 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
         
         dateChart.text = "\(firstDay) - \(lastDay)"
         
-        ReportRevenueProductAPI.getDataWithChart(pstartdate: firstDay, penddate: lastDay, success: {[weak self] weekData in
-            self?.revenueProductArray = weekData
-        })
-        ReportRevenueProductAPI.getDataWithChart(pstartdate: firstDay, penddate: lastDay, success: {[weak self] weekData in
-            self?.revenueProductArray = weekData
+        ReportRevenueDiscountAPI.getData(pstartdate: firstDay, penddate: lastDay, success: {[weak self] weekData in
+            self?.discountArray = weekData
         })
         
     }
+    
     
     //MARK: Lấy data theo tháng trong năm
     func thisMonth () {
@@ -161,11 +149,8 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
         
         dateChart.text = "Tháng \(month) năm \(year)"
         
-        ReportRevenueProductAPI.getDataWithChart(pstartdate: startDateOfMonth, penddate: endDateOfMonth, success: {[weak self] monthData in
-            self?.revenueProductArray = monthData
-        })
-        ReportRevenueProductAPI.getDataWithChart(pstartdate: startDateOfMonth, penddate: endDateOfMonth, success: {[weak self] monthData in
-            self?.revenueProductArray = monthData
+        ReportRevenueDiscountAPI.getData(pstartdate: startDateOfMonth, penddate: endDateOfMonth, success: {[weak self] monthData in
+            self?.discountArray = monthData
         })
     }
     
@@ -184,13 +169,10 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
             print(startDateOfYear)
             print(lastDateOfYear)
             
-            ReportRevenueProductAPI.getDataWithChart(pstartdate: startDateOfYear, penddate: lastDateOfYear, success: {[weak self] yearData in
-                self?.revenueProductArray = yearData
+            ReportRevenueDiscountAPI.getData(pstartdate: startDateOfYear, penddate: lastDateOfYear, success: {[weak self] yearData in
+                self?.discountArray = yearData
             })
             
-            ReportRevenueProductAPI.getDataWithChart(pstartdate: startDateOfYear, penddate: lastDateOfYear, success: {[weak self] yearData in
-                self?.revenueProductArray = yearData
-            })
             
         }
     }
@@ -208,7 +190,6 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
         self.navigationController?.present(navigationController, animated: true, completion: nil)
     }
     
-    
     //Ngày kế tiếp
     @IBAction func nextDay(_ sender: Any) {
         print("Next day")
@@ -221,21 +202,21 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
     
     //MARK: Tableview
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return revenueProductArray.count
+        return discountArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductTableViewCell
-        cell.itemnameLB.text = revenueProductArray[indexPath.row].itemname
-        cell.quantityLB.text = "\(revenueProductArray[indexPath.row].quantity) sản phẩm"
-        cell.totalamountLB.text = "Tổng doanh thu: \(revenueProductArray[indexPath.row].totalamount)đ"
-        cell.totoaldiscountLB.text = "Tổng giảm giá: \(revenueProductArray[indexPath.row].totaldiscount)đ"
-        return cell 
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ReportRevenueDiscountCell
+        cell.discountNameLB.text = discountArray[indexPath.row].discount_name
+        cell.dateLogLB.text = "Ngày: \(discountArray[indexPath.row].date_log)"
+        cell.totalDiscountLB.text = "Tổng giảm giá: \(discountArray[indexPath.row].totaldiscount)đ"
+        
+        return cell
     }
     
 }
 
-extension ReportRevenueProductViewController : CalendarDateRangePickerViewControllerDelegate {
+extension ReportRevenueDiscountVC : CalendarDateRangePickerViewControllerDelegate {
     
     func didTapCancel() {
         self.navigationController?.dismiss(animated: true, completion: nil)
@@ -248,12 +229,10 @@ extension ReportRevenueProductViewController : CalendarDateRangePickerViewContro
         
         dateChart.text = "\(startDay) - \(endDay) "
         
-        ReportRevenueProductAPI.getDataWithChart(pstartdate: startDay, penddate: endDay, success: {[weak self] chooseData in
-            self?.revenueProductArray = chooseData
+        ReportRevenueDiscountAPI.getData(pstartdate: startDay, penddate: endDay, success: {[weak self] chooseData in
+            self?.discountArray = chooseData
         })
-        ReportRevenueProductAPI.getDataWithChart(pstartdate: startDay, penddate: endDay, success: {[weak self] chooseData in
-            self?.revenueProductArray = chooseData
-        })
+        
     }
     
 }

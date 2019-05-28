@@ -12,6 +12,7 @@
 		5622CAA022803207007B0531 /* ReportRevenueTotal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622CA9F22803207007B0531 /* ReportRevenueTotal.swift */; };
 		562A71A02270159500A9929B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 562A719F2270159500A9929B /* Assets.xcassets */; };
 		562A71A222701F8A00A9929B /* PopupChosseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562A71A122701F8A00A9929B /* PopupChosseVC.swift */; };
+		56334CEA229D1E5100F59F71 /* FeedbackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56334CE9229D1E5100F59F71 /* FeedbackCell.swift */; };
 		5637B8AC22978DA800146D23 /* ReportRevenueProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637B8AB22978DA800146D23 /* ReportRevenueProduct.swift */; };
 		5656C7F52268368500A97712 /* MenuDashBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656C7F42268368500A97712 /* MenuDashBoardVC.swift */; };
 		5656F0082266DA1A00B3FEF3 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656F0072266DA1A00B3FEF3 /* Account.swift */; };
@@ -20,6 +21,20 @@
 		5678C835229B8A5700485CB6 /* ReportRevenueProductAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678C834229B8A5700485CB6 /* ReportRevenueProductAPI.swift */; };
 		5678C839229B91F500485CB6 /* ReportRevenueProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678C838229B91F500485CB6 /* ReportRevenueProductViewController.swift */; };
 		5678C83B229BA04B00485CB6 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678C83A229BA04B00485CB6 /* ProductTableViewCell.swift */; };
+		5678C846229BDC6C00485CB6 /* ReportRevenuePayTypeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678C845229BDC6C00485CB6 /* ReportRevenuePayTypeAPI.swift */; };
+		5678C848229BDCA600485CB6 /* ReportRevenuePayType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678C847229BDCA600485CB6 /* ReportRevenuePayType.swift */; };
+		5678C84A229BDEE200485CB6 /* ReportRevenueCategoryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678C849229BDEE200485CB6 /* ReportRevenueCategoryAPI.swift */; };
+		5678C84C229BDEEC00485CB6 /* ReportRevenueCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678C84B229BDEEC00485CB6 /* ReportRevenueCategory.swift */; };
+		5678C84E229BDF6900485CB6 /* ReportRevenueDiscountAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678C84D229BDF6900485CB6 /* ReportRevenueDiscountAPI.swift */; };
+		5678C850229BDFA800485CB6 /* ReportRevenueTaxAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678C84F229BDFA800485CB6 /* ReportRevenueTaxAPI.swift */; };
+		5678C852229BDFEF00485CB6 /* ReportRevenueCustomerDebtAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678C851229BDFEF00485CB6 /* ReportRevenueCustomerDebtAPI.swift */; };
+		5678C854229BE03500485CB6 /* ReportRevenueMaterialsItemDailyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678C853229BE03500485CB6 /* ReportRevenueMaterialsItemDailyAPI.swift */; };
+		5678C856229BE09C00485CB6 /* ReportRevenueFeedbackAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678C855229BE09C00485CB6 /* ReportRevenueFeedbackAPI.swift */; };
+		5678C858229BE85F00485CB6 /* ReportRevenueDiscount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678C857229BE85F00485CB6 /* ReportRevenueDiscount.swift */; };
+		5678C85A229BE88900485CB6 /* ReportRevenueTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678C859229BE88900485CB6 /* ReportRevenueTax.swift */; };
+		5678C85C229BE89600485CB6 /* ReportRevenueCustomerDebt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678C85B229BE89600485CB6 /* ReportRevenueCustomerDebt.swift */; };
+		5678C85E229BE8AB00485CB6 /* ReportRevenueMaterialsItemDaily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678C85D229BE8AB00485CB6 /* ReportRevenueMaterialsItemDaily.swift */; };
+		5678C860229BE8DA00485CB6 /* ReportRevenueFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678C85F229BE8DA00485CB6 /* ReportRevenueFeedback.swift */; };
 		56870CAA2272F6760023EC81 /* CheckPoscode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56870CA92272F6760023EC81 /* CheckPoscode.swift */; };
 		56870CAC2272F9DB0023EC81 /* PoscodeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56870CAB2272F9DB0023EC81 /* PoscodeAPI.swift */; };
 		569EA0B62265BB9000EA1427 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569EA0B52265BB9000EA1427 /* AppDelegate.swift */; };
@@ -29,6 +44,19 @@
 		56A7E06122925B8C00CB1BDF /* BalloonMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A7E06022925B8C00CB1BDF /* BalloonMaker.swift */; };
 		56A7E06422925CD100CB1BDF /* LargeValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A7E06322925CD100CB1BDF /* LargeValueFormatter.swift */; };
 		56A7E06622925D3C00CB1BDF /* IntAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A7E06522925D3C00CB1BDF /* IntAxisValueFormatter.swift */; };
+		56C254D6229CCADD005CB526 /* ReportRevenuePayTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C254D5229CCADD005CB526 /* ReportRevenuePayTypeVC.swift */; };
+		56C254D8229CCAFC005CB526 /* ReportRevenueCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C254D7229CCAFC005CB526 /* ReportRevenueCategoryVC.swift */; };
+		56C254DA229CCB0F005CB526 /* ReportRevenueDiscountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C254D9229CCB0F005CB526 /* ReportRevenueDiscountVC.swift */; };
+		56C254DC229CCB1D005CB526 /* ReportRevenueTaxVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C254DB229CCB1D005CB526 /* ReportRevenueTaxVC.swift */; };
+		56C254DE229CCB2D005CB526 /* ReportRevenueCustomerDebtVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C254DD229CCB2D005CB526 /* ReportRevenueCustomerDebtVC.swift */; };
+		56C254E0229CCB42005CB526 /* ReportRevenueMaterialsItemDailyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C254DF229CCB42005CB526 /* ReportRevenueMaterialsItemDailyVC.swift */; };
+		56C254E2229CCB4F005CB526 /* ReportRevenueFeedbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C254E1229CCB4F005CB526 /* ReportRevenueFeedbackVC.swift */; };
+		56C254E4229CCD0E005CB526 /* PaytypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C254E3229CCD0E005CB526 /* PaytypeCell.swift */; };
+		56C254E6229CDB7A005CB526 /* ReportRevenueDiscountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C254E5229CDB7A005CB526 /* ReportRevenueDiscountCell.swift */; };
+		56C254E8229CE7C6005CB526 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C254E7229CE7C6005CB526 /* CategoryCell.swift */; };
+		56C254EA229CEBC7005CB526 /* TaxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C254E9229CEBC7005CB526 /* TaxCell.swift */; };
+		56C254EC229CF471005CB526 /* DebtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C254EB229CF471005CB526 /* DebtCell.swift */; };
+		56C254EE229D1223005CB526 /* MaterialsItemDailyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C254ED229D1223005CB526 /* MaterialsItemDailyCell.swift */; };
 		56C73222226D6CDD00AC8271 /* AccountAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C73221226D6CDD00AC8271 /* AccountAPI.swift */; };
 		56C73227226DA97C00AC8271 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C73226226DA97C00AC8271 /* Constants.swift */; };
 		56C73229226DAC3100AC8271 /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C73228226DAC3100AC8271 /* Switcher.swift */; };
@@ -44,6 +72,7 @@
 		5622CA9F22803207007B0531 /* ReportRevenueTotal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueTotal.swift; sourceTree = "<group>"; };
 		562A719F2270159500A9929B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		562A71A122701F8A00A9929B /* PopupChosseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupChosseVC.swift; sourceTree = "<group>"; };
+		56334CE9229D1E5100F59F71 /* FeedbackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackCell.swift; sourceTree = "<group>"; };
 		5637B8AB22978DA800146D23 /* ReportRevenueProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueProduct.swift; sourceTree = "<group>"; };
 		5656C7F42268368500A97712 /* MenuDashBoardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDashBoardVC.swift; sourceTree = "<group>"; };
 		5656F0072266DA1A00B3FEF3 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
@@ -52,6 +81,20 @@
 		5678C834229B8A5700485CB6 /* ReportRevenueProductAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueProductAPI.swift; sourceTree = "<group>"; };
 		5678C838229B91F500485CB6 /* ReportRevenueProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueProductViewController.swift; sourceTree = "<group>"; };
 		5678C83A229BA04B00485CB6 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
+		5678C845229BDC6C00485CB6 /* ReportRevenuePayTypeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenuePayTypeAPI.swift; sourceTree = "<group>"; };
+		5678C847229BDCA600485CB6 /* ReportRevenuePayType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenuePayType.swift; sourceTree = "<group>"; };
+		5678C849229BDEE200485CB6 /* ReportRevenueCategoryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueCategoryAPI.swift; sourceTree = "<group>"; };
+		5678C84B229BDEEC00485CB6 /* ReportRevenueCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueCategory.swift; sourceTree = "<group>"; };
+		5678C84D229BDF6900485CB6 /* ReportRevenueDiscountAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueDiscountAPI.swift; sourceTree = "<group>"; };
+		5678C84F229BDFA800485CB6 /* ReportRevenueTaxAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueTaxAPI.swift; sourceTree = "<group>"; };
+		5678C851229BDFEF00485CB6 /* ReportRevenueCustomerDebtAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueCustomerDebtAPI.swift; sourceTree = "<group>"; };
+		5678C853229BE03500485CB6 /* ReportRevenueMaterialsItemDailyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueMaterialsItemDailyAPI.swift; sourceTree = "<group>"; };
+		5678C855229BE09C00485CB6 /* ReportRevenueFeedbackAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueFeedbackAPI.swift; sourceTree = "<group>"; };
+		5678C857229BE85F00485CB6 /* ReportRevenueDiscount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueDiscount.swift; sourceTree = "<group>"; };
+		5678C859229BE88900485CB6 /* ReportRevenueTax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueTax.swift; sourceTree = "<group>"; };
+		5678C85B229BE89600485CB6 /* ReportRevenueCustomerDebt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueCustomerDebt.swift; sourceTree = "<group>"; };
+		5678C85D229BE8AB00485CB6 /* ReportRevenueMaterialsItemDaily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueMaterialsItemDaily.swift; sourceTree = "<group>"; };
+		5678C85F229BE8DA00485CB6 /* ReportRevenueFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueFeedback.swift; sourceTree = "<group>"; };
 		56870CA92272F6760023EC81 /* CheckPoscode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckPoscode.swift; sourceTree = "<group>"; };
 		56870CAB2272F9DB0023EC81 /* PoscodeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoscodeAPI.swift; sourceTree = "<group>"; };
 		569EA0B22265BB9000EA1427 /* dzodzo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dzodzo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +106,19 @@
 		56A7E06022925B8C00CB1BDF /* BalloonMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonMaker.swift; sourceTree = "<group>"; };
 		56A7E06322925CD100CB1BDF /* LargeValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeValueFormatter.swift; sourceTree = "<group>"; };
 		56A7E06522925D3C00CB1BDF /* IntAxisValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntAxisValueFormatter.swift; sourceTree = "<group>"; };
+		56C254D5229CCADD005CB526 /* ReportRevenuePayTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenuePayTypeVC.swift; sourceTree = "<group>"; };
+		56C254D7229CCAFC005CB526 /* ReportRevenueCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueCategoryVC.swift; sourceTree = "<group>"; };
+		56C254D9229CCB0F005CB526 /* ReportRevenueDiscountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueDiscountVC.swift; sourceTree = "<group>"; };
+		56C254DB229CCB1D005CB526 /* ReportRevenueTaxVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueTaxVC.swift; sourceTree = "<group>"; };
+		56C254DD229CCB2D005CB526 /* ReportRevenueCustomerDebtVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueCustomerDebtVC.swift; sourceTree = "<group>"; };
+		56C254DF229CCB42005CB526 /* ReportRevenueMaterialsItemDailyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueMaterialsItemDailyVC.swift; sourceTree = "<group>"; };
+		56C254E1229CCB4F005CB526 /* ReportRevenueFeedbackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueFeedbackVC.swift; sourceTree = "<group>"; };
+		56C254E3229CCD0E005CB526 /* PaytypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaytypeCell.swift; sourceTree = "<group>"; };
+		56C254E5229CDB7A005CB526 /* ReportRevenueDiscountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueDiscountCell.swift; sourceTree = "<group>"; };
+		56C254E7229CE7C6005CB526 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		56C254E9229CEBC7005CB526 /* TaxCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxCell.swift; sourceTree = "<group>"; };
+		56C254EB229CF471005CB526 /* DebtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtCell.swift; sourceTree = "<group>"; };
+		56C254ED229D1223005CB526 /* MaterialsItemDailyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialsItemDailyCell.swift; sourceTree = "<group>"; };
 		56C73221226D6CDD00AC8271 /* AccountAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountAPI.swift; sourceTree = "<group>"; };
 		56C73226226DA97C00AC8271 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		56C73228226DAC3100AC8271 /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
@@ -134,75 +190,67 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		5678C83C229BC6A500485CB6 /* New Group */ = {
+		5678C83E229BC6B900485CB6 /* ReportRevenueFeedback */ = {
 			isa = PBXGroup;
 			children = (
-				5678C844229BC6CF00485CB6 /* New Group7 */,
-				5678C843229BC6CC00485CB6 /* New Group6 */,
-				5678C842229BC6C900485CB6 /* New Group5 */,
-				5678C841229BC6C500485CB6 /* New Group4 */,
-				5678C840229BC6C100485CB6 /* New Group3 */,
-				5678C83F229BC6BC00485CB6 /* New Group2 */,
-				5678C83E229BC6B900485CB6 /* New Group1 */,
-				5678C83D229BC6B300485CB6 /* New Group */,
+				56C254E1229CCB4F005CB526 /* ReportRevenueFeedbackVC.swift */,
+				56334CE9229D1E5100F59F71 /* FeedbackCell.swift */,
 			);
-			path = "New Group";
+			path = ReportRevenueFeedback;
 			sourceTree = "<group>";
 		};
-		5678C83D229BC6B300485CB6 /* New Group */ = {
+		5678C83F229BC6BC00485CB6 /* ReportRevenueMaterialsItemDaily */ = {
 			isa = PBXGroup;
 			children = (
+				56C254DF229CCB42005CB526 /* ReportRevenueMaterialsItemDailyVC.swift */,
+				56C254ED229D1223005CB526 /* MaterialsItemDailyCell.swift */,
 			);
-			path = "New Group";
+			path = ReportRevenueMaterialsItemDaily;
 			sourceTree = "<group>";
 		};
-		5678C83E229BC6B900485CB6 /* New Group1 */ = {
+		5678C840229BC6C100485CB6 /* ReportRevenueCustomerDebt */ = {
 			isa = PBXGroup;
 			children = (
+				56C254DD229CCB2D005CB526 /* ReportRevenueCustomerDebtVC.swift */,
+				56C254EB229CF471005CB526 /* DebtCell.swift */,
 			);
-			path = "New Group1";
+			path = ReportRevenueCustomerDebt;
 			sourceTree = "<group>";
 		};
-		5678C83F229BC6BC00485CB6 /* New Group2 */ = {
+		5678C841229BC6C500485CB6 /* ReportRevenueTax */ = {
 			isa = PBXGroup;
 			children = (
+				56C254DB229CCB1D005CB526 /* ReportRevenueTaxVC.swift */,
+				56C254E9229CEBC7005CB526 /* TaxCell.swift */,
 			);
-			path = "New Group2";
+			path = ReportRevenueTax;
 			sourceTree = "<group>";
 		};
-		5678C840229BC6C100485CB6 /* New Group3 */ = {
+		5678C842229BC6C900485CB6 /* ReportRevenueDiscount */ = {
 			isa = PBXGroup;
 			children = (
+				56C254D9229CCB0F005CB526 /* ReportRevenueDiscountVC.swift */,
+				56C254E5229CDB7A005CB526 /* ReportRevenueDiscountCell.swift */,
 			);
-			path = "New Group3";
+			path = ReportRevenueDiscount;
 			sourceTree = "<group>";
 		};
-		5678C841229BC6C500485CB6 /* New Group4 */ = {
+		5678C843229BC6CC00485CB6 /* ReportRevenueCategory */ = {
 			isa = PBXGroup;
 			children = (
+				56C254D7229CCAFC005CB526 /* ReportRevenueCategoryVC.swift */,
+				56C254E7229CE7C6005CB526 /* CategoryCell.swift */,
 			);
-			path = "New Group4";
+			path = ReportRevenueCategory;
 			sourceTree = "<group>";
 		};
-		5678C842229BC6C900485CB6 /* New Group5 */ = {
+		5678C844229BC6CF00485CB6 /* ReportRevenuePayType */ = {
 			isa = PBXGroup;
 			children = (
+				56C254D5229CCADD005CB526 /* ReportRevenuePayTypeVC.swift */,
+				56C254E3229CCD0E005CB526 /* PaytypeCell.swift */,
 			);
-			path = "New Group5";
-			sourceTree = "<group>";
-		};
-		5678C843229BC6CC00485CB6 /* New Group6 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group6";
-			sourceTree = "<group>";
-		};
-		5678C844229BC6CF00485CB6 /* New Group7 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group7";
+			path = ReportRevenuePayType;
 			sourceTree = "<group>";
 		};
 		5686528C2266E25600AC9E28 /* Model */ = {
@@ -213,6 +261,13 @@
 				56870CA92272F6760023EC81 /* CheckPoscode.swift */,
 				5622CA9F22803207007B0531 /* ReportRevenueTotal.swift */,
 				5637B8AB22978DA800146D23 /* ReportRevenueProduct.swift */,
+				5678C847229BDCA600485CB6 /* ReportRevenuePayType.swift */,
+				5678C84B229BDEEC00485CB6 /* ReportRevenueCategory.swift */,
+				5678C857229BE85F00485CB6 /* ReportRevenueDiscount.swift */,
+				5678C859229BE88900485CB6 /* ReportRevenueTax.swift */,
+				5678C85B229BE89600485CB6 /* ReportRevenueCustomerDebt.swift */,
+				5678C85D229BE8AB00485CB6 /* ReportRevenueMaterialsItemDaily.swift */,
+				5678C85F229BE8DA00485CB6 /* ReportRevenueFeedback.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -226,7 +281,13 @@
 				5622CA98227FDFE1007B0531 /* Menu */,
 				5622CA97227FDFC3007B0531 /* ReportRevenueTotal */,
 				5637B8AF22978DEA00146D23 /* ReportRevenueProduct */,
-				5678C83C229BC6A500485CB6 /* New Group */,
+				5678C844229BC6CF00485CB6 /* ReportRevenuePayType */,
+				5678C843229BC6CC00485CB6 /* ReportRevenueCategory */,
+				5678C842229BC6C900485CB6 /* ReportRevenueDiscount */,
+				5678C841229BC6C500485CB6 /* ReportRevenueTax */,
+				5678C840229BC6C100485CB6 /* ReportRevenueCustomerDebt */,
+				5678C83F229BC6BC00485CB6 /* ReportRevenueMaterialsItemDaily */,
+				5678C83E229BC6B900485CB6 /* ReportRevenueFeedback */,
 				56A7E06222925C9100CB1BDF /* Formatters */,
 				562A719F2270159500A9929B /* Assets.xcassets */,
 			);
@@ -285,6 +346,13 @@
 				56870CAB2272F9DB0023EC81 /* PoscodeAPI.swift */,
 				5622CA9D22802FE9007B0531 /* ReportRevenueTotalAPI.swift */,
 				5678C834229B8A5700485CB6 /* ReportRevenueProductAPI.swift */,
+				5678C845229BDC6C00485CB6 /* ReportRevenuePayTypeAPI.swift */,
+				5678C849229BDEE200485CB6 /* ReportRevenueCategoryAPI.swift */,
+				5678C84D229BDF6900485CB6 /* ReportRevenueDiscountAPI.swift */,
+				5678C84F229BDFA800485CB6 /* ReportRevenueTaxAPI.swift */,
+				5678C851229BDFEF00485CB6 /* ReportRevenueCustomerDebtAPI.swift */,
+				5678C853229BE03500485CB6 /* ReportRevenueMaterialsItemDailyAPI.swift */,
+				5678C855229BE09C00485CB6 /* ReportRevenueFeedbackAPI.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -422,28 +490,56 @@
 			buildActionMask = 2147483647;
 			files = (
 				56E23F202282DE49002762AC /* SearchPoscode.swift in Sources */,
+				56C254D6229CCADD005CB526 /* ReportRevenuePayTypeVC.swift in Sources */,
 				5622CAA022803207007B0531 /* ReportRevenueTotal.swift in Sources */,
 				56779E31229404BD002B3F42 /* ContainerViewController.swift in Sources */,
+				56C254DE229CCB2D005CB526 /* ReportRevenueCustomerDebtVC.swift in Sources */,
+				5678C85A229BE88900485CB6 /* ReportRevenueTax.swift in Sources */,
 				56E23F1E2282DC6B002762AC /* SearchPoscodeAPI.swift in Sources */,
+				5678C85E229BE8AB00485CB6 /* ReportRevenueMaterialsItemDaily.swift in Sources */,
 				5637B8AC22978DA800146D23 /* ReportRevenueProduct.swift in Sources */,
 				5656C7F52268368500A97712 /* MenuDashBoardVC.swift in Sources */,
+				5678C856229BE09C00485CB6 /* ReportRevenueFeedbackAPI.swift in Sources */,
+				56C254E8229CE7C6005CB526 /* CategoryCell.swift in Sources */,
 				56870CAC2272F9DB0023EC81 /* PoscodeAPI.swift in Sources */,
+				56C254DC229CCB1D005CB526 /* ReportRevenueTaxVC.swift in Sources */,
 				569EA0B82265BB9000EA1427 /* LoginVC.swift in Sources */,
+				56C254DA229CCB0F005CB526 /* ReportRevenueDiscountVC.swift in Sources */,
 				56C73222226D6CDD00AC8271 /* AccountAPI.swift in Sources */,
+				56C254D8229CCAFC005CB526 /* ReportRevenueCategoryVC.swift in Sources */,
+				5678C84E229BDF6900485CB6 /* ReportRevenueDiscountAPI.swift in Sources */,
+				5678C858229BE85F00485CB6 /* ReportRevenueDiscount.swift in Sources */,
 				56A7E06122925B8C00CB1BDF /* BalloonMaker.swift in Sources */,
+				5678C84C229BDEEC00485CB6 /* ReportRevenueCategory.swift in Sources */,
+				5678C846229BDC6C00485CB6 /* ReportRevenuePayTypeAPI.swift in Sources */,
 				562A71A222701F8A00A9929B /* PopupChosseVC.swift in Sources */,
 				5622CA94227FDE57007B0531 /* TotalDashboardTableViewController.swift in Sources */,
+				56C254E6229CDB7A005CB526 /* ReportRevenueDiscountCell.swift in Sources */,
 				5665926F2267257700587021 /* CustomView.swift in Sources */,
 				5622CA9E22802FE9007B0531 /* ReportRevenueTotalAPI.swift in Sources */,
+				56C254EA229CEBC7005CB526 /* TaxCell.swift in Sources */,
 				56A7E06622925D3C00CB1BDF /* IntAxisValueFormatter.swift in Sources */,
+				5678C85C229BE89600485CB6 /* ReportRevenueCustomerDebt.swift in Sources */,
 				56A7E06422925CD100CB1BDF /* LargeValueFormatter.swift in Sources */,
+				56C254E2229CCB4F005CB526 /* ReportRevenueFeedbackVC.swift in Sources */,
+				5678C852229BDFEF00485CB6 /* ReportRevenueCustomerDebtAPI.swift in Sources */,
 				56870CAA2272F6760023EC81 /* CheckPoscode.swift in Sources */,
 				5678C83B229BA04B00485CB6 /* ProductTableViewCell.swift in Sources */,
 				5678C835229B8A5700485CB6 /* ReportRevenueProductAPI.swift in Sources */,
+				56C254E4229CCD0E005CB526 /* PaytypeCell.swift in Sources */,
+				5678C854229BE03500485CB6 /* ReportRevenueMaterialsItemDailyAPI.swift in Sources */,
+				5678C84A229BDEE200485CB6 /* ReportRevenueCategoryAPI.swift in Sources */,
 				56C73227226DA97C00AC8271 /* Constants.swift in Sources */,
+				5678C848229BDCA600485CB6 /* ReportRevenuePayType.swift in Sources */,
+				56334CEA229D1E5100F59F71 /* FeedbackCell.swift in Sources */,
+				56C254EC229CF471005CB526 /* DebtCell.swift in Sources */,
+				56C254E0229CCB42005CB526 /* ReportRevenueMaterialsItemDailyVC.swift in Sources */,
 				569EA0B62265BB9000EA1427 /* AppDelegate.swift in Sources */,
+				56C254EE229D1223005CB526 /* MaterialsItemDailyCell.swift in Sources */,
+				5678C860229BE8DA00485CB6 /* ReportRevenueFeedback.swift in Sources */,
 				5678C839229B91F500485CB6 /* ReportRevenueProductViewController.swift in Sources */,
 				5656F0082266DA1A00B3FEF3 /* Account.swift in Sources */,
+				5678C850229BDFA800485CB6 /* ReportRevenueTaxAPI.swift in Sources */,
 				56C73229226DAC3100AC8271 /* Switcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

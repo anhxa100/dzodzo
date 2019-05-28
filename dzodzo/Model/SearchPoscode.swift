@@ -23,6 +23,7 @@ class SearchPoscode {
 
         print("ID \(id)")
         print("NAME \(name)")
+        print("POSCODE \(poscode)")
     }
 }
 

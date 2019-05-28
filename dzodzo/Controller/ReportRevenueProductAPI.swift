@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 class ReportRevenueProductAPI {
-    static func getRevenueTotalWithChart(pstartdate: String, penddate: String, success: @escaping ([ReportRevenueProduct])-> Void) {
+    static func getDataWithChart(pstartdate: String, penddate: String, success: @escaping ([ReportRevenueProduct])-> Void) {
         guard let token = UserDefaults.standard.string(forKey: UserDefaultKeys.tokenKey),
             let pposgroupcode = UserDefaults.standard.string(forKey: UserDefaultKeys.posgroupKey),
             let pposcode = UserDefaults.standard.string(forKey: UserDefaultKeys.poscodeKey)
@@ -31,7 +31,7 @@ class ReportRevenueProductAPI {
         guard let urlGetPos = componentsGetPost.url else {
             return
         }
-        print("URL getRevenueTotalWithChart: \(urlGetPos)")
+        print("URL ReportRevenueProduct with chart: \(urlGetPos)")
         
         var urlRequest  = URLRequest(url: urlGetPos)
         
@@ -60,7 +60,7 @@ class ReportRevenueProductAPI {
     }
     
     
-    static func getRevenueTotal(pstartdate: String, penddate: String, success: @escaping ([ReportRevenueProduct])-> Void) {
+    static func getDataWithoutChart(pstartdate: String, penddate: String, success: @escaping ([ReportRevenueProduct])-> Void) {
         guard let token = UserDefaults.standard.string(forKey: UserDefaultKeys.tokenKey),
             let pposgroupcode = UserDefaults.standard.string(forKey: UserDefaultKeys.posgroupKey),
             let pposcode = UserDefaults.standard.string(forKey: UserDefaultKeys.poscodeKey)
@@ -83,7 +83,7 @@ class ReportRevenueProductAPI {
         guard let urlGetPos = componentsGetPost.url else {
             return
         }
-        print("URL getRevenueTotal: \(urlGetPos)")
+        print("URL ReportRevenueProduct: \(urlGetPos)")
         
         var urlRequest  = URLRequest(url: urlGetPos)
         

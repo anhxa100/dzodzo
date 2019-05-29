@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		415A162FD846F727264F6E20 /* Pods_dzodzo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F42638FD85FF813A889E17 /* Pods_dzodzo.framework */; };
 		5622CA94227FDE57007B0531 /* TotalDashboardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622CA93227FDE57007B0531 /* TotalDashboardTableViewController.swift */; };
 		5622CA9E22802FE9007B0531 /* ReportRevenueTotalAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622CA9D22802FE9007B0531 /* ReportRevenueTotalAPI.swift */; };
 		5622CAA022803207007B0531 /* ReportRevenueTotal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622CA9F22803207007B0531 /* ReportRevenueTotal.swift */; };
 		562A71A02270159500A9929B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 562A719F2270159500A9929B /* Assets.xcassets */; };
 		562A71A222701F8A00A9929B /* PopupChosseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562A71A122701F8A00A9929B /* PopupChosseVC.swift */; };
 		56334CEA229D1E5100F59F71 /* FeedbackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56334CE9229D1E5100F59F71 /* FeedbackCell.swift */; };
+		56334CEC229D39F800F59F71 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56334CEB229D39F800F59F71 /* MenuVC.swift */; };
 		5637B8AC22978DA800146D23 /* ReportRevenueProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637B8AB22978DA800146D23 /* ReportRevenueProduct.swift */; };
 		5656C7F52268368500A97712 /* MenuDashBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656C7F42268368500A97712 /* MenuDashBoardVC.swift */; };
 		5656F0082266DA1A00B3FEF3 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656F0072266DA1A00B3FEF3 /* Account.swift */; };
@@ -62,17 +64,16 @@
 		56C73229226DAC3100AC8271 /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C73228226DAC3100AC8271 /* Switcher.swift */; };
 		56E23F1E2282DC6B002762AC /* SearchPoscodeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E23F1D2282DC6B002762AC /* SearchPoscodeAPI.swift */; };
 		56E23F202282DE49002762AC /* SearchPoscode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E23F1F2282DE49002762AC /* SearchPoscode.swift */; };
-		E0987747441FF2C25A77FA7E /* Pods_dzodzo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99991F17740939644D4CA6E7 /* Pods_dzodzo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		268A91CA7EEA12373A846F77 /* Pods-dzodzo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dzodzo.release.xcconfig"; path = "Target Support Files/Pods-dzodzo/Pods-dzodzo.release.xcconfig"; sourceTree = "<group>"; };
 		5622CA93227FDE57007B0531 /* TotalDashboardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalDashboardTableViewController.swift; sourceTree = "<group>"; };
 		5622CA9D22802FE9007B0531 /* ReportRevenueTotalAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueTotalAPI.swift; sourceTree = "<group>"; };
 		5622CA9F22803207007B0531 /* ReportRevenueTotal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueTotal.swift; sourceTree = "<group>"; };
 		562A719F2270159500A9929B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		562A71A122701F8A00A9929B /* PopupChosseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupChosseVC.swift; sourceTree = "<group>"; };
 		56334CE9229D1E5100F59F71 /* FeedbackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackCell.swift; sourceTree = "<group>"; };
+		56334CEB229D39F800F59F71 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		5637B8AB22978DA800146D23 /* ReportRevenueProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueProduct.swift; sourceTree = "<group>"; };
 		5656C7F42268368500A97712 /* MenuDashBoardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDashBoardVC.swift; sourceTree = "<group>"; };
 		5656F0072266DA1A00B3FEF3 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
@@ -124,8 +125,9 @@
 		56C73228226DAC3100AC8271 /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
 		56E23F1D2282DC6B002762AC /* SearchPoscodeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPoscodeAPI.swift; sourceTree = "<group>"; };
 		56E23F1F2282DE49002762AC /* SearchPoscode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPoscode.swift; sourceTree = "<group>"; };
-		6E17C08A612BD8DB8CC7CB11 /* Pods-dzodzo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dzodzo.debug.xcconfig"; path = "Target Support Files/Pods-dzodzo/Pods-dzodzo.debug.xcconfig"; sourceTree = "<group>"; };
-		99991F17740939644D4CA6E7 /* Pods_dzodzo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dzodzo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		77F78A33C15A852BC5ABCDBD /* Pods-dzodzo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dzodzo.debug.xcconfig"; path = "Target Support Files/Pods-dzodzo/Pods-dzodzo.debug.xcconfig"; sourceTree = "<group>"; };
+		89F42638FD85FF813A889E17 /* Pods_dzodzo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dzodzo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDC63531AFE9F6C5E5E2C875 /* Pods-dzodzo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dzodzo.release.xcconfig"; path = "Target Support Files/Pods-dzodzo/Pods-dzodzo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0987747441FF2C25A77FA7E /* Pods_dzodzo.framework in Frameworks */,
+				415A162FD846F727264F6E20 /* Pods_dzodzo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				5656C7F42268368500A97712 /* MenuDashBoardVC.swift */,
+				56334CEB229D39F800F59F71 /* MenuVC.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -289,7 +292,6 @@
 				5678C83F229BC6BC00485CB6 /* ReportRevenueMaterialsItemDaily */,
 				5678C83E229BC6B900485CB6 /* ReportRevenueFeedback */,
 				56A7E06222925C9100CB1BDF /* Formatters */,
-				562A719F2270159500A9929B /* Assets.xcassets */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -300,7 +302,7 @@
 				569EA0B42265BB9000EA1427 /* dzodzo */,
 				569EA0B32265BB9000EA1427 /* Products */,
 				7C36711843370F810410C167 /* Pods */,
-				A8375635A6E267CD398BE4EA /* Frameworks */,
+				D4CFE47C7CA34FA5B66CAA9F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -320,6 +322,7 @@
 				5686528C2266E25600AC9E28 /* Model */,
 				5686528D2266E28400AC9E28 /* View */,
 				569EA0B92265BB9000EA1427 /* Main.storyboard */,
+				562A719F2270159500A9929B /* Assets.xcassets */,
 				569EA0BE2265BB9100EA1427 /* LaunchScreen.storyboard */,
 				569EA0C12265BB9100EA1427 /* Info.plist */,
 			);
@@ -360,16 +363,16 @@
 		7C36711843370F810410C167 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6E17C08A612BD8DB8CC7CB11 /* Pods-dzodzo.debug.xcconfig */,
-				268A91CA7EEA12373A846F77 /* Pods-dzodzo.release.xcconfig */,
+				77F78A33C15A852BC5ABCDBD /* Pods-dzodzo.debug.xcconfig */,
+				EDC63531AFE9F6C5E5E2C875 /* Pods-dzodzo.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		A8375635A6E267CD398BE4EA /* Frameworks */ = {
+		D4CFE47C7CA34FA5B66CAA9F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				99991F17740939644D4CA6E7 /* Pods_dzodzo.framework */,
+				89F42638FD85FF813A889E17 /* Pods_dzodzo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -381,11 +384,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 569EA0C42265BB9100EA1427 /* Build configuration list for PBXNativeTarget "dzodzo" */;
 			buildPhases = (
-				A451056EFD1369C366291F78 /* [CP] Check Pods Manifest.lock */,
+				87731B84FCAD3D5BC4E2B8BB /* [CP] Check Pods Manifest.lock */,
 				569EA0AE2265BB9000EA1427 /* Sources */,
 				569EA0AF2265BB9000EA1427 /* Frameworks */,
 				569EA0B02265BB9000EA1427 /* Resources */,
-				B65F6F838922CABAE9E9AA4B /* [CP] Embed Pods Frameworks */,
+				14A5D6EBDF8E5DA04500FD71 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -443,7 +446,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A451056EFD1369C366291F78 /* [CP] Check Pods Manifest.lock */ = {
+		14A5D6EBDF8E5DA04500FD71 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-dzodzo/Pods-dzodzo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-dzodzo/Pods-dzodzo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-dzodzo/Pods-dzodzo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		87731B84FCAD3D5BC4E2B8BB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -465,23 +485,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B65F6F838922CABAE9E9AA4B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-dzodzo/Pods-dzodzo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-dzodzo/Pods-dzodzo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-dzodzo/Pods-dzodzo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -497,6 +500,7 @@
 				5678C85A229BE88900485CB6 /* ReportRevenueTax.swift in Sources */,
 				56E23F1E2282DC6B002762AC /* SearchPoscodeAPI.swift in Sources */,
 				5678C85E229BE8AB00485CB6 /* ReportRevenueMaterialsItemDaily.swift in Sources */,
+				56334CEC229D39F800F59F71 /* MenuVC.swift in Sources */,
 				5637B8AC22978DA800146D23 /* ReportRevenueProduct.swift in Sources */,
 				5656C7F52268368500A97712 /* MenuDashBoardVC.swift in Sources */,
 				5678C856229BE09C00485CB6 /* ReportRevenueFeedbackAPI.swift in Sources */,
@@ -684,7 +688,7 @@
 		};
 		569EA0C52265BB9100EA1427 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6E17C08A612BD8DB8CC7CB11 /* Pods-dzodzo.debug.xcconfig */;
+			baseConfigurationReference = 77F78A33C15A852BC5ABCDBD /* Pods-dzodzo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -704,7 +708,7 @@
 		};
 		569EA0C62265BB9100EA1427 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 268A91CA7EEA12373A846F77 /* Pods-dzodzo.release.xcconfig */;
+			baseConfigurationReference = EDC63531AFE9F6C5E5E2C875 /* Pods-dzodzo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -12,9 +12,8 @@ pod 'Alamofire', '~> 4.7.0'
 pod 'IQKeyboardManagerSwift'
 pod 'CryptoSwift'
 pod 'Charts'
-pod 'RxSwift'
 pod 'RxCocoa'
 pod 'Moya'
 pod 'CalendarDateRangePickerViewController'
-pod 'RealmSwift'
+
 end

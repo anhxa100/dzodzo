@@ -19,7 +19,7 @@ class Switcher {
         
         if (loginStatus == true) {
             
-            rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "container")
+            rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "main")
             
         } else {
             let defaults = UserDefaults.standard

@@ -14,12 +14,10 @@
 		562A71A02270159500A9929B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 562A719F2270159500A9929B /* Assets.xcassets */; };
 		562A71A222701F8A00A9929B /* PopupChosseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562A71A122701F8A00A9929B /* PopupChosseVC.swift */; };
 		56334CEA229D1E5100F59F71 /* FeedbackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56334CE9229D1E5100F59F71 /* FeedbackCell.swift */; };
-		56334CEC229D39F800F59F71 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56334CEB229D39F800F59F71 /* MenuVC.swift */; };
 		5637B8AC22978DA800146D23 /* ReportRevenueProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637B8AB22978DA800146D23 /* ReportRevenueProduct.swift */; };
-		5656C7F52268368500A97712 /* MenuDashBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656C7F42268368500A97712 /* MenuDashBoardVC.swift */; };
 		5656F0082266DA1A00B3FEF3 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656F0072266DA1A00B3FEF3 /* Account.swift */; };
 		5665926F2267257700587021 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665926E2267257700587021 /* CustomView.swift */; };
-		56779E31229404BD002B3F42 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56779E30229404BD002B3F42 /* ContainerViewController.swift */; };
+		56779E31229404BD002B3F42 /* MenuReportRevenueTotal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56779E30229404BD002B3F42 /* MenuReportRevenueTotal.swift */; };
 		5678C835229B8A5700485CB6 /* ReportRevenueProductAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678C834229B8A5700485CB6 /* ReportRevenueProductAPI.swift */; };
 		5678C839229B91F500485CB6 /* ReportRevenueProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678C838229B91F500485CB6 /* ReportRevenueProductViewController.swift */; };
 		5678C83B229BA04B00485CB6 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678C83A229BA04B00485CB6 /* ProductTableViewCell.swift */; };
@@ -37,6 +35,9 @@
 		5678C85C229BE89600485CB6 /* ReportRevenueCustomerDebt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678C85B229BE89600485CB6 /* ReportRevenueCustomerDebt.swift */; };
 		5678C85E229BE8AB00485CB6 /* ReportRevenueMaterialsItemDaily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678C85D229BE8AB00485CB6 /* ReportRevenueMaterialsItemDaily.swift */; };
 		5678C860229BE8DA00485CB6 /* ReportRevenueFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678C85F229BE8DA00485CB6 /* ReportRevenueFeedback.swift */; };
+		567DA168229E665300C3507A /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 567DA166229E665300C3507A /* SWRevealViewController.m */; };
+		567DA16C229E783400C3507A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DA16B229E783400C3507A /* MenuViewController.swift */; };
+		567DA16E229E786B00C3507A /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DA16D229E786B00C3507A /* MenuCell.swift */; };
 		56870CAA2272F6760023EC81 /* CheckPoscode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56870CA92272F6760023EC81 /* CheckPoscode.swift */; };
 		56870CAC2272F9DB0023EC81 /* PoscodeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56870CAB2272F9DB0023EC81 /* PoscodeAPI.swift */; };
 		569EA0B62265BB9000EA1427 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569EA0B52265BB9000EA1427 /* AppDelegate.swift */; };
@@ -73,12 +74,10 @@
 		562A719F2270159500A9929B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		562A71A122701F8A00A9929B /* PopupChosseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupChosseVC.swift; sourceTree = "<group>"; };
 		56334CE9229D1E5100F59F71 /* FeedbackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackCell.swift; sourceTree = "<group>"; };
-		56334CEB229D39F800F59F71 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		5637B8AB22978DA800146D23 /* ReportRevenueProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueProduct.swift; sourceTree = "<group>"; };
-		5656C7F42268368500A97712 /* MenuDashBoardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDashBoardVC.swift; sourceTree = "<group>"; };
 		5656F0072266DA1A00B3FEF3 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		5665926E2267257700587021 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
-		56779E30229404BD002B3F42 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		56779E30229404BD002B3F42 /* MenuReportRevenueTotal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuReportRevenueTotal.swift; sourceTree = "<group>"; };
 		5678C834229B8A5700485CB6 /* ReportRevenueProductAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueProductAPI.swift; sourceTree = "<group>"; };
 		5678C838229B91F500485CB6 /* ReportRevenueProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueProductViewController.swift; sourceTree = "<group>"; };
 		5678C83A229BA04B00485CB6 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
@@ -96,6 +95,11 @@
 		5678C85B229BE89600485CB6 /* ReportRevenueCustomerDebt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueCustomerDebt.swift; sourceTree = "<group>"; };
 		5678C85D229BE8AB00485CB6 /* ReportRevenueMaterialsItemDaily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueMaterialsItemDaily.swift; sourceTree = "<group>"; };
 		5678C85F229BE8DA00485CB6 /* ReportRevenueFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueFeedback.swift; sourceTree = "<group>"; };
+		567DA165229E665200C3507A /* dzodzo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dzodzo-Bridging-Header.h"; sourceTree = "<group>"; };
+		567DA166229E665300C3507A /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		567DA167229E665300C3507A /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		567DA16B229E783400C3507A /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		567DA16D229E786B00C3507A /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		56870CA92272F6760023EC81 /* CheckPoscode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckPoscode.swift; sourceTree = "<group>"; };
 		56870CAB2272F9DB0023EC81 /* PoscodeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoscodeAPI.swift; sourceTree = "<group>"; };
 		569EA0B22265BB9000EA1427 /* dzodzo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dzodzo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,15 +154,6 @@
 			path = ReportRevenueTotal;
 			sourceTree = "<group>";
 		};
-		5622CA98227FDFE1007B0531 /* Menu */ = {
-			isa = PBXGroup;
-			children = (
-				5656C7F42268368500A97712 /* MenuDashBoardVC.swift */,
-				56334CEB229D39F800F59F71 /* MenuVC.swift */,
-			);
-			path = Menu;
-			sourceTree = "<group>";
-		};
 		5622CA99227FE009007B0531 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,7 +183,7 @@
 		56779E2F22940499002B3F42 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				56779E30229404BD002B3F42 /* ContainerViewController.swift */,
+				56779E30229404BD002B3F42 /* MenuReportRevenueTotal.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -256,6 +251,18 @@
 			path = ReportRevenuePayType;
 			sourceTree = "<group>";
 		};
+		567DA164229E65CA00C3507A /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				567DA167229E665300C3507A /* SWRevealViewController.h */,
+				567DA166229E665300C3507A /* SWRevealViewController.m */,
+				567DA165229E665200C3507A /* dzodzo-Bridging-Header.h */,
+				567DA16B229E783400C3507A /* MenuViewController.swift */,
+				567DA16D229E786B00C3507A /* MenuCell.swift */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		5686528C2266E25600AC9E28 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,9 +286,9 @@
 			isa = PBXGroup;
 			children = (
 				56779E2F22940499002B3F42 /* Main */,
+				567DA164229E65CA00C3507A /* New Group */,
 				5622CA9A227FE022007B0531 /* Login */,
 				5622CA99227FE009007B0531 /* Custom */,
-				5622CA98227FDFE1007B0531 /* Menu */,
 				5622CA97227FDFC3007B0531 /* ReportRevenueTotal */,
 				5637B8AF22978DEA00146D23 /* ReportRevenueProduct */,
 				5678C844229BC6CF00485CB6 /* ReportRevenuePayType */,
@@ -411,6 +418,7 @@
 				TargetAttributes = {
 					569EA0B12265BB9000EA1427 = {
 						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -494,15 +502,14 @@
 			files = (
 				56E23F202282DE49002762AC /* SearchPoscode.swift in Sources */,
 				56C254D6229CCADD005CB526 /* ReportRevenuePayTypeVC.swift in Sources */,
+				567DA16E229E786B00C3507A /* MenuCell.swift in Sources */,
 				5622CAA022803207007B0531 /* ReportRevenueTotal.swift in Sources */,
-				56779E31229404BD002B3F42 /* ContainerViewController.swift in Sources */,
+				56779E31229404BD002B3F42 /* MenuReportRevenueTotal.swift in Sources */,
 				56C254DE229CCB2D005CB526 /* ReportRevenueCustomerDebtVC.swift in Sources */,
 				5678C85A229BE88900485CB6 /* ReportRevenueTax.swift in Sources */,
 				56E23F1E2282DC6B002762AC /* SearchPoscodeAPI.swift in Sources */,
 				5678C85E229BE8AB00485CB6 /* ReportRevenueMaterialsItemDaily.swift in Sources */,
-				56334CEC229D39F800F59F71 /* MenuVC.swift in Sources */,
 				5637B8AC22978DA800146D23 /* ReportRevenueProduct.swift in Sources */,
-				5656C7F52268368500A97712 /* MenuDashBoardVC.swift in Sources */,
 				5678C856229BE09C00485CB6 /* ReportRevenueFeedbackAPI.swift in Sources */,
 				56C254E8229CE7C6005CB526 /* CategoryCell.swift in Sources */,
 				56870CAC2272F9DB0023EC81 /* PoscodeAPI.swift in Sources */,
@@ -528,11 +535,13 @@
 				56C254E2229CCB4F005CB526 /* ReportRevenueFeedbackVC.swift in Sources */,
 				5678C852229BDFEF00485CB6 /* ReportRevenueCustomerDebtAPI.swift in Sources */,
 				56870CAA2272F6760023EC81 /* CheckPoscode.swift in Sources */,
+				567DA16C229E783400C3507A /* MenuViewController.swift in Sources */,
 				5678C83B229BA04B00485CB6 /* ProductTableViewCell.swift in Sources */,
 				5678C835229B8A5700485CB6 /* ReportRevenueProductAPI.swift in Sources */,
 				56C254E4229CCD0E005CB526 /* PaytypeCell.swift in Sources */,
 				5678C854229BE03500485CB6 /* ReportRevenueMaterialsItemDailyAPI.swift in Sources */,
 				5678C84A229BDEE200485CB6 /* ReportRevenueCategoryAPI.swift in Sources */,
+				567DA168229E665300C3507A /* SWRevealViewController.m in Sources */,
 				56C73227226DA97C00AC8271 /* Constants.swift in Sources */,
 				5678C848229BDCA600485CB6 /* ReportRevenuePayType.swift in Sources */,
 				56334CEA229D1E5100F59F71 /* FeedbackCell.swift in Sources */,
@@ -691,6 +700,7 @@
 			baseConfigurationReference = 77F78A33C15A852BC5ABCDBD /* Pods-dzodzo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U32Z3PZM2Y;
 				INFOPLIST_FILE = dzodzo/Info.plist;
@@ -701,6 +711,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = anhxa100.dzodzo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "dzodzo/View/New Group/dzodzo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -711,6 +723,7 @@
 			baseConfigurationReference = EDC63531AFE9F6C5E5E2C875 /* Pods-dzodzo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U32Z3PZM2Y;
 				INFOPLIST_FILE = dzodzo/Info.plist;
@@ -721,6 +734,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = anhxa100.dzodzo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "dzodzo/View/New Group/dzodzo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

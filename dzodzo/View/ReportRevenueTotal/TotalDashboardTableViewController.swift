@@ -12,6 +12,7 @@ import CalendarDateRangePickerViewController
 
 class TotalDashboardTableViewController: UITableViewController {
     
+    @IBOutlet weak var btnMenuButton: UIBarButtonItem!
     var shouldHideData: Bool = false
     var refresher : UIRefreshControl!
     let calendar = Calendar.current
@@ -55,9 +56,14 @@ class TotalDashboardTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        btnMenuButton.target = revealViewController()
+        btnMenuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        self.revealViewController()?.rearViewRevealWidth = 400
+        
         // Xoá đường line tableview
         self.tableView.separatorStyle = .none
-       
+        
         //Định dạng ngày giờ hiển thị
         format.dateFormat = "dd/MM/yyyy"
         
@@ -152,7 +158,7 @@ class TotalDashboardTableViewController: UITableViewController {
         
         print("yVals1: \(yVals1)")
         print("yVals2: \(yVals2)")
-
+        
         //Thiết lập tên, đặt màu cho cột
         let set1 = BarChartDataSet(entries: yVals1, label: "Tổng doanh thu")
         set1.setColor(UIColor(red: 104/255, green: 241/255, blue: 175/255, alpha: 1))
@@ -191,9 +197,9 @@ class TotalDashboardTableViewController: UITableViewController {
     //func refresh
     @objc func refesh() {
         refresher.beginRefreshing()
-    
         
-     
+        
+        
         tableView.reloadData()
         refresher.endRefreshing() //End of refesh
     }
@@ -243,7 +249,7 @@ class TotalDashboardTableViewController: UITableViewController {
     @IBAction func nextDay(_ sender: Any) {
         
         convertNextDate()
-//        convertNextWeek()
+        //        convertNextWeek()
         tableView.reloadData()
         print("Next day")
     }
@@ -409,7 +415,7 @@ class TotalDashboardTableViewController: UITableViewController {
     
     //MARK: Lấy data theo ngày tự chọn
     func optionDay() {
-       
+        
         let dateRangePickerViewController = CalendarDateRangePickerViewController(collectionViewLayout: UICollectionViewFlowLayout())
         dateRangePickerViewController.delegate = self as CalendarDateRangePickerViewControllerDelegate
         dateRangePickerViewController.minimumDate = Calendar.current.date(byAdding: .year, value: -2, to: Date())
@@ -444,7 +450,7 @@ extension TotalDashboardTableViewController: IAxisValueFormatter {
 }
 
 extension TotalDashboardTableViewController : CalendarDateRangePickerViewControllerDelegate {
-
+    
     func didTapCancel() {
         self.navigationController?.dismiss(animated: true, completion: nil)
     }

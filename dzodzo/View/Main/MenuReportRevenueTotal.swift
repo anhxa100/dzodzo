@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ContainerViewController: UIViewController {
+class MenuReportRevenueTotal: UIViewController {
+    
+    var rootVC: UIViewController?
     @IBOutlet weak var leadingContraint: NSLayoutConstraint!
     var menuShowing = false
     @IBOutlet weak var menuView: UIView!
@@ -25,11 +27,81 @@ class ContainerViewController: UIViewController {
     }
     
     @IBAction func reportRevenueBT(_ sender: Any) {
-        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let dvc = mainStoryBoard.instantiateViewController(withIdentifier: "revenueTotal") as! TotalDashboardTableViewController
-        self.navigationController?.pushViewController(dvc, animated: true)
+        rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "main")
+//        openMenu(menuShowing)
+        print("Close menu")
+        let appDelegate = UIApplication.shared.delegate as!  AppDelegate
+        appDelegate.window?.rootViewController = rootVC
     }
     
+    @IBAction func reportRevenueProductBT(_ sender: Any) {
+        rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "product") 
+//        openMenu(menuShowing)
+        print("Close menu")
+        
+     
+    }
+    
+    
+    @IBAction func reportRevenuePaytypeBT(_ sender: Any) {
+        rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "paytype")
+        //        openMenu(menuShowing)
+        print("Close menu")
+        
+        
+    }
+    
+    @IBAction func reportRevenueCategoryBT(_ sender: Any) {
+        rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "category")
+        //        openMenu(menuShowing)
+        print("Close menu")
+        
+       
+    }
+    
+    
+    @IBAction func reportRevenueDiscountBT(_ sender: Any) {
+        rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "discount")
+        openMenu(menuShowing)
+        print("Close menu")
+        
+        
+    }
+    
+    @IBAction func reportRevenueTaxBT(_ sender: Any) {
+        rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tax")
+        openMenu(menuShowing)
+        print("Close menu")
+        
+       
+    }
+    
+    
+    @IBAction func reportRevenueDebtBT(_ sender: Any) {
+        rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "debt")
+        openMenu(menuShowing)
+        print("Close menu")
+        
+       
+    }
+    
+    @IBAction func reportRevenueMaterialBT(_ sender: Any) {
+        rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "materrialsItem")
+        openMenu(menuShowing)
+        print("Close menu")
+        
+       
+    }
+    
+    @IBAction func reportRevenueFeedbackBT(_ sender: Any) {
+        rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "feedback")
+        openMenu(menuShowing)
+        print("Close menu")
+        
+       
+    }
+    
+   
     
     @IBAction func openMenu(_ sender: Any) {
         if (menuShowing) {

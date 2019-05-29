@@ -11,8 +11,8 @@ import UIKit
 
 import UIKit
 import CalendarDateRangePickerViewController
-
 class ReportRevenueMaterialsItemDailyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet weak var btnMenuButton: UIBarButtonItem!
     
     let calendar = Calendar.current
     let date = Date()
@@ -31,6 +31,12 @@ class ReportRevenueMaterialsItemDailyVC: UIViewController, UITableViewDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        btnMenuButton.target = revealViewController()
+        btnMenuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        self.revealViewController()?.rearViewRevealWidth = 400
+        
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self

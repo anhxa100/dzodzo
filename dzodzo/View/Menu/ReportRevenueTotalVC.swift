@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuDashBoardVC: UIViewController {
+class ReportRevenueTotalVC: UIViewController {
     
     
     override func viewDidLoad() {
@@ -19,7 +19,7 @@ class MenuDashBoardVC: UIViewController {
 
     @IBAction func onClickGetReportRevenueTotalTable(_ sender: Any) {
         print("Tổng doanh thu")
-        UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainTotal")
+        UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "main")
     }
     
     @IBAction func onClick2(_ sender: Any) {

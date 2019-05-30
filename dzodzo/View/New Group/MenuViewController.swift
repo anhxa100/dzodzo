@@ -12,6 +12,10 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var menuNameArr: Array = [String]()
     var iconImage:Array = [UIImage]()
+    var infoArr:[CheckPoscode] = [] 
+    @IBOutlet weak var nameStaffLB: UILabel!
+    @IBOutlet weak var positionLB: UILabel!
+    
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -25,6 +29,12 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         menuNameArr = ["Tổng hợp doanh thu", "Doanh thu theo sản phẩm", "Doanh thu theo danh mục", "Doanh thu theo loại thanh toán", "Thống kê khuyến mại", "Thống kê thuế", "Thống kê nợ", "Nguyên liệu theo mặt hàng", "Đánh giá của khách hàng", "Đăng xuất" ]
         iconImage = [UIImage(named: "icons8-cash")!, UIImage(named: "icons8-cheap_2_1")!, UIImage(named: "icons8-coin_in_hand")!, UIImage(named: "icons8-currency_exchange")!, UIImage(named: "icons8-dollar_sign_7")!, UIImage(named: "icons8-expensive_2")!, UIImage(named: "icons8-hkd")!, UIImage(named: "icons8-money_bag")!, UIImage(named: "icons8-split_payment_copy_2")!, UIImage(named: "icons8-1_shutdown")! ]
+        
+        PosCodeAPI.getPoscode(success: {[weak self] data in
+            self?.infoArr = data
+            self!.nameStaffLB.text = self?.infoArr[0].nameStaff
+            self!.positionLB.text = "POS: \(self!.infoArr[0].position)"
+        })
         // Do any additional setup after loading the view.
     }
     

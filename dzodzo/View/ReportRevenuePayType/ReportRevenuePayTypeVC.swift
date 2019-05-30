@@ -215,11 +215,27 @@ class ReportRevenuePayTypeVC: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PaytypeCell
         cell.nameLB.text = paytypeArray[indexPath.row].name
-        cell.soGiaoDichLB.text = "\(paytypeArray[indexPath.row].soGiaoDich) giao dịch"
-        cell.soGiaoDichHoanTraLB.text = "\(paytypeArray[indexPath.row].soGiaoDichHoanTra) giao dịch hoàn tiền"
-        cell.sotienTTLB.text = "\(paytypeArray[indexPath.row].soTienTT) đ"
-        cell.soTienHoanTraLB.text = "\(paytypeArray[indexPath.row].soTienHT) đ"
+        if paytypeArray[indexPath.row].soGiaoDich == "" {
+            cell.soGiaoDichLB.text = "0 giao dịch"
+        }else{
+            cell.soGiaoDichLB.text = "\(paytypeArray[indexPath.row].soGiaoDich) giao dịch"
+        }
         
+        if paytypeArray[indexPath.row].soGiaoDichHoanTra == "" {
+            cell.soGiaoDichHoanTraLB.text = "0 giao dịch hoàn tiền"
+        }else{
+            cell.soGiaoDichHoanTraLB.text = "\(paytypeArray[indexPath.row].soGiaoDichHoanTra) giao dịch hoàn tiền"
+        }
+        if paytypeArray[indexPath.row].soTienTT == "" {
+            cell.sotienTTLB.text = "0đ"
+        }else{
+            cell.sotienTTLB.text = "\(paytypeArray[indexPath.row].soTienTT) đ"
+        }
+        if paytypeArray[indexPath.row].soTienHT == "" {
+            cell.soTienHoanTraLB.text = "0đ"
+        }else{
+            cell.soTienHoanTraLB.text = "\(paytypeArray[indexPath.row].soTienHT) đ"
+        }
         return cell
     }
     

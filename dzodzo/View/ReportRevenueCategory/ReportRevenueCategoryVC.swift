@@ -50,8 +50,9 @@ class ReportRevenueCategoryVC: UIViewController, UITableViewDelegate, UITableVie
         //Đặt tên nút mặc định
         //Định dạng ngày giờ hiển thị
         format.dateFormat = "dd/MM/yyyy"
-        thisDate()
         chosseDay.setTitle("Hôm nay", for: .normal)
+        thisDate()
+        
     }
     
     enum DropdownOption: String {
@@ -218,9 +219,16 @@ class ReportRevenueCategoryVC: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CategoryCell
         cell.categorynameLB.text = categoryArray[indexPath.row].categoryname
         cell.quantityLB.text = "\(categoryArray[indexPath.row].quantity) sản phẩm"
-        cell.totalamountLB.text = "Tổng doanh thu: \(categoryArray[indexPath.row].totalamount)đ"
-        cell.totaldiscountLB.text = "Tổng giảm giá: \(categoryArray[indexPath.row].totaldiscount)đ"
-        
+        if categoryArray[indexPath.row].totalamount == "" {
+            cell.totalamountLB.text = "0đ"
+        }else {
+            cell.totalamountLB.text = "Tổng doanh thu: \(categoryArray[indexPath.row].totalamount)đ"
+        }
+        if categoryArray[indexPath.row].totaldiscount == "" {
+            cell.totaldiscountLB.text = "0đ"
+        }else{
+            cell.totaldiscountLB.text = "Tổng giảm giá: \(categoryArray[indexPath.row].totaldiscount)đ"
+        }
         return cell
     }
     

@@ -41,15 +41,12 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
         tableView.dataSource = self
         
         
+        //Định dạng ngày giờ hiển thị
+        format.dateFormat = "dd/MM/yyyy"
         //Đặt tên nút mặc định
         chosseDay.setTitle("Hôm nay", for: .normal)
         
         thisDate()
-        
-        print("dateChart \(dateChart.text!)")
-        
-        //Định dạng ngày giờ hiển thị
-        format.dateFormat = "dd/MM/yyyy"
         
         
         // Xoá đường line tableview

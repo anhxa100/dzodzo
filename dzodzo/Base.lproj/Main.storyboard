@@ -624,6 +624,7 @@
                         <outlet property="btnMenuButton" destination="eaS-uB-1yu" id="Upq-V5-yde"/>
                         <outlet property="chosseDay" destination="n1D-sV-91g" id="RFU-Pw-wUv"/>
                         <outlet property="dateChart" destination="dDV-TJ-rnv" id="1FJ-EU-dpo"/>
+                        <outlet property="productChart" destination="Ukh-rc-bAf" id="dyg-To-lAS"/>
                         <outlet property="tableView" destination="E1r-EU-5Xc" id="Mh4-V8-p3l"/>
                         <outletCollection property="opptionMenu" destination="3s2-zC-qJ3" collectionClass="NSMutableArray" id="IRI-2b-dcL"/>
                         <outletCollection property="opptionMenu" destination="8Ys-3T-J8Y" collectionClass="NSMutableArray" id="9Jb-gN-uee"/>
@@ -3517,7 +3518,7 @@
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" red="0.33333333333333331" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="N3Z-j0-mxr" firstAttribute="leading" secondItem="hl5-2x-ezO" secondAttribute="leading" constant="30" id="QYd-M2-tsU"/>
                                                 <constraint firstAttribute="bottom" secondItem="N3Z-j0-mxr" secondAttribute="bottom" constant="10" id="RTV-GA-9h1"/>

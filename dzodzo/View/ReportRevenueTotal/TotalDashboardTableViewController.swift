@@ -32,14 +32,10 @@ class TotalDashboardTableViewController: UITableViewController {
         }
     }
     
+    
+    
     @IBOutlet weak var chartView: BarChartView!
-    @IBOutlet weak var totalamoutChart: BarChartView!
-    @IBOutlet weak var totaldiscountChart: BarChartView!
-    @IBOutlet weak var paybackamountChart: BarChartView!
-    @IBOutlet weak var taxamountChart: BarChartView!
-    
-    
-    
+   
     @IBOutlet var opptionMenu: [UIButton]!
     @IBOutlet weak var dateChart: UILabel!
     @IBOutlet weak var chosseDay: UIButton!
@@ -94,7 +90,8 @@ class TotalDashboardTableViewController: UITableViewController {
         self.tableView.flashScrollIndicators()
     }
     
-    //Hiển thị biểu
+    
+    //Hiển thị biểu đồ
     func viewChartData() {
         // Tuỳ chỉnh chữ hiện thị thi bấm vào
         let marker = BalloonMarker(color: UIColor(white: 180/255, alpha: 1), font: .systemFont(ofSize: 12), textColor: .white, insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8))
@@ -128,15 +125,18 @@ class TotalDashboardTableViewController: UITableViewController {
         }
     }
     
-    // Lấy data để hiển th 
+    // Lấy data để hiển thị
     func viewData() {
         let groupSpace = 0.08
         let barSpace = 0.03
         let barWidth = 0.2
+        var totalDayChart: [String] = []
         // (0.2 + 0.03) * 4 + 0.08 = 1.00 -> interval per "group"
         
         //lọc dữ liệu hiển thị, lấy x,y
         let block1: (Int) -> BarChartDataEntry = { (i) -> BarChartDataEntry in
+            totalDayChart.append(self.revenueTotalArray[i].date)
+            print("DATA DAY: \(totalDayChart)")
             return BarChartDataEntry(x: Double(i), y: Double(self.revenueTotalArray[i].totalamount) ?? 0.0 )
         }
         let block2: (Int) -> BarChartDataEntry = { (i) -> BarChartDataEntry in
@@ -197,9 +197,6 @@ class TotalDashboardTableViewController: UITableViewController {
     //func refresh
     @objc func refesh() {
         refresher.beginRefreshing()
-        
-        
-        
         tableView.reloadData()
         refresher.endRefreshing() //End of refesh
     }

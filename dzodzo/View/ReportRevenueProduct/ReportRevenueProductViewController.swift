@@ -10,9 +10,11 @@ import UIKit
 import Charts
 import CalendarDateRangePickerViewController
 
-class ReportRevenueProductViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ReportRevenueProductViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChartViewDelegate {
+    
     
     @IBOutlet weak var btnMenuButton: UIBarButtonItem!
+    var shouldHideData: Bool = false
     let calendar = Calendar.current
     let date = Date()
     let format = DateFormatter()
@@ -23,6 +25,10 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
             tableView.reloadData()
         }
     }
+    
+    
+    @IBOutlet weak var productChart: HorizontalBarChartView!
+    
     
     @IBOutlet var opptionMenu: [UIButton]!
     @IBOutlet weak var dateChart: UILabel!
@@ -40,6 +46,9 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
         tableView.delegate = self
         tableView.dataSource = self
         
+        // Report when network error
+        productChart.noDataText = "Không có dữ liệu hiển thị, vui lòng kết nối mạng"
+        
         
         //Định dạng ngày giờ hiển thị
         format.dateFormat = "dd/MM/yyyy"
@@ -47,12 +56,125 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
         chosseDay.setTitle("Hôm nay", for: .normal)
         
         thisDate()
-        
-        
+       
         // Xoá đường line tableview
         self.tableView.separatorStyle = .none
-        
+        viewChartData()
     }
+    
+  
+    // Thiết lập hiển thị bảng
+    func viewChartData() {
+        
+        // Tuỳ chỉnh chữ hiện thị thi bấm vào
+        let marker = BalloonMarker(color: UIColor(white: 180/255, alpha: 1), font: .systemFont(ofSize: 12), textColor: .white, insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8))
+        marker.chartView = productChart
+        marker.minimumSize = CGSize(width: 80, height: 40)
+        productChart.marker = marker
+        self.setup(barLineChartView: productChart)
+        
+        productChart.delegate = self
+        
+        productChart.drawBarShadowEnabled = false
+        productChart.drawValueAboveBarEnabled = true
+        
+        productChart.maxVisibleCount = 60
+        
+        
+        let xAxis = productChart.xAxis
+        xAxis.labelPosition = .bottom
+        xAxis.labelFont = .systemFont(ofSize: 10)
+        xAxis.drawAxisLineEnabled = true
+        xAxis.granularity = 10
+        xAxis.valueFormatter = LargeValueFormatter()
+        
+        let leftAxis = productChart.leftAxis
+        leftAxis.labelFont = .systemFont(ofSize: 10)
+        leftAxis.drawAxisLineEnabled = true
+        leftAxis.drawGridLinesEnabled = true
+        leftAxis.axisMinimum = 0
+        leftAxis.valueFormatter = LargeValueFormatter()
+        
+        let rightAxis = productChart.rightAxis
+        rightAxis.enabled = true
+        rightAxis.labelFont = .systemFont(ofSize: 10)
+        rightAxis.drawAxisLineEnabled = true
+        rightAxis.axisMinimum = 0
+        rightAxis.valueFormatter = LargeValueFormatter()
+        
+        let l = productChart.legend
+        l.horizontalAlignment = .left
+        l.verticalAlignment = .bottom
+        l.orientation = .horizontal
+        l.drawInside = false
+        l.form = .square
+        l.formSize = 8
+        l.font = UIFont(name: "HelveticaNeue-Light", size: 11)!
+        l.xEntrySpace = 4
+        //        chartView.legend = l
+        
+        productChart.fitBars = true
+    
+        productChart.animate(yAxisDuration: 0.8)
+    }
+
+    func setup(barLineChartView chartView: BarLineChartViewBase) {
+        productChart.chartDescription?.enabled = false
+        
+        productChart.dragEnabled = true
+        productChart.setScaleEnabled(true)
+        productChart.pinchZoomEnabled = false
+        
+        // ChartYAxis *leftAxis = chartView.leftAxis;
+        
+        let xAxis = chartView.xAxis
+        xAxis.labelPosition = .bottom
+        
+        chartView.rightAxis.enabled = false
+    }
+    
+    func updateChartData() {
+        if self.shouldHideData {
+            productChart.data = nil
+            return
+        }
+    }
+    
+    // Lấy data để hiển thị:
+    func viewData() {
+
+        let barWidth = 0.8
+        var productChartArr: [String] = []
+        
+        let block: (Int) -> BarChartDataEntry = {(i) -> BarChartDataEntry in
+            productChartArr.append(self.revenueProductArray[i].itemname)
+            print("Hiển thị món ăn \(productChartArr)")
+            return BarChartDataEntry(x:Double(i), y: Double(self.revenueProductArray[i].totalamount) ?? 0.0)
+        }
+        
+        let yVals: [BarChartDataEntry] = (0..<revenueProductArray.count).map(block)
+        
+        print("yVals: \(yVals)")
+        
+        let set1 = BarChartDataSet(entries: yVals, label: "Sản phẩm")
+        productChart.xAxis.valueFormatter = IndexAxisValueFormatter(values: productChartArr)
+        productChart.xAxis.setLabelCount(productChartArr.count, force: true)
+        set1.colors = ChartColorTemplates.vordiplom()
+        productChart.scaleXEnabled = false
+        
+        set1.drawIconsEnabled = false
+        
+        let data = BarChartData(dataSet: set1)
+        data.setValueFont(UIFont(name:"HelveticaNeue-Light", size:10)!)
+        data.setValueFormatter(LargeValueFormatter())
+        
+        data.barWidth = barWidth
+        
+        productChart.data = data
+        productChart.animate(xAxisDuration: 0.8, yAxisDuration: 0.8)
+        productChart.setNeedsDisplay()
+    }
+    
     
     enum DropdownOption: String {
         case today = "Hôm nay"
@@ -111,9 +233,9 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
         dateChart.text = format.string(from: date)
         ReportRevenueProductAPI.getDataWithChart(pstartdate: dateChart.text ?? "", penddate: dateChart.text ?? "", success: {[weak self] dayData in
             self?.revenueProductArray = dayData
-//            self?.viewData()
+            self?.viewData()
         })
-        ReportRevenueProductAPI.getDataWithChart(pstartdate: dateChart.text ?? "", penddate: dateChart.text ?? "", success: {[weak self] dayData in
+        ReportRevenueProductAPI.getDataWithoutChart(pstartdate: dateChart.text ?? "", penddate: dateChart.text ?? "", success: {[weak self] dayData in
             self?.revenueProductArray = dayData
         })
     }
@@ -140,6 +262,7 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
         
         ReportRevenueProductAPI.getDataWithChart(pstartdate: firstDay, penddate: lastDay, success: {[weak self] weekData in
             self?.revenueProductArray = weekData
+            self?.viewData()
         })
         ReportRevenueProductAPI.getDataWithChart(pstartdate: firstDay, penddate: lastDay, success: {[weak self] weekData in
             self?.revenueProductArray = weekData
@@ -189,6 +312,7 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
             
             ReportRevenueProductAPI.getDataWithChart(pstartdate: startDateOfYear, penddate: lastDateOfYear, success: {[weak self] yearData in
                 self?.revenueProductArray = yearData
+                self?.viewData()
             })
             
             ReportRevenueProductAPI.getDataWithChart(pstartdate: startDateOfYear, penddate: lastDateOfYear, success: {[weak self] yearData in
@@ -253,6 +377,7 @@ extension ReportRevenueProductViewController : CalendarDateRangePickerViewContro
         
         ReportRevenueProductAPI.getDataWithChart(pstartdate: startDay, penddate: endDay, success: {[weak self] chooseData in
             self?.revenueProductArray = chooseData
+            self?.viewData()
         })
         ReportRevenueProductAPI.getDataWithChart(pstartdate: startDay, penddate: endDay, success: {[weak self] chooseData in
             self?.revenueProductArray = chooseData
@@ -260,3 +385,9 @@ extension ReportRevenueProductViewController : CalendarDateRangePickerViewContro
     }
     
 }
+
+//extension ReportRevenueProductViewController: IAxisValueFormatter {
+//    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+//        return productChart?[Int(value) % productChart.count]
+//    }
+//}

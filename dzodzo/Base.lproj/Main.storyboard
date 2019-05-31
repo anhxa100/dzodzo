@@ -228,33 +228,38 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iV9-IP-LhK">
                                                         <rect key="frame" x="0.0" y="50" width="706" height="50"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RiY-fG-RiP">
+                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rfo-zE-Btm">
                                                                 <rect key="frame" x="10" y="0.0" width="696" height="50"/>
-                                                                <nil key="textColor"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
-                                                            </textField>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2x4-pK-YiX">
-                                                                <rect key="frame" x="651" y="10" width="45" height="30"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RiY-fG-RiP">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="621" height="50"/>
+                                                                        <nil key="textColor"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
+                                                                    </textField>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2x4-pK-YiX">
+                                                                        <rect key="frame" x="621" y="0.0" width="75" height="50"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" secondItem="2x4-pK-YiX" secondAttribute="height" multiplier="1.5" id="l5A-6K-G7F"/>
+                                                                        </constraints>
+                                                                        <state key="normal" image="ic_eye_closed.png"/>
+                                                                        <state key="selected" image="ic_eye_open.png"/>
+                                                                        <connections>
+                                                                            <action selector="iconActionWithSender:" destination="DC4-t7-jwJ" eventType="touchUpInside" id="0eP-e0-JpY"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" secondItem="2x4-pK-YiX" secondAttribute="height" multiplier="1.5" id="l5A-6K-G7F"/>
+                                                                    <constraint firstItem="2x4-pK-YiX" firstAttribute="leading" secondItem="RiY-fG-RiP" secondAttribute="trailing" id="lZh-aG-CJf"/>
                                                                 </constraints>
-                                                                <state key="normal" image="ic_eye_closed.png"/>
-                                                                <state key="selected" image="ic_eye_open.png"/>
-                                                                <connections>
-                                                                    <action selector="iconActionWithSender:" destination="DC4-t7-jwJ" eventType="touchUpInside" id="0eP-e0-JpY"/>
-                                                                </connections>
-                                                            </button>
+                                                            </stackView>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstItem="2x4-pK-YiX" firstAttribute="top" secondItem="iV9-IP-LhK" secondAttribute="top" constant="10" id="9Jn-X1-Ho9"/>
-                                                            <constraint firstItem="RiY-fG-RiP" firstAttribute="top" secondItem="iV9-IP-LhK" secondAttribute="top" id="CZa-kH-sah"/>
-                                                            <constraint firstItem="RiY-fG-RiP" firstAttribute="leading" secondItem="iV9-IP-LhK" secondAttribute="leading" constant="10" id="Gq6-zr-Bhx"/>
-                                                            <constraint firstAttribute="trailing" secondItem="RiY-fG-RiP" secondAttribute="trailing" id="rTs-db-DYE"/>
-                                                            <constraint firstAttribute="bottom" secondItem="RiY-fG-RiP" secondAttribute="bottom" id="uQS-U7-zEu"/>
-                                                            <constraint firstAttribute="trailing" secondItem="2x4-pK-YiX" secondAttribute="trailing" constant="10" id="vYk-Pv-9iz"/>
-                                                            <constraint firstAttribute="bottom" secondItem="2x4-pK-YiX" secondAttribute="bottom" constant="10" id="xR6-cf-9px"/>
+                                                            <constraint firstItem="Rfo-zE-Btm" firstAttribute="top" secondItem="iV9-IP-LhK" secondAttribute="top" id="Gju-we-6c8"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Rfo-zE-Btm" secondAttribute="bottom" id="JZk-wY-0SR"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Rfo-zE-Btm" secondAttribute="trailing" id="TOV-r4-qws"/>
+                                                            <constraint firstItem="Rfo-zE-Btm" firstAttribute="leading" secondItem="iV9-IP-LhK" secondAttribute="leading" constant="10" id="jud-3Y-Q8f"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

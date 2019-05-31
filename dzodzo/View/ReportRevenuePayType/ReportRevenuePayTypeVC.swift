@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Charts
 import CalendarDateRangePickerViewController
 
 class ReportRevenuePayTypeVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -39,7 +38,7 @@ class ReportRevenuePayTypeVC: UIViewController, UITableViewDelegate, UITableView
         
         // Quy đổi tiền tệ
         currencyFormatter.usesGroupingSeparator = true
-        currencyFormatter.numberStyle = .currency
+        currencyFormatter.numberStyle = .currencyAccounting
         // localize to your grouping and decimal separator
         currencyFormatter.locale = Locale(identifier: "vi_VN")
         
@@ -235,12 +234,12 @@ class ReportRevenuePayTypeVC: UIViewController, UITableViewDelegate, UITableView
             cell.soGiaoDichHoanTraLB.text = "\(paytypeArray[indexPath.row].soGiaoDichHoanTra) giao dịch hoàn tiền"
         }
         if paytypeArray[indexPath.row].soTienTT == "" {
-            cell.sotienTTLB.text = "0đ"
+            cell.sotienTTLB.text = "0 ₫"
         }else{
             cell.sotienTTLB.text = "\(currencyFormatter.string(from: Double(paytypeArray[indexPath.row].soTienTT) as! NSNumber) ?? "" )"
         }
         if paytypeArray[indexPath.row].soTienHT == "" {
-            cell.soTienHoanTraLB.text = "0đ"
+            cell.soTienHoanTraLB.text = "0 ₫"
         }else{
             cell.soTienHoanTraLB.text = "\(currencyFormatter.string(from: Double(paytypeArray[indexPath.row].soTienHT) as! NSNumber) ?? "" )"
         }

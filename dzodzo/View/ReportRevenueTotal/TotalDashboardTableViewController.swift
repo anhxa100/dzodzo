@@ -436,17 +436,17 @@ class TotalDashboardTableViewController: UITableViewController {
     //Hiển thị theo label
     func getDataWithoutChart() {
         if self.revenueTotalWithoutchart.count == 0 {
-            self.totalamountLB.text = "0đ"
-            self.paybackamountLB.text = "0đ"
-            self.totaldiscountLB.text = "0đ"
-            self.taxamountLB.text = "0đ"
+            self.totalamountLB.text = "0₫"
+            self.paybackamountLB.text = "0₫"
+            self.totaldiscountLB.text = "0₫"
+            self.taxamountLB.text = "0₫"
             
         }else {
             
-            self.totalamountLB.text = "\(self.revenueTotalWithoutchart[0].totalamount)đ"
-            self.paybackamountLB.text = "\(self.revenueTotalWithoutchart[0].paybackamount)đ"
-            self.totaldiscountLB.text = "\(self.revenueTotalWithoutchart[0].totaldiscount)đ"
-            self.taxamountLB.text = "\(self.revenueTotalWithoutchart[0].taxamount)đ"
+            self.totalamountLB.text = "\(self.revenueTotalWithoutchart[0].totalamount) ₫"
+            self.paybackamountLB.text = "\(self.revenueTotalWithoutchart[0].paybackamount) ₫"
+            self.totaldiscountLB.text = "\(self.revenueTotalWithoutchart[0].totaldiscount) ₫"
+            self.taxamountLB.text = "\(self.revenueTotalWithoutchart[0].taxamount) ₫"
             
         }
     }

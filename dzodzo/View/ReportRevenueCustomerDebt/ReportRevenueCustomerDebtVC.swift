@@ -218,8 +218,8 @@ class ReportRevenueCustomerDebtVC: UIViewController, UITableViewDelegate, UITabl
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DebtCell
         
         cell.dateLB.text = debtArray[indexPath.row].date
-        cell.totalDebtLB.text = "Tổng nợ: \(debtArray[indexPath.row].total_debt)đ"
-        cell.totalPaidLB.text = "Tổng trả: \(debtArray[indexPath.row].total_paid)đ"
+        cell.totalDebtLB.text = "Tổng nợ: \(debtArray[indexPath.row].total_debt) ₫"
+        cell.totalPaidLB.text = "Tổng trả: \(debtArray[indexPath.row].total_paid) ₫"
         
         
         return cell

@@ -215,7 +215,7 @@ class ReportRevenueTaxVC: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TaxCell
         
         cell.taxnameLB.text = taxArray[indexPath.row].taxname
-        cell.totaltaxLB.text = "Tổng thuế: \(taxArray[indexPath.row].totaltax)đ"
+        cell.totaltaxLB.text = "Tổng thuế: \(taxArray[indexPath.row].totaltax) ₫"
         
         return cell
     }

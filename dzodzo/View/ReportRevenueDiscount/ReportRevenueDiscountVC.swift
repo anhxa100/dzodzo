@@ -215,7 +215,7 @@ class ReportRevenueDiscountVC: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ReportRevenueDiscountCell
         cell.discountNameLB.text = discountArray[indexPath.row].discount_name
         cell.dateLogLB.text = "Ngày: \(discountArray[indexPath.row].date_log)"
-        cell.totalDiscountLB.text = "Tổng giảm giá: \(discountArray[indexPath.row].totaldiscount)đ"
+        cell.totalDiscountLB.text = "Tổng giảm giá: \(discountArray[indexPath.row].totaldiscount) ₫"
         
         return cell
     }

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Charts
 import CalendarDateRangePickerViewController
 
 class ReportRevenueCategoryVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -226,12 +225,12 @@ class ReportRevenueCategoryVC: UIViewController, UITableViewDelegate, UITableVie
         if categoryArray[indexPath.row].totalamount == "" {
             cell.totalamountLB.text = "0đ"
         }else {
-            cell.totalamountLB.text = "Tổng doanh thu: \(categoryArray[indexPath.row].totalamount)đ"
+            cell.totalamountLB.text = "Tổng doanh thu: \(categoryArray[indexPath.row].totalamount) ₫"
         }
         if categoryArray[indexPath.row].totaldiscount == "" {
             cell.totaldiscountLB.text = "0đ"
         }else{
-            cell.totaldiscountLB.text = "Tổng giảm giá: \(categoryArray[indexPath.row].totaldiscount)đ"
+            cell.totaldiscountLB.text = "Tổng giảm giá: \(categoryArray[indexPath.row].totaldiscount) ₫"
         }
         return cell
     }

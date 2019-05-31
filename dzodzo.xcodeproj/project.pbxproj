@@ -63,7 +63,6 @@
 		56C73222226D6CDD00AC8271 /* AccountAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C73221226D6CDD00AC8271 /* AccountAPI.swift */; };
 		56C73227226DA97C00AC8271 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C73226226DA97C00AC8271 /* Constants.swift */; };
 		56C73229226DAC3100AC8271 /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C73228226DAC3100AC8271 /* Switcher.swift */; };
-		56CF0DF4229FDF6400F9AEAB /* YAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF0DF3229FDF6400F9AEAB /* YAxisValueFormatter.swift */; };
 		56E23F1E2282DC6B002762AC /* SearchPoscodeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E23F1D2282DC6B002762AC /* SearchPoscodeAPI.swift */; };
 		56E23F202282DE49002762AC /* SearchPoscode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E23F1F2282DE49002762AC /* SearchPoscode.swift */; };
 /* End PBXBuildFile section */
@@ -128,7 +127,6 @@
 		56C73221226D6CDD00AC8271 /* AccountAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountAPI.swift; sourceTree = "<group>"; };
 		56C73226226DA97C00AC8271 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		56C73228226DAC3100AC8271 /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
-		56CF0DF3229FDF6400F9AEAB /* YAxisValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = YAxisValueFormatter.swift; path = dzodzo/View/Menu/YAxisValueFormatter.swift; sourceTree = SOURCE_ROOT; };
 		56E23F1D2282DC6B002762AC /* SearchPoscodeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPoscodeAPI.swift; sourceTree = "<group>"; };
 		56E23F1F2282DE49002762AC /* SearchPoscode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPoscode.swift; sourceTree = "<group>"; };
 		77F78A33C15A852BC5ABCDBD /* Pods-dzodzo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dzodzo.debug.xcconfig"; path = "Target Support Files/Pods-dzodzo/Pods-dzodzo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -160,7 +158,6 @@
 			isa = PBXGroup;
 			children = (
 				5665926E2267257700587021 /* CustomView.swift */,
-				56CF0DF3229FDF6400F9AEAB /* YAxisValueFormatter.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -533,7 +530,6 @@
 				5622CA9E22802FE9007B0531 /* ReportRevenueTotalAPI.swift in Sources */,
 				56C254EA229CEBC7005CB526 /* TaxCell.swift in Sources */,
 				56A7E06622925D3C00CB1BDF /* IntAxisValueFormatter.swift in Sources */,
-				56CF0DF4229FDF6400F9AEAB /* YAxisValueFormatter.swift in Sources */,
 				5678C85C229BE89600485CB6 /* ReportRevenueCustomerDebt.swift in Sources */,
 				56A7E06422925CD100CB1BDF /* LargeValueFormatter.swift in Sources */,
 				56C254E2229CCB4F005CB526 /* ReportRevenueFeedbackVC.swift in Sources */,

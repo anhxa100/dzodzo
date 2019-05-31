@@ -18,7 +18,7 @@ class TotalDashboardTableViewController: UITableViewController {
     let calendar = Calendar.current
     let date = Date()
     let format = DateFormatter()
-    
+    let currencyFormatter = NumberFormatter()
     
     weak var axisFormatDelegate: IAxisValueFormatter?
     var revenueTotalArray: [ReportRevenueTotal] = [] {
@@ -57,6 +57,11 @@ class TotalDashboardTableViewController: UITableViewController {
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         self.revealViewController()?.rearViewRevealWidth = 400
         
+        // quy đổi tiền
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.numberStyle = .currency
+        // localize to your grouping and decimal separator
+        currencyFormatter.locale = Locale(identifier: "vi_VN")
         // Xoá đường line tableview
         self.tableView.separatorStyle = .none
         
@@ -437,12 +442,16 @@ class TotalDashboardTableViewController: UITableViewController {
             self.taxamountLB.text = "0đ"
             
         }else {
+            
             self.totalamountLB.text = "\(self.revenueTotalWithoutchart[0].totalamount)đ"
             self.paybackamountLB.text = "\(self.revenueTotalWithoutchart[0].paybackamount)đ"
             self.totaldiscountLB.text = "\(self.revenueTotalWithoutchart[0].totaldiscount)đ"
             self.taxamountLB.text = "\(self.revenueTotalWithoutchart[0].taxamount)đ"
+            
         }
     }
+    
+    
 }
 
 extension TotalDashboardTableViewController: IAxisValueFormatter {

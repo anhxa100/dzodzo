@@ -15,6 +15,8 @@ class ReportRevenuePayTypeVC: UIViewController, UITableViewDelegate, UITableView
     let calendar = Calendar.current
     let date = Date()
     let format = DateFormatter()
+    let currencyFormatter = NumberFormatter()
+    
     @IBOutlet weak var tableView: UITableView!
     
     var paytypeArray: [ReportRevenuePayType] = [] {
@@ -34,6 +36,12 @@ class ReportRevenuePayTypeVC: UIViewController, UITableViewDelegate, UITableView
         btnMenuButton.action = #selector(SWRevealViewController.revealToggle(_:))
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         self.revealViewController()?.rearViewRevealWidth = 400
+        
+        // Quy đổi tiền tệ
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.numberStyle = .currency
+        // localize to your grouping and decimal separator
+        currencyFormatter.locale = Locale(identifier: "vi_VN")
         
         // Do any additional setup after loading the view.
         tableView.delegate = self
@@ -229,12 +237,12 @@ class ReportRevenuePayTypeVC: UIViewController, UITableViewDelegate, UITableView
         if paytypeArray[indexPath.row].soTienTT == "" {
             cell.sotienTTLB.text = "0đ"
         }else{
-            cell.sotienTTLB.text = "\(paytypeArray[indexPath.row].soTienTT) đ"
+            cell.sotienTTLB.text = "\(currencyFormatter.string(from: Double(paytypeArray[indexPath.row].soTienTT) as! NSNumber) ?? "" )"
         }
         if paytypeArray[indexPath.row].soTienHT == "" {
             cell.soTienHoanTraLB.text = "0đ"
         }else{
-            cell.soTienHoanTraLB.text = "\(paytypeArray[indexPath.row].soTienHT) đ"
+            cell.soTienHoanTraLB.text = "\(currencyFormatter.string(from: Double(paytypeArray[indexPath.row].soTienHT) as! NSNumber) ?? "" )"
         }
         return cell
     }

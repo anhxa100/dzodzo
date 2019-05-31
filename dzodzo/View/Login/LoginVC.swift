@@ -87,11 +87,20 @@ class LoginVC: UIViewController {
     
     @IBAction func fogetPass(_ sender: Any) {
         print("forget pass")
+        
+        openUrl(urlStr: "https://dzodzo.com.vn/pos/resetpswd.html")
     }
     @IBAction func signUp(_ sender: Any) {
+        openUrl(urlStr: "https://dzodzo.com.vn/pos/register.html")
+        
         print("Sign up")
     }
     
+    func openUrl(urlStr: String!) {
+        if let url = URL(string:urlStr), !url.absoluteString.isEmpty {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
     
     private func errorAlert(message: String) {
         DispatchQueue.main.async {

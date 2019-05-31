@@ -143,7 +143,9 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
     // Lấy data để hiển thị:
     func viewData() {
 
+        
         let barWidth = 0.8
+        
         var productChartArr: [String] = []
         
         let block: (Int) -> BarChartDataEntry = {(i) -> BarChartDataEntry in
@@ -155,20 +157,25 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
         let yVals: [BarChartDataEntry] = (0..<revenueProductArray.count).map(block)
         
         print("yVals: \(yVals)")
+        print("DATAPRODUCT: \(productChartArr)")
         
         let set1 = BarChartDataSet(entries: yVals, label: "Sản phẩm")
         productChart.xAxis.valueFormatter = IndexAxisValueFormatter(values: productChartArr)
-        productChart.xAxis.setLabelCount(productChartArr.count, force: true)
-        set1.colors = ChartColorTemplates.vordiplom()
-        productChart.scaleXEnabled = false
         
-        set1.drawIconsEnabled = false
+        //Hiển thị toàn bộ label chart
+        productChart.xAxis.granularity = 1
+        // Ẩn line trên Chart
+        productChart.xAxis.drawGridLinesEnabled = false
         
         let data = BarChartData(dataSet: set1)
         data.setValueFont(UIFont(name:"HelveticaNeue-Light", size:10)!)
         data.setValueFormatter(LargeValueFormatter())
         
         data.barWidth = barWidth
+        
+        //Fomat label
+        productChart.xAxis.setLabelCount(productChartArr.count, force: false)
+        set1.colors = ChartColorTemplates.vordiplom()
         
         productChart.data = data
         productChart.animate(xAxisDuration: 0.8, yAxisDuration: 0.8)

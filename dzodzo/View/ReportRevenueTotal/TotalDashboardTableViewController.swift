@@ -158,6 +158,7 @@ class TotalDashboardTableViewController: UITableViewController {
         
         print("yVals1: \(yVals1)")
         print("yVals2: \(yVals2)")
+        print("DATADAY: \(totalDayChart)")
         
         //Thiết lập tên, đặt màu cho cột
         let set1 = BarChartDataSet(entries: yVals1, label: "Tổng doanh thu")
@@ -171,6 +172,10 @@ class TotalDashboardTableViewController: UITableViewController {
         
         let set4 = BarChartDataSet(entries: yVals4, label: "Tổng thuế")
         set4.setColor(UIColor(red: 255/255, green: 102/255, blue: 0/255, alpha: 1))
+        
+        chartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: totalDayChart)
+        chartView.xAxis.setLabelCount(totalDayChart.count, force: false)
+
         
         let data = BarChartData(dataSets: [set1, set2, set3, set4])
         data.setValueFont(.systemFont(ofSize: 10, weight: .light))

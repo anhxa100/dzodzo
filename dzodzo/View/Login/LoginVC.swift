@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HideShowPasswordTextField
 
 
 class LoginVC: UIViewController {
@@ -15,6 +16,7 @@ class LoginVC: UIViewController {
     @IBOutlet weak var passTF: UITextField!
     
     private var CodeKey: [CheckPoscode] = []
+    var iconClick = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,6 +96,19 @@ class LoginVC: UIViewController {
         openUrl(urlStr: "https://dzodzo.com.vn/pos/register.html")
         
         print("Sign up")
+    }
+    
+    //show/hide pass
+    @IBAction func iconAction(sender: UIButton) {
+        if(iconClick == true) {
+            passTF.isSecureTextEntry = false
+        } else {
+            passTF.isSecureTextEntry = true
+        }
+        
+        iconClick = !iconClick
+        sender.isSelected = !sender.isSelected
+
     }
     
     func openUrl(urlStr: String!) {

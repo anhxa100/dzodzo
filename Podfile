@@ -15,5 +15,5 @@ pod 'Charts'
 pod 'RxCocoa'
 pod 'Moya'
 pod 'CalendarDateRangePickerViewController'
-
+pod 'HideShowPasswordTextField', :git => 'https://github.com/Guidebook/HideShowPasswordTextField'
 end

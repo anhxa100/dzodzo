@@ -37,6 +37,10 @@ class ReportRevenueCategoryVC: UIViewController, UITableViewDelegate, UITableVie
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         self.revealViewController()?.rearViewRevealWidth = 400
         
+        if categoryArray.count == 0 {
+            
+        }
+        
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self

@@ -18,7 +18,7 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
     let calendar = Calendar.current
     let date = Date()
     let format = DateFormatter()
-    let currencyFormatter = NumberFormatter()
+    
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -44,12 +44,7 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         self.revealViewController()?.rearViewRevealWidth = 400
         
-        
-        //Quy đổi tiền tệ:
-        currencyFormatter.usesGroupingSeparator = true
-        currencyFormatter.numberStyle = .currency
-        // localize to your grouping and decimal separator
-        currencyFormatter.locale = Locale(identifier: "vi_VN")
+
         
         // Do any additional setup after loading the view.
         tableView.delegate = self
@@ -371,9 +366,9 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductTableViewCell
         cell.itemnameLB.text = revenueProductArray[indexPath.row].itemname
         cell.quantityLB.text = "\(revenueProductArray[indexPath.row].quantity) sản phẩm"
-        cell.totalamountLB.text = "Tổng doanh thu: \(currencyFormatter.string(from: Double(revenueProductArray[indexPath.row].totalamount) as! NSNumber) ?? "" )"
-        cell.totoaldiscountLB.text = "Tổng giảm giá: \(currencyFormatter.string(from: Double(revenueProductArray[indexPath.row].totaldiscount) as! NSNumber) ?? "" )"
-        return cell 
+        cell.totalamountLB.text = "Tổng doanh thu: \(revenueProductArray[indexPath.row].totaldiscount)đ"
+        cell.totoaldiscountLB.text = "Tổng giảm giá: \(revenueProductArray[indexPath.row].totaldiscount)đ"
+        return cell
     }
     
 }

@@ -659,10 +659,10 @@ class TotalDashboardTableViewController: UITableViewController {
         let dateRangePickerViewController = CalendarDateRangePickerViewController(collectionViewLayout: UICollectionViewFlowLayout())
         dateRangePickerViewController.delegate = self as CalendarDateRangePickerViewControllerDelegate
         dateRangePickerViewController.minimumDate = Calendar.current.date(byAdding: .year, value: -2, to: Date())
-//        dateRangePickerViewController.indexPathForPreferredFocusedView(in: dateRangePickerViewController.selectedEndDate)
-        dateRangePickerViewController.maximumDate = Calendar.current.date(byAdding: .year, value: 2, to: Date())
+        dateRangePickerViewController.maximumDate = Date()
         dateRangePickerViewController.selectedStartDate = Date()
         dateRangePickerViewController.selectedEndDate = Calendar.current.date(byAdding: .day, value: 10, to: date)
+        
         let navigationController = UINavigationController(rootViewController: dateRangePickerViewController)
         self.navigationController?.present(navigationController, animated: true, completion: nil)
     }

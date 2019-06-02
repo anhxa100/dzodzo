@@ -16,7 +16,7 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
     @IBOutlet weak var btnMenuButton: UIBarButtonItem!
     var shouldHideData: Bool = false
     let calendar = Calendar.current
-    let date = Date()
+    var date = Date()
     let format = DateFormatter()
     let currencyFormatter = NumberFormatter()
     
@@ -245,10 +245,12 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
         }
     }
     
-    
-    //Lấy ngày hiện tại
-    func thisDate() {
-        dateChart.text = format.string(from: date)
+    //Ngày kế tiếp
+    func nextDay(){
+        let myDate = format.date(from: dateChart.text!)!
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: myDate)
+        let somedateString = format.string(from: tomorrow!)
+        dateChart.text = somedateString
         ReportRevenueProductAPI.getDataWithChart(pstartdate: dateChart.text ?? "", penddate: dateChart.text ?? "", success: {[weak self] dayData in
             self?.revenueProductArray = dayData
             self?.viewData()
@@ -256,6 +258,226 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
         ReportRevenueProductAPI.getDataWithoutChart(pstartdate: dateChart.text ?? "", penddate: dateChart.text ?? "", success: {[weak self] dayData in
             self?.revenueProductArray = dayData
         })
+        print(" \(somedateString)")
+        
+    }
+    
+    //Ngày hôm trước
+    func preDay(){
+        
+        let myDate = format.date(from: dateChart.text!)!
+        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: myDate)
+        
+        let somedateString = format.string(from: yesterday!)
+        dateChart.text = somedateString
+        ReportRevenueProductAPI.getDataWithChart(pstartdate: dateChart.text ?? "", penddate: dateChart.text ?? "", success: {[weak self] dayData in
+            self?.revenueProductArray = dayData
+            self?.viewData()
+        })
+        ReportRevenueProductAPI.getDataWithoutChart(pstartdate: dateChart.text ?? "", penddate: dateChart.text ?? "", success: {[weak self] dayData in
+            self?.revenueProductArray = dayData
+        })
+        print(" \(somedateString)")
+    }
+    
+    //Tuần kế tiếp
+    func nextWeek(){
+        
+        let today = calendar.startOfDay(for: date)
+        let nextweek = Calendar.current.date(byAdding: .day, value: 7, to: date)!
+        date = nextweek
+        let dayOfWeek = calendar.component(.weekday, from: today)
+        let weekdays = calendar.range(of: .weekday, in: .weekOfYear, for: today)!
+        let days = ((weekdays.lowerBound+1) ... weekdays.upperBound)
+            .compactMap { calendar.date(byAdding: .day, value: $0 - dayOfWeek, to: today) }
+        
+        guard let _firstDay = days.first else {return}
+        guard let _lastDay = days.last else {return}
+        
+        let nextWeekFirstDay = Calendar.current.date(byAdding: .day, value: 7, to: _firstDay)!
+        let nextWeekLastDay = Calendar.current.date(byAdding: .day, value: 7, to: _lastDay)!
+        
+        let firstDay = format.string(from: nextWeekFirstDay)
+        let lastDay = format.string(from: nextWeekLastDay)
+        
+        dateChart.text = "\(firstDay) - \(lastDay)"
+        
+        ReportRevenueProductAPI.getDataWithChart(pstartdate: firstDay, penddate: lastDay, success: {[weak self] weekData in
+            self?.revenueProductArray = weekData
+            self?.viewData()
+        })
+        ReportRevenueProductAPI.getDataWithoutChart(pstartdate: firstDay, penddate: lastDay, success: {[weak self] weekData in
+            self?.revenueProductArray = weekData
+        })
+    }
+    
+    //Func tuần trước
+    func preWeek(){
+        
+        let today = calendar.startOfDay(for: date)
+        let preweek = Calendar.current.date(byAdding: .day, value: -7, to: date)!
+        date = preweek
+        let dayOfWeek = calendar.component(.weekday, from: today)
+        let weekdays = calendar.range(of: .weekday, in: .weekOfYear, for: today)!
+        let days = ((weekdays.lowerBound+1) ... weekdays.upperBound)
+            .compactMap { calendar.date(byAdding: .day, value: $0 - dayOfWeek, to: today) }
+        
+        guard let _firstDay = days.first else {return}
+        guard let _lastDay = days.last else {return}
+        
+        let nextWeekFirstDay = Calendar.current.date(byAdding: .day, value: -7, to: _firstDay)!
+        let nextWeekLastDay = Calendar.current.date(byAdding: .day, value: -7, to: _lastDay)!
+        
+        let firstDay = format.string(from: nextWeekFirstDay)
+        let lastDay = format.string(from: nextWeekLastDay)
+        
+        dateChart.text = "\(firstDay) - \(lastDay)"
+        
+        ReportRevenueProductAPI.getDataWithChart(pstartdate: firstDay, penddate: lastDay, success: {[weak self] weekData in
+            self?.revenueProductArray = weekData
+            self?.viewData()
+        })
+        ReportRevenueProductAPI.getDataWithoutChart(pstartdate: firstDay, penddate: lastDay, success: {[weak self] weekData in
+            self?.revenueProductArray = weekData
+        })
+    }
+    
+    // MARK: Fuc tháng kế tiếp
+    func nextMonth() {
+        let nextMonth = Calendar.current.date(byAdding: .month, value: 1, to: date)!
+        date = nextMonth
+        let month = calendar.component(.month, from: date)
+        let year = calendar.component(.year, from: date)
+        
+        let components = calendar.dateComponents([.year, .month], from: date)
+        let startOfMonth = calendar.date(from: components)!
+        let startDateOfMonth = format.string(from: startOfMonth)
+        print(startDateOfMonth)
+        
+        var comps2 = DateComponents()
+        comps2.month = 1
+        comps2.day = -1
+        let endOfMonth = calendar.date(byAdding: comps2, to: startOfMonth)!
+        let endDateOfMonth = format.string(from: endOfMonth)
+        print(endDateOfMonth)
+        
+        dateChart.text = "Tháng \(month) năm \(year)"
+        
+        ReportRevenueProductAPI.getDataWithChart(pstartdate: startDateOfMonth, penddate: endDateOfMonth, success: {[weak self] monthData in
+            self?.revenueProductArray = monthData
+            self?.viewData()
+        })
+        ReportRevenueProductAPI.getDataWithoutChart(pstartdate: startDateOfMonth, penddate: endDateOfMonth, success: {[weak self] monthData in
+            self?.revenueProductArray = monthData
+        })
+    }
+    
+    // Tháng trước
+    func preMonth()  {
+        
+        let preMonth = Calendar.current.date(byAdding: .month, value: -1, to: date)!
+        date = preMonth
+        let month = calendar.component(.month, from: date)
+        let year = calendar.component(.year, from: date)
+        
+        let components = calendar.dateComponents([.year, .month], from: date)
+        let startOfMonth = calendar.date(from: components)!
+        let startDateOfMonth = format.string(from: startOfMonth)
+        print(startDateOfMonth)
+        
+        var comps2 = DateComponents()
+        comps2.month = 1
+        comps2.day = -1
+        let endOfMonth = calendar.date(byAdding: comps2, to: startOfMonth)!
+        let endDateOfMonth = format.string(from: endOfMonth)
+        print(endDateOfMonth)
+        
+        dateChart.text = "Tháng \(month) năm \(year)"
+        
+        ReportRevenueProductAPI.getDataWithChart(pstartdate: startDateOfMonth, penddate: endDateOfMonth, success: {[weak self] monthData in
+            self?.revenueProductArray = monthData
+            self?.viewData()
+        })
+        ReportRevenueProductAPI.getDataWithoutChart(pstartdate: startDateOfMonth, penddate: endDateOfMonth, success: {[weak self] monthData in
+            self?.revenueProductArray = monthData
+        })
+    }
+    
+    
+    // Năm sau
+    func nextYear() {
+        
+        let nextYear = Calendar.current.date(byAdding: .year, value: 1, to: date)!
+        date = nextYear
+        var components = Calendar.current.dateComponents([.year], from: date)
+        let year = calendar.component(.year, from: nextYear)
+        if let startDate = Calendar.current.date(from: components) {
+            components.year = 1
+            components.day = -1
+            let lastDate = Calendar.current.date(byAdding: components, to: startDate)!
+            let startDateOfYear = format.string(from: startDate)
+            let lastDateOfYear = format.string(from: lastDate)
+            
+            dateChart.text = "Năm \(year)"
+            
+            print(startDateOfYear)
+            print(lastDateOfYear)
+            
+            ReportRevenueProductAPI.getDataWithChart(pstartdate: startDateOfYear, penddate: lastDateOfYear, success: {[weak self] yearData in
+                self?.revenueProductArray = yearData
+                self?.viewData()
+            })
+            
+            ReportRevenueProductAPI.getDataWithoutChart(pstartdate: startDateOfYear, penddate: lastDateOfYear, success: {[weak self] yearData in
+                self?.revenueProductArray = yearData
+            })
+            
+        }
+    }
+    
+    // Năm trước
+    func preYear() {
+        
+        let preYear = Calendar.current.date(byAdding: .year, value: -1, to: date)!
+        date = preYear
+        var components = Calendar.current.dateComponents([.year], from: date)
+        let year = calendar.component(.year, from: date)
+        if let startDate = Calendar.current.date(from: components) {
+            components.year = 1
+            components.day = -1
+            let lastDate = Calendar.current.date(byAdding: components, to: startDate)!
+            let startDateOfYear = format.string(from: startDate)
+            let lastDateOfYear = format.string(from: lastDate)
+            
+            dateChart.text = "Năm \(year)"
+            
+            print(startDateOfYear)
+            print(lastDateOfYear)
+            
+            ReportRevenueProductAPI.getDataWithChart(pstartdate: startDateOfYear, penddate: lastDateOfYear, success: {[weak self] yearData in
+                self?.revenueProductArray = yearData
+                self?.viewData()
+            })
+            
+            ReportRevenueProductAPI.getDataWithoutChart(pstartdate: startDateOfYear, penddate: lastDateOfYear, success: {[weak self] yearData in
+                self?.revenueProductArray = yearData
+            })
+            
+        }
+    }
+    
+    //Lấy ngày hiện tại
+    func thisDate() {
+        dateChart.text = format.string(from: Date())
+        ReportRevenueProductAPI.getDataWithChart(pstartdate: dateChart.text ?? "", penddate: dateChart.text ?? "", success: {[weak self] dayData in
+            self?.revenueProductArray = dayData
+            self?.viewData()
+        })
+        ReportRevenueProductAPI.getDataWithoutChart(pstartdate: dateChart.text ?? "", penddate: dateChart.text ?? "", success: {[weak self] dayData in
+            self?.revenueProductArray = dayData
+        })
+        
+        date = Date()
     }
     
     //MARK: Lấy data ngày trong tuần
@@ -282,15 +504,17 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
             self?.revenueProductArray = weekData
             self?.viewData()
         })
-        ReportRevenueProductAPI.getDataWithChart(pstartdate: firstDay, penddate: lastDay, success: {[weak self] weekData in
+        ReportRevenueProductAPI.getDataWithoutChart(pstartdate: firstDay, penddate: lastDay, success: {[weak self] weekData in
             self?.revenueProductArray = weekData
         })
+        
+        date = Date()
         
     }
     
     //MARK: Lấy data theo tháng trong năm
     func thisMonth () {
-        let month = calendar.component(.month, from: date)
+        let month = calendar.component(.month, from: Date())
         let year = calendar.component(.year, from: date)
         
         let components = calendar.dateComponents([.year, .month], from: date)
@@ -308,9 +532,11 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
         ReportRevenueProductAPI.getDataWithChart(pstartdate: startDateOfMonth, penddate: endDateOfMonth, success: {[weak self] monthData in
             self?.revenueProductArray = monthData
         })
-        ReportRevenueProductAPI.getDataWithChart(pstartdate: startDateOfMonth, penddate: endDateOfMonth, success: {[weak self] monthData in
+        ReportRevenueProductAPI.getDataWithoutChart(pstartdate: startDateOfMonth, penddate: endDateOfMonth, success: {[weak self] monthData in
             self?.revenueProductArray = monthData
         })
+        
+        date = Date()
     }
     
     //MARK: Lấy data theo năm
@@ -338,6 +564,7 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
             })
             
         }
+        date = Date()
     }
     
     //MARK: Lấy data theo ngày tự chọn
@@ -356,10 +583,49 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
     
     //Ngày kế tiếp
     @IBAction func nextDay(_ sender: Any) {
+        if chosseDay.currentTitle == "Hôm nay" {
+            nextDay()
+            print("hehe1")
+        }
+        if chosseDay.currentTitle == "Tuần này" {
+            nextWeek()
+            print("hehe2")
+        }
+        if chosseDay.currentTitle == "Tháng này" {
+            nextMonth()
+            print("hehe3")
+        }
+        if chosseDay.currentTitle == "Năm nay" {
+            nextYear()
+            print("hehe4")
+        }
+        if chosseDay.currentTitle == "Tuỳ chọn" {
+            print("hehe5")
+        }
         print("Next day")
     }
     //Ngày trước
     @IBAction func preDay(_ sender: Any) {
+        if chosseDay.currentTitle == "Hôm nay" {
+            preDay()
+            print("hehe1")
+        }
+        if chosseDay.currentTitle == "Tuần này" {
+            preWeek()
+            print("hehe2")
+        }
+        if chosseDay.currentTitle == "Tháng này" {
+            preMonth()
+            print("hehe3")
+        }
+        if chosseDay.currentTitle == "Năm nay" {
+            preYear()
+            print("hehe4")
+        }
+        if chosseDay.currentTitle == "Tuỳ chọn" {
+            print("hehe5")
+        }
+        
         print("Pre day")
     }
     
@@ -373,7 +639,7 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductTableViewCell
         cell.itemnameLB.text = revenueProductArray[indexPath.row].itemname
         cell.quantityLB.text = "\(revenueProductArray[indexPath.row].quantity) sản phẩm"
-        cell.totalamountLB.text = "Tổng doanh thu: \(currencyFormatter.string(from: Double(revenueProductArray[indexPath.row].totalamount) as! NSNumber) ?? "error")"
+        cell.totalamountLB.text = "Tổng doanh thu: \(currencyFormatter.string(from: Double(revenueProductArray[indexPath.row].totalamount) as? NSNumber ?? 0.0) ?? "error")"
         cell.totoaldiscountLB.text = "Tổng giảm giá: \(revenueProductArray[indexPath.row].totaldiscount) ₫"
         return cell
     }
@@ -397,11 +663,11 @@ extension ReportRevenueProductViewController : CalendarDateRangePickerViewContro
             self?.revenueProductArray = chooseData
             self?.viewData()
         })
-        ReportRevenueProductAPI.getDataWithChart(pstartdate: startDay, penddate: endDay, success: {[weak self] chooseData in
+        ReportRevenueProductAPI.getDataWithoutChart(pstartdate: startDay, penddate: endDay, success: {[weak self] chooseData in
             self?.revenueProductArray = chooseData
         })
     }
-    
+
 }
 
 //extension ReportRevenueProductViewController: IAxisValueFormatter {

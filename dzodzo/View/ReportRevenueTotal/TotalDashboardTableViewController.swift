@@ -217,7 +217,16 @@ class TotalDashboardTableViewController: UITableViewController {
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: myDate)
         let somedateString = format.string(from: tomorrow!)
         dateChart.text = somedateString
+        ReportRevenueTotalAPI.getRevenueTotalWithChart(pstartdate: dateChart.text ?? "", penddate: dateChart.text ?? "", success: {[weak self] dayData in
+            self?.revenueTotalArray = dayData
+            self?.viewData()
+        })
+        ReportRevenueTotalAPI.getRevenueTotal(pstartdate: dateChart.text ?? "", penddate: dateChart.text ?? "", success: {[weak self] dayData in
+            self?.revenueTotalWithoutchart = dayData
+            self?.getDataWithoutChart()
+        })
         print(" \(somedateString)")
+        
     }
     
     //Ngày hôm trước
@@ -226,6 +235,14 @@ class TotalDashboardTableViewController: UITableViewController {
         let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: myDate)
         let somedateString = format.string(from: yesterday!)
         dateChart.text = somedateString
+        ReportRevenueTotalAPI.getRevenueTotalWithChart(pstartdate: dateChart.text ?? "", penddate: dateChart.text ?? "", success: {[weak self] dayData in
+            self?.revenueTotalArray = dayData
+            self?.viewData()
+        })
+        ReportRevenueTotalAPI.getRevenueTotal(pstartdate: dateChart.text ?? "", penddate: dateChart.text ?? "", success: {[weak self] dayData in
+            self?.revenueTotalWithoutchart = dayData
+            self?.getDataWithoutChart()
+        })
         print(" \(somedateString)")
     }
     
@@ -253,22 +270,50 @@ class TotalDashboardTableViewController: UITableViewController {
     
     
     //Ngày kế tiếp
-    @IBAction func nextDay(_ sender: Any) {
+    @IBAction func nextDay(_ sender: UIButton) {
+        if chosseDay.currentTitle == "Hôm nay" {
+            convertNextDate()
+            print("hehe1")
+        }
+        if chosseDay.currentTitle == "Tuần này" {
+            print("hehe2")
+        }
+        if chosseDay.currentTitle == "Tháng này" {
+            print("hehe3")
+        }
+        if chosseDay.currentTitle == "Năm nay" {
+            print("hehe4")
+        }
+        if chosseDay.currentTitle == "Tuỳ chọn" {
+            print("hehe5")
+        }
         
-        convertNextDate()
-        //        convertNextWeek()
-        tableView.reloadData()
         print("Next day")
     }
     //Ngày trước
-    @IBAction func preDay(_ sender: Any) {
-        convertPreDate()
-        tableView.reloadData()
+    @IBAction func preDay(_ sender: UIButton) {
+        if chosseDay.currentTitle == "Hôm nay" {
+            convertPreDate()
+            print("hehe1")
+        }
+        if chosseDay.currentTitle == "Tuần này" {
+            print("hehe2")
+        }
+        if chosseDay.currentTitle == "Tháng này" {
+            print("hehe3")
+        }
+        if chosseDay.currentTitle == "Năm nay" {
+            print("hehe4")
+        }
+        if chosseDay.currentTitle == "Tuỳ chọn" {
+            print("hehe5")
+        }
+        
         print("Pre day")
     }
     
     // Menu tuỳ chọn trên màn hình Chart
-    @IBAction func toDayDropDownMenu(_ sender: Any) {
+    @IBAction func toDayDropDownMenu(_ sender: UIButton) {
         buttonHidden()
     }
     
@@ -366,7 +411,7 @@ class TotalDashboardTableViewController: UITableViewController {
     }
     
     //MARK: Lấy data theo tháng trong năm
-    func thisMonth () {
+    func thisMonth() {
         let month = calendar.component(.month, from: date)
         let year = calendar.component(.year, from: date)
         

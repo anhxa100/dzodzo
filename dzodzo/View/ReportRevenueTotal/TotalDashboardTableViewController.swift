@@ -346,6 +346,7 @@ class TotalDashboardTableViewController: UITableViewController {
     
     // Tháng trước
     func preMonth()  {
+
         let preMonth = Calendar.current.date(byAdding: .month, value: -1, to: date)!
         date = preMonth
         let month = calendar.component(.month, from: date)
@@ -378,10 +379,11 @@ class TotalDashboardTableViewController: UITableViewController {
     
     // Năm sau
     func nextYear() {
+
         let nextYear = Calendar.current.date(byAdding: .year, value: 1, to: date)!
         date = nextYear
         var components = Calendar.current.dateComponents([.year], from: date)
-        let year = calendar.component(.year, from: date)
+        let year = calendar.component(.year, from: nextYear)
         if let startDate = Calendar.current.date(from: components) {
             components.year = 1
             components.day = -1
@@ -409,6 +411,7 @@ class TotalDashboardTableViewController: UITableViewController {
     
     // Năm trước
     func preYear() {
+
         let preYear = Calendar.current.date(byAdding: .year, value: -1, to: date)!
         date = preYear
         var components = Calendar.current.dateComponents([.year], from: date)
@@ -544,7 +547,7 @@ class TotalDashboardTableViewController: UITableViewController {
     
     //Lấy ngày hiện tại
     func thisDate() {
-        dateChart.text = format.string(from: date)
+        dateChart.text = format.string(from: Date())
         ReportRevenueTotalAPI.getRevenueTotalWithChart(pstartdate: dateChart.text ?? "", penddate: dateChart.text ?? "", success: {[weak self] dayData in
             self?.revenueTotalArray = dayData
             self?.viewData()
@@ -584,14 +587,16 @@ class TotalDashboardTableViewController: UITableViewController {
             self?.getDataWithoutChart()
         })
         
+        //reset date
+        date = Date()
     }
     
     //MARK: Lấy data theo tháng trong năm
     func thisMonth() {
-        let month = calendar.component(.month, from: date)
-        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: Date())
+        let year = calendar.component(.year, from: Date())
         
-        let components = calendar.dateComponents([.year, .month], from: date)
+        let components = calendar.dateComponents([.year, .month], from: Date())
         let startOfMonth = calendar.date(from: components)!
         let startDateOfMonth = format.string(from: startOfMonth)
         
@@ -611,6 +616,8 @@ class TotalDashboardTableViewController: UITableViewController {
             self?.revenueTotalWithoutchart = monthData
             self?.getDataWithoutChart()
         })
+        //reset date
+        date = Date()
     }
     
     //MARK: Lấy data theo năm
@@ -623,7 +630,10 @@ class TotalDashboardTableViewController: UITableViewController {
             let lastDate = Calendar.current.date(byAdding: components, to: startDate)!
             let startDateOfYear = format.string(from: startDate)
             let lastDateOfYear = format.string(from: lastDate)
+            
+            
             dateChart.text = "Năm \(year)"
+            
             
             print(startDateOfYear)
             print(lastDateOfYear)
@@ -639,17 +649,20 @@ class TotalDashboardTableViewController: UITableViewController {
             })
             
         }
+        
+        //reset date
+        date = Date()
     }
     
     //MARK: Lấy data theo ngày tự chọn
     func optionDay() {
-        
         let dateRangePickerViewController = CalendarDateRangePickerViewController(collectionViewLayout: UICollectionViewFlowLayout())
         dateRangePickerViewController.delegate = self as CalendarDateRangePickerViewControllerDelegate
         dateRangePickerViewController.minimumDate = Calendar.current.date(byAdding: .year, value: -2, to: Date())
-        dateRangePickerViewController.maximumDate = Date()
+//        dateRangePickerViewController.indexPathForPreferredFocusedView(in: dateRangePickerViewController.selectedEndDate)
+        dateRangePickerViewController.maximumDate = Calendar.current.date(byAdding: .year, value: 2, to: Date())
         dateRangePickerViewController.selectedStartDate = Date()
-        dateRangePickerViewController.selectedEndDate = Calendar.current.date(byAdding: .day, value: 10, to: Date())
+        dateRangePickerViewController.selectedEndDate = Calendar.current.date(byAdding: .day, value: 10, to: date)
         let navigationController = UINavigationController(rootViewController: dateRangePickerViewController)
         self.navigationController?.present(navigationController, animated: true, completion: nil)
     }
@@ -662,7 +675,7 @@ class TotalDashboardTableViewController: UITableViewController {
             self.totaldiscountLB.text = "0₫"
             self.taxamountLB.text = "0₫"
             
-        }else {
+        }else{
             
             self.totalamountLB.text = "\(self.revenueTotalWithoutchart[0].totalamount) ₫"
             self.paybackamountLB.text = "\(self.revenueTotalWithoutchart[0].paybackamount) ₫"

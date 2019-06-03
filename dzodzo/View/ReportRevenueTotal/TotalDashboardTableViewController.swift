@@ -170,7 +170,7 @@ class TotalDashboardTableViewController: UITableViewController {
         let set1 = BarChartDataSet(entries: yVals1, label: "Tổng doanh thu")
         set1.setColor(UIColor(red: 104/255, green: 241/255, blue: 175/255, alpha: 1))
         
-        let set2 = BarChartDataSet(entries: yVals2, label: "Tổng giamr giá")
+        let set2 = BarChartDataSet(entries: yVals2, label: "Tổng giảm giá")
         set2.setColor(UIColor(red: 164/255, green: 228/255, blue: 251/255, alpha: 1))
         
         let set3 = BarChartDataSet(entries: yVals3, label: "Tổng hoàn tiền")

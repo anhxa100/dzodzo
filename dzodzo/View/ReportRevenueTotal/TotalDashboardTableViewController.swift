@@ -36,7 +36,7 @@ class TotalDashboardTableViewController: UITableViewController {
     
     
     @IBOutlet weak var chartView: BarChartView!
-   
+    
     @IBOutlet var opptionMenu: [UIButton]!
     @IBOutlet weak var dateChart: UILabel!
     @IBOutlet weak var chosseDay: UIButton!
@@ -181,7 +181,7 @@ class TotalDashboardTableViewController: UITableViewController {
         
         chartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: totalDayChart)
         chartView.xAxis.setLabelCount(totalDayChart.count, force: false)
-
+        
         
         let data = BarChartData(dataSets: [set1, set2, set3, set4])
         data.setValueFont(.systemFont(ofSize: 10, weight: .light))
@@ -265,7 +265,7 @@ class TotalDashboardTableViewController: UITableViewController {
         
         let nextWeekFirstDay = Calendar.current.date(byAdding: .day, value: 7, to: _firstDay)!
         let nextWeekLastDay = Calendar.current.date(byAdding: .day, value: 7, to: _lastDay)!
-
+        
         let firstDay = format.string(from: nextWeekFirstDay)
         let lastDay = format.string(from: nextWeekLastDay)
         
@@ -346,7 +346,7 @@ class TotalDashboardTableViewController: UITableViewController {
     
     // Tháng trước
     func preMonth()  {
-
+        
         let preMonth = Calendar.current.date(byAdding: .month, value: -1, to: date)!
         date = preMonth
         let month = calendar.component(.month, from: date)
@@ -379,7 +379,7 @@ class TotalDashboardTableViewController: UITableViewController {
     
     // Năm sau
     func nextYear() {
-
+        
         let nextYear = Calendar.current.date(byAdding: .year, value: 1, to: date)!
         date = nextYear
         var components = Calendar.current.dateComponents([.year], from: date)
@@ -411,7 +411,7 @@ class TotalDashboardTableViewController: UITableViewController {
     
     // Năm trước
     func preYear() {
-
+        
         let preYear = Calendar.current.date(byAdding: .year, value: -1, to: date)!
         date = preYear
         var components = Calendar.current.dateComponents([.year], from: date)

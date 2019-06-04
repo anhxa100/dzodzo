@@ -709,7 +709,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.neo.dzodzo;
+				PRODUCT_BUNDLE_IDENTIFIER = vn.neo.dzodzo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "dzodzo/View/New Group/dzodzo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -732,7 +732,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.neo.dzodzo;
+				PRODUCT_BUNDLE_IDENTIFIER = vn.neo.dzodzo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "dzodzo/View/New Group/dzodzo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

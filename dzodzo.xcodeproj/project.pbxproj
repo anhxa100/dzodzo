@@ -11,7 +11,6 @@
 		5622CA94227FDE57007B0531 /* TotalDashboardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622CA93227FDE57007B0531 /* TotalDashboardTableViewController.swift */; };
 		5622CA9E22802FE9007B0531 /* ReportRevenueTotalAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622CA9D22802FE9007B0531 /* ReportRevenueTotalAPI.swift */; };
 		5622CAA022803207007B0531 /* ReportRevenueTotal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622CA9F22803207007B0531 /* ReportRevenueTotal.swift */; };
-		562A71A02270159500A9929B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 562A719F2270159500A9929B /* Assets.xcassets */; };
 		562A71A222701F8A00A9929B /* PopupChosseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562A71A122701F8A00A9929B /* PopupChosseVC.swift */; };
 		56334CEA229D1E5100F59F71 /* FeedbackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56334CE9229D1E5100F59F71 /* FeedbackCell.swift */; };
 		5637B8AC22978DA800146D23 /* ReportRevenueProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637B8AB22978DA800146D23 /* ReportRevenueProduct.swift */; };
@@ -38,6 +37,7 @@
 		567DA168229E665300C3507A /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 567DA166229E665300C3507A /* SWRevealViewController.m */; };
 		567DA16C229E783400C3507A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DA16B229E783400C3507A /* MenuViewController.swift */; };
 		567DA16E229E786B00C3507A /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DA16D229E786B00C3507A /* MenuCell.swift */; };
+		567DDC3522A61D5B002FB165 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 567DDC3422A61D5B002FB165 /* Assets.xcassets */; };
 		56870CAA2272F6760023EC81 /* CheckPoscode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56870CA92272F6760023EC81 /* CheckPoscode.swift */; };
 		56870CAC2272F9DB0023EC81 /* PoscodeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56870CAB2272F9DB0023EC81 /* PoscodeAPI.swift */; };
 		569EA0B62265BB9000EA1427 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569EA0B52265BB9000EA1427 /* AppDelegate.swift */; };
@@ -71,7 +71,6 @@
 		5622CA93227FDE57007B0531 /* TotalDashboardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalDashboardTableViewController.swift; sourceTree = "<group>"; };
 		5622CA9D22802FE9007B0531 /* ReportRevenueTotalAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueTotalAPI.swift; sourceTree = "<group>"; };
 		5622CA9F22803207007B0531 /* ReportRevenueTotal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueTotal.swift; sourceTree = "<group>"; };
-		562A719F2270159500A9929B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		562A71A122701F8A00A9929B /* PopupChosseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupChosseVC.swift; sourceTree = "<group>"; };
 		56334CE9229D1E5100F59F71 /* FeedbackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackCell.swift; sourceTree = "<group>"; };
 		5637B8AB22978DA800146D23 /* ReportRevenueProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRevenueProduct.swift; sourceTree = "<group>"; };
@@ -100,6 +99,7 @@
 		567DA167229E665300C3507A /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		567DA16B229E783400C3507A /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		567DA16D229E786B00C3507A /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		567DDC3422A61D5B002FB165 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../dzodzo-master/dzodzo/Assets.xcassets"; sourceTree = "<group>"; };
 		56870CA92272F6760023EC81 /* CheckPoscode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckPoscode.swift; sourceTree = "<group>"; };
 		56870CAB2272F9DB0023EC81 /* PoscodeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoscodeAPI.swift; sourceTree = "<group>"; };
 		569EA0B22265BB9000EA1427 /* dzodzo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dzodzo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -329,7 +329,7 @@
 				5686528C2266E25600AC9E28 /* Model */,
 				5686528D2266E28400AC9E28 /* View */,
 				569EA0B92265BB9000EA1427 /* Main.storyboard */,
-				562A719F2270159500A9929B /* Assets.xcassets */,
+				567DDC3422A61D5B002FB165 /* Assets.xcassets */,
 				569EA0BE2265BB9100EA1427 /* LaunchScreen.storyboard */,
 				569EA0C12265BB9100EA1427 /* Info.plist */,
 			);
@@ -446,7 +446,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				569EA0C02265BB9100EA1427 /* LaunchScreen.storyboard in Resources */,
-				562A71A02270159500A9929B /* Assets.xcassets in Resources */,
+				567DDC3522A61D5B002FB165 /* Assets.xcassets in Resources */,
 				569EA0BB2265BB9000EA1427 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -702,14 +702,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = U32Z3PZM2Y;
+				DEVELOPMENT_TEAM = R545ZGZS5K;
 				INFOPLIST_FILE = dzodzo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = anhxa100.dzodzo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.neo.dzodzo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "dzodzo/View/New Group/dzodzo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -725,14 +725,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = U32Z3PZM2Y;
+				DEVELOPMENT_TEAM = R545ZGZS5K;
 				INFOPLIST_FILE = dzodzo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = anhxa100.dzodzo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.neo.dzodzo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "dzodzo/View/New Group/dzodzo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

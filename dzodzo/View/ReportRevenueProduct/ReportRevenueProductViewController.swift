@@ -549,6 +549,7 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
         
         ReportRevenueProductAPI.getDataWithChart(pstartdate: startDateOfMonth, penddate: endDateOfMonth, success: {[weak self] monthData in
             self?.revenueProductArray = monthData
+            self?.viewData()
         })
         ReportRevenueProductAPI.getDataWithoutChart(pstartdate: startDateOfMonth, penddate: endDateOfMonth, success: {[weak self] monthData in
             self?.revenueProductArray = monthData
@@ -675,7 +676,7 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductTableViewCell
         cell.itemnameLB.text = revenueProductArray[indexPath.row].itemname
         cell.quantityLB.text = "\(revenueProductArray[indexPath.row].quantity) sản phẩm"
-        cell.totalamountLB.text = "Tổng doanh thu: \(currencyFormatter.string(from: Double(revenueProductArray[indexPath.row].totalamount) as? NSNumber ?? 0.0) ?? "error")"
+        cell.totalamountLB.text = "Tổng doanh thu: \(currencyFormatter.string(from: Double(revenueProductArray[indexPath.row].totalamount) as NSNumber? ?? 0.0) ?? "error")"
         cell.totoaldiscountLB.text = "Tổng giảm giá: \(revenueProductArray[indexPath.row].totaldiscount) ₫"
         return cell
     }

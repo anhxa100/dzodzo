@@ -16,29 +16,17 @@ class LoginVC: UIViewController {
     @IBOutlet weak var useNameTF: UITextField!
     @IBOutlet weak var passTF: UITextField!
     
-    var refresher : UIRefreshControl!
+    
+   
     private var CodeKey: [CheckPoscode] = []
     var iconClick = true
-//    var spinner = UIActivityIndicatorView(style: .whiteLarge)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         // Do any additional setup after loading the view.
     }
     
-//    override func loadView() {
-//        view = UIView()
-//        view.backgroundColor = UIColor(white: 0, alpha: 0.7)
-//
-//        spinner.translatesAutoresizingMaskIntoConstraints = false
-//        spinner.startAnimating()
-//        view.addSubview(spinner)
-//
-//        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-//    }
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -66,9 +54,11 @@ class LoginVC: UIViewController {
         
         Account.valiDateLogin(input: inputValidate, success: { [weak self] outPut in
             // Gọi API login và show loading
+            Loading().showActivityIndicator(uiView: self!.view)
             if Connectivity.isConnectedToInternet(){
                 AccountAPI.login(with: outPut, result: { acc in
                     DispatchQueue.main.async {
+                       
                         if let token = acc.token, token != "LoginFail" {
                             
                             print(token)
@@ -101,6 +91,7 @@ class LoginVC: UIViewController {
                                 }
                             })
                             
+                            
                         } else {
                             self?.errorAlert(message: "Sai tài khoản hoặc mật khẩu, Vui lòng thử lại!")
                         }
@@ -121,6 +112,8 @@ class LoginVC: UIViewController {
         view.endEditing(true)
         
     }
+    
+    
     
     func alertLogin() {
         let alertController = UIAlertController(title: "Không có kết nối internet", message: "Vui lòng kiểm tra kết nối wifi/3G", preferredStyle: .alert)

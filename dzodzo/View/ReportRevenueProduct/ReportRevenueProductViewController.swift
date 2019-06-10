@@ -648,6 +648,27 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
     }
     
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        var numOfSections: Int = 0
+        if revenueProductArray.count > 0
+        {
+            tableView.separatorStyle = .singleLine
+            numOfSections            = 1
+            tableView.backgroundView = nil
+        }
+        else
+        {
+            let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+            noDataLabel.text          = "Không có dữ liệu trong thời gian này"
+            noDataLabel.textColor     = UIColor.black
+            noDataLabel.textAlignment = .center
+            tableView.backgroundView  = noDataLabel
+            tableView.separatorStyle  = .none
+        }
+        return numOfSections
+    }
+    
     //MARK: Tableview
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return revenueProductArray.count

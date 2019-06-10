@@ -461,14 +461,11 @@ class ReportRevenueCategoryVC: UIViewController, UITableViewDelegate, UITableVie
     func numberOfSections(in tableView: UITableView) -> Int {
         
         var numOfSections: Int = 0
-        if categoryArray.count > 0
-        {
+        if categoryArray.count > 0{
             tableView.separatorStyle = .singleLine
             numOfSections            = 1
             tableView.backgroundView = nil
-        }
-        else
-        {
+        }else{
             let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
             noDataLabel.text          = "Không có dữ liệu trong thời gian này"
             noDataLabel.textColor     = UIColor.black

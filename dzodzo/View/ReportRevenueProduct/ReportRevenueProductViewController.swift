@@ -73,6 +73,24 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
         viewChartData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tableView.flashScrollIndicators()
+        
+        if Connectivity.isConnectedToInternet() {
+            print("Yes! internet is available.")
+            // do some tasks..
+        }
+        
+        if Connectivity.isConnectedToInternet() == false {
+            let alertController = UIAlertController(title: "Không có kết nối internet", message: "Vui lòng kiểm tra kết nối wifi/3G", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Xác nhận", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+            
+            print("No have internet")
+        }
+        
+    }
   
     // Thiết lập hiển thị bảng
     func viewChartData() {
@@ -670,8 +688,3 @@ extension ReportRevenueProductViewController : CalendarDateRangePickerViewContro
 
 }
 
-//extension ReportRevenueProductViewController: IAxisValueFormatter {
-//    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-//        return productChart?[Int(value) % productChart.count]
-//    }
-//}

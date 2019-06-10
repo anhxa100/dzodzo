@@ -49,10 +49,7 @@ class AccountAPI {
         }
         
         
-        
-//        Alamofire.request(urlRequest, method: .get)
     }
-    
     
 
 }

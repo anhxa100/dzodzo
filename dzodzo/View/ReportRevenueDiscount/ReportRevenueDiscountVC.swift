@@ -51,6 +51,25 @@ class ReportRevenueDiscountVC: UIViewController, UITableViewDelegate, UITableVie
         chosseDay.setTitle("Hôm nay", for: .normal)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tableView.flashScrollIndicators()
+        
+        if Connectivity.isConnectedToInternet() {
+            print("Yes! internet is available.")
+            // do some tasks..
+        }
+        
+        if Connectivity.isConnectedToInternet() == false {
+            let alertController = UIAlertController(title: "Không có kết nối internet", message: "Vui lòng kiểm tra kết nối wifi/3G", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Xác nhận", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+            
+            print("No have internet")
+        }
+        
+    }
+    
     enum DropdownOption: String {
         case today = "Hôm nay"
         case thisWeek = "Tuần này"

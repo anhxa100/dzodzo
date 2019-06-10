@@ -16,8 +16,10 @@ class LoginVC: UIViewController {
     @IBOutlet weak var useNameTF: UITextField!
     @IBOutlet weak var passTF: UITextField!
     
+    var refresher : UIRefreshControl!
     private var CodeKey: [CheckPoscode] = []
     var iconClick = true
+//    var spinner = UIActivityIndicatorView(style: .whiteLarge)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +27,19 @@ class LoginVC: UIViewController {
         
         // Do any additional setup after loading the view.
     }
+    
+//    override func loadView() {
+//        view = UIView()
+//        view.backgroundColor = UIColor(white: 0, alpha: 0.7)
+//
+//        spinner.translatesAutoresizingMaskIntoConstraints = false
+//        spinner.startAnimating()
+//        view.addSubview(spinner)
+//
+//        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+//    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -63,6 +78,8 @@ class LoginVC: UIViewController {
                             UserDefaults.standard.set(outPut.username, forKey: UserDefaultKeys.usernameKey)
                             UserDefaults.standard.set(outPut.pass, forKey: UserDefaultKeys.passwordKey)
                             
+                            
+                            
                             PosCodeAPI.getPoscode(success: {[weak self] code in
                                 self?.CodeKey = code
                                 let poscodegroupData = self?.CodeKey[0].posgroupcode
@@ -98,10 +115,9 @@ class LoginVC: UIViewController {
             
             }, failure: {[weak self] in
                 self?.errorAlert(message: $0)
-                self?.alertLogin()
+
         } )
         
-        //        print("Pressed!")
         view.endEditing(true)
         
     }

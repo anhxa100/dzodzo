@@ -64,7 +64,8 @@ class TotalDashboardTableViewController: UITableViewController {
         // localize to your grouping and decimal separator
         currencyFormatter.locale = Locale(identifier: "vi_VN")
         // Xoá đường line tableview
-        self.tableView.separatorStyle = .none
+//        self.tableView.separatorStyle = .none
+        self.tableView.separatorColor = UIColor.clear
         
         //Định dạng ngày giờ hiển thị
         format.dateFormat = "dd/MM/yyyy"

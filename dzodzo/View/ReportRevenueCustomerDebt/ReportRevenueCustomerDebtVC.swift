@@ -42,7 +42,8 @@ class ReportRevenueCustomerDebtVC: UIViewController, UITableViewDelegate, UITabl
         chosseDay.setTitle("Hôm nay", for: .normal)
         
         // Xoá đường line tableview
-        self.tableView.separatorStyle = .none
+//        self.tableView.separatorStyle = .none
+        self.tableView.separatorColor = UIColor.clear
         
         //Đặt tên nút mặc định
         //Định dạng ngày giờ hiển thị

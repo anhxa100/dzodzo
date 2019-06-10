@@ -69,7 +69,9 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
         thisDate()
        
         // Xoá đường line tableview
-        self.tableView.separatorStyle = .none
+//        self.tableView.separatorStyle = .none
+        self.tableView.separatorColor = UIColor.clear
+        
         viewChartData()
     }
     
@@ -172,7 +174,6 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
     // Lấy data để hiển thị:
     func viewData() {
 
-        
         let barWidth = 0.8
         
         var productChartArr: [String] = []
@@ -269,9 +270,11 @@ class ReportRevenueProductViewController: UIViewController, UITableViewDelegate,
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: myDate)
         let somedateString = format.string(from: tomorrow!)
         dateChart.text = somedateString
+
         ReportRevenueProductAPI.getDataWithChart(pstartdate: dateChart.text ?? "", penddate: dateChart.text ?? "", success: {[weak self] dayData in
             self?.revenueProductArray = dayData
             self?.viewData()
+
         })
         ReportRevenueProductAPI.getDataWithoutChart(pstartdate: dateChart.text ?? "", penddate: dateChart.text ?? "", success: {[weak self] dayData in
             self?.revenueProductArray = dayData

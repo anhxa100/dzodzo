@@ -20,7 +20,6 @@ class LoginVC: UIViewController {
    
     private var CodeKey: [CheckPoscode] = []
     var iconClick = true
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -54,7 +53,6 @@ class LoginVC: UIViewController {
         
         Account.valiDateLogin(input: inputValidate, success: { [weak self] outPut in
             // Gọi API login và show loading
-            Loading().showActivityIndicator(uiView: self!.view)
             if Connectivity.isConnectedToInternet(){
                 AccountAPI.login(with: outPut, result: { acc in
                     DispatchQueue.main.async {
